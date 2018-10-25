@@ -2,7 +2,7 @@ package birth.h3.app.curl_kusegeapp
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import birth.h3.app.curl_kusegeapp.ui.WeatherFragment
+import birth.h3.app.curl_kusegeapp.ui.weather.WeatherFragment
 
 class MainActivity : AppCompatActivity() {
 

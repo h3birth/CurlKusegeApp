@@ -2,13 +2,19 @@ package birth.h3.app.curl_kusegeapp.di
 
 import birth.h3.app.curl_kusegeapp.model.entity.Weather
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
+import birth.h3.app.curl_kusegeapp.ui.weather.WeatherViewModel
 import dagger.Module
 import dagger.Provides
 import io.reactivex.Single
 import javax.inject.Singleton
 
 @Module
-class ApiModule {
+class WeatherModule() {
+    @Singleton
+    @Provides
+    fun provideWeatherViewModel(): WeatherViewModel {
+        return WeatherViewModel()
+    }
 
     @Singleton
     @Provides
