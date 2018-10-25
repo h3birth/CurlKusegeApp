@@ -1,4 +1,4 @@
-package birth.h3.app.curl_kusegeapp.model.net.entity
+package birth.h3.app.curl_kusegeapp.model.entity
 
 data class Weather(
         var weather: Int,

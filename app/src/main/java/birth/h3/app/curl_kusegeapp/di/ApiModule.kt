@@ -1,7 +1,7 @@
 package birth.h3.app.curl_kusegeapp.di
 
+import birth.h3.app.curl_kusegeapp.model.entity.Weather
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
-import birth.h3.app.curl_kusegeapp.model.net.entity.Weather
 import dagger.Module
 import dagger.Provides
 import io.reactivex.Single
