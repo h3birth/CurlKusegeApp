@@ -37,6 +37,7 @@ class WeatherFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (context?.applicationContext as CurlApp).component.inject(this)
 
+        binding.setLifecycleOwner(this)
         binding.viewmodel = weatherViewModel
     }
 }
