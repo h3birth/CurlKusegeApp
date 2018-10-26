@@ -9,7 +9,7 @@ import javax.inject.Inject
 class WeatherViewModel @Inject constructor() : ViewModel() {
     lateinit var weather: MutableLiveData<List<Weather>>
     var isWarning: MutableLiveData<Boolean> = MutableLiveData()
-    var text = "weather view model"
+    var text = "WeatherViewModel"
     init {
         isWarning.value = false
     }
