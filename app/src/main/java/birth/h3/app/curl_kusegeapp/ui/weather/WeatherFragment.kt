@@ -4,6 +4,7 @@ package birth.h3.app.curl_kusegeapp.ui.weather
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -47,6 +48,10 @@ class WeatherFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (context?.applicationContext as CurlApp).component.inject(this)
+
+        // タイトル設定
+        app_toolbar.title = resources.getString(R.string.app_name)
+        (activity as AppCompatActivity).setSupportActionBar(app_toolbar)
 
         binding.setLifecycleOwner(this)
         binding.viewmodel = weatherViewModel
