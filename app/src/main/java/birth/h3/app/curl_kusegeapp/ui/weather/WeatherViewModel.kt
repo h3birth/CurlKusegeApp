@@ -15,6 +15,9 @@ class WeatherViewModel @Inject constructor() : ViewModel() {
     }
 
     fun onClick() {
-        isWarning.value = true
+        isWarning.value = when(isWarning.value) {
+            true -> false
+            else -> true
+        }
     }
 }
