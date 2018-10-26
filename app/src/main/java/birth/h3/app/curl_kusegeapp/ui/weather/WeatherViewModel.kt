@@ -12,16 +12,5 @@ import javax.inject.Inject
 class WeatherViewModel @Inject constructor(
         private val weather: BehaviorProcessor<List<Weather>>
 ) : ViewModel() {
-    var isWarning: MutableLiveData<Boolean> = MutableLiveData()
-    var text = "WeatherViewModel"
-    init {
-        isWarning.value = false
-    }
 
-    fun onClick() {
-        isWarning.value = when(isWarning.value) {
-            true -> false
-            else -> true
-        }
-    }
 }

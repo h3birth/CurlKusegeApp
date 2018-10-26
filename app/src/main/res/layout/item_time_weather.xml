@@ -21,26 +21,25 @@
             android:text="@{timeWeather.time}"/>
 
         <ImageView
-            android:id="@+id/listItemImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginTop="@dimen/margin_m"
             android:layout_marginBottom="@dimen/margin_m"
-            app:srcCompat="@drawable/ic_wb_sunny" />
-
+            android:src="@{timeWeather.image}" />
 
         <TextView
             android:id="@+id/listItemTemp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="28℃" />
+            android:text="@{String.format(@string/tv_temp, timeWeather.temp)}" />
 
 
         <TextView
             android:id="@+id/listItemHum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="81%" />
+            android:text="@{String.format(@string/tv_temp, timeWeather.humidity)}" />
 
     </LinearLayout>
 </layout>
