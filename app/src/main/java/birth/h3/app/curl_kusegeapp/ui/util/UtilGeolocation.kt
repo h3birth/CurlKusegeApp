@@ -13,8 +13,6 @@ import android.support.v4.content.ContextCompat
 
 open class UtilGeolocation(val activity: Activity) : LocationListener {
 
-//    private var activity: Activity? = null
-
     init {
         // GPS
         val mLocationManager = activity!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager
