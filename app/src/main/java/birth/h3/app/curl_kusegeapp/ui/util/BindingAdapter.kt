@@ -24,18 +24,26 @@ fun setImageUrl(imageView: ImageView, url: String) {
 }
 
 /**
+ * 画像 ローカルリソースバインディング
+ */
+@BindingAdapter("srcCompat")
+fun srcCompat(imageView: ImageView, resourceId: Int) {
+    val requestOptions: RequestOptions = RequestOptions()
+    requestOptions.placeholder(ColorDrawable(Color.GRAY))
+            .override(200,200)
+            .dontAnimate()
+            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+    Glide.with(imageView.context)
+            .load(resourceId)
+            .apply(requestOptions)
+            .into(imageView)
+}
+
+/**
  * 高さバインディング
  */
 @BindingAdapter("android:minHeight")
 fun setHeight(imageView: ImageView, height: Float) {
     imageView.layoutParams.height = imageView.width
     imageView.minimumHeight = imageView.width
-}
-
-/**
- * 画像 ローカルリソースバインディング
- */
-@BindingAdapter("srcCompat")
-fun srcCompat(view: ImageView, resourceId: Int) {
-    view.setImageResource(resourceId)
 }

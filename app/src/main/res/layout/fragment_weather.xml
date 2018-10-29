@@ -200,7 +200,8 @@
                             android:layout_width="75dp"
                             android:layout_height="50dp"
                             android:layout_weight="1"
-                            android:src="@drawable/men_curl" />
+                            android:src="@drawable/men_curl"
+                            android:visibility="gone" />
 
                         <com.daasuu.bl.BubbleLayout
                             android:layout_width="wrap_content"
@@ -265,7 +266,7 @@
                             android:layout_height="100dp"
                             android:layout_weight="1"
                             android:padding="@dimen/padding_m"
-                            android:src="@drawable/men_streat" />
+                            app:srcCompat="@{viewmodel.submitImages.get(0)}"/>
 
                         <ImageView
                             android:id="@+id/iv_submit_curl"
@@ -273,7 +274,7 @@
                             android:layout_height="100dp"
                             android:layout_weight="1"
                             android:padding="@dimen/padding_m"
-                            android:src="@drawable/men_curl" />
+                            app:srcCompat="@{viewmodel.submitImages.get(1)}" />
 
                         <ImageView
                             android:id="@+id/iv_submit_very_curl"
@@ -281,7 +282,7 @@
                             android:layout_height="100dp"
                             android:layout_weight="1"
                             android:padding="@dimen/padding_m"
-                            android:src="@drawable/men_very_curl" />
+                            app:srcCompat="@{viewmodel.submitImages.get(2)}" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -305,6 +306,13 @@
                     android:gravity="center"
                     android:text="広告" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewDummy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dummy_text"
+                app:layout_constraintTop_toBottomOf="@+id/adArea" />
 
         </android.support.constraint.ConstraintLayout>
 
