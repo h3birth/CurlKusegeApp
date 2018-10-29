@@ -11,14 +11,16 @@ import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 
-class UtilGeolocation(val activity: Activity): LocationListener {
+open class UtilGeolocation(val activity: Activity) : LocationListener {
+
+//    private var activity: Activity? = null
 
     init {
         // GPS
-        val mLocationManager = activity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        if (ContextCompat.checkSelfPermission(activity,
+        val mLocationManager = activity!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        if (ContextCompat.checkSelfPermission(activity!!,
                         Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(activity,
+            ActivityCompat.requestPermissions(activity!!,
                     arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                     1000)
         } else {

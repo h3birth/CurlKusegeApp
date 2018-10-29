@@ -2,10 +2,12 @@ package birth.h3.app.curl_kusegeapp.ui.weather
 
 
 import android.databinding.DataBindingUtil
+import android.location.Location
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +15,7 @@ import birth.h3.app.curl_kusegeapp.CurlApp
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.databinding.FragmentWeatherBinding
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
+import birth.h3.app.curl_kusegeapp.ui.util.UtilGeolocation
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
@@ -58,6 +61,13 @@ class WeatherFragment : Fragment() {
 
         rv_time_weather.adapter = adapter
         rv_time_weather.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+
+        val geolocation = object : UtilGeolocation(activity as AppCompatActivity) {
+            override fun onLocationChanged(location: Location) {
+                super.onLocationChanged(location)
+                Log.d("WeatherFragment", "lat = " + location.latitude.toString() + " lon =" + location.longitude.toString())
+            }
+        }
 
         disposable.addAll(
                 weatherApiService
