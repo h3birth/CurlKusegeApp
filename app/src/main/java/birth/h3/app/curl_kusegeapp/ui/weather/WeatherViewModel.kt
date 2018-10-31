@@ -11,10 +11,12 @@ class WeatherViewModel @Inject constructor(
         private val weather: BehaviorProcessor<List<Weather>>
 ) : ViewModel() {
     val submitImages : MutableLiveData<List<Int>> = MutableLiveData<List<Int>>()
+    val statusImage: MutableLiveData<Int> = MutableLiveData()
 
     init {
         submitImages.value = listOf(R.drawable.men_streat,
                                     R.drawable.men_curl,
                                     R.drawable.men_very_curl)
+        statusImage.value = R.drawable.men_curl
     }
 }

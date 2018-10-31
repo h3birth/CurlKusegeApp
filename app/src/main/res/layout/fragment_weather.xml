@@ -200,8 +200,7 @@
                             android:layout_width="75dp"
                             android:layout_height="50dp"
                             android:layout_weight="1"
-                            android:src="@drawable/men_curl"
-                            android:visibility="gone" />
+                            app:srcCompat="@{viewmodel.statusImage}" />
 
                         <com.daasuu.bl.BubbleLayout
                             android:layout_width="wrap_content"
@@ -306,13 +305,6 @@
                     android:gravity="center"
                     android:text="広告" />
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/textViewDummy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dummy_text"
-                app:layout_constraintTop_toBottomOf="@+id/adArea" />
 
         </android.support.constraint.ConstraintLayout>
 
