@@ -17,4 +17,4 @@ jobs:
             ./gradlew :app:assembleDebugAndroidTest
       - run:
           name: Deploy debug APK
-          command: curl -F "token=${DeployGateApiKey}" -F "file=@app/build/outputs/apk/app-debug.apk" -F "message=deployed" https://deploygate.com/api/users/h3birth/apps
+          command: curl -F "token=${DeployGateApiKey}" -F "file=@app/build/outputs/apk/debug/app-debug.apk" -F "message=deployed" https://deploygate.com/api/users/h3birth/apps
