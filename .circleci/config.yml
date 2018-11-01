@@ -8,6 +8,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: chmod permissions
+          command: chmod +x ./gradlew
+      - run:
           name: Build debug APK and release APK
           command: |
             ./gradlew :app:assembleDebug
