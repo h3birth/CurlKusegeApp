@@ -11,7 +11,10 @@ jobs:
           name: chmod permissions
           command: chmod +x ./gradlew
       - run:
-          name: Build debug APK and release APK
+          name: Build debug APK
           command: |
             ./gradlew :app:assembleDebug
             ./gradlew :app:assembleDebugAndroidTest
+      - run:
+          name: Deploy debug APK
+          command: curl -F "token=${DeployGateApiKey}" -F "file=@app/build/outputs/apk/app-debug.apk" -F "message=deployed" https://deploygate.com/api/users/h3birth/apps
