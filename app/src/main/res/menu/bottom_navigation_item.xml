@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_home_black_24dp"
         android:title="ホーム" />
     <item
-        android:id="@+id/nav_search"
+        android:id="@+id/nav_chart"
         android:icon="@drawable/ic_insert_chart_black_24dp"
         android:title="チャート" />
     <item
