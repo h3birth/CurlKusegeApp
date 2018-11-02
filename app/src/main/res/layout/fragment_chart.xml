@@ -19,12 +19,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <com.github.mikephil.charting.charts.HorizontalBarChart
-        android:id="@+id/chart1"
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/weather_chart"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_above="@+id/seekBar1"
-        android:background="@android:color/white" />
+        android:layout_below="@+id/app_toolbar" />
 
     <SeekBar
         android:id="@+id/seekBar2"

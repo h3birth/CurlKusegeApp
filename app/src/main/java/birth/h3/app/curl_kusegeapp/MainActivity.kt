@@ -3,11 +3,11 @@ package birth.h3.app.curl_kusegeapp
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import birth.h3.app.curl_kusegeapp.ui.chart.ChartFragment
 import birth.h3.app.curl_kusegeapp.ui.news.NewsFragment
 import birth.h3.app.curl_kusegeapp.ui.setting.SettingFragment
 import birth.h3.app.curl_kusegeapp.ui.util.BottomNavigationViewHelper
 import birth.h3.app.curl_kusegeapp.ui.weather.WeatherFragment
+import birth.h3.app.curl_kusegeapp.ui.chart.ChartFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
