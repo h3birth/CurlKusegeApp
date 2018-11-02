@@ -18,9 +18,15 @@ import kotlinx.android.synthetic.main.fragment_chart.*
 import com.github.mikephil.charting.utils.ColorTemplate
 import android.text.style.ForegroundColorSpan
 import android.graphics.Typeface
+import android.os.Build
+import android.support.design.R.attr.theme
+import android.support.v4.content.ContextCompat
+import android.support.v4.content.res.ResourcesCompat.getColor
 import android.text.style.StyleSpan
 import android.text.style.RelativeSizeSpan
 import android.text.SpannableString
+import android.util.Log
+import androidx.annotation.RequiresApi
 import birth.h3.app.curl_kusegeapp.R.string.chart
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.data.PieData
@@ -116,28 +122,12 @@ class ChartFragment : Fragment(), OnChartValueSelectedListener {
         dataSet.selectionShift = 5f
 
         // add a lot of colors
-
         val colors = ArrayList<Int>()
-
-        for (c in ColorTemplate.VORDIPLOM_COLORS)
-            colors.add(c)
-
-        for (c in ColorTemplate.JOYFUL_COLORS)
-            colors.add(c)
-
-        for (c in ColorTemplate.COLORFUL_COLORS)
-            colors.add(c)
-
-        for (c in ColorTemplate.LIBERTY_COLORS)
-            colors.add(c)
-
-        for (c in ColorTemplate.PASTEL_COLORS)
-            colors.add(c)
-
-        colors.add(ColorTemplate.getHoloBlue())
+        colors.add(getHairColor(R.color.colorHairStreat))
+        colors.add(getHairColor(R.color.colorHairCurl))
+        colors.add(getHairColor(R.color.colorHairVeryCurl))
 
         dataSet.setColors(colors)
-        //dataSet.setSelectionShift(0f);
 
         val data = PieData(dataSet)
         data.setValueFormatter(PercentFormatter())
@@ -149,5 +139,9 @@ class ChartFragment : Fragment(), OnChartValueSelectedListener {
         weather_chart.highlightValues(null)
 
         weather_chart.invalidate()
+    }
+
+    fun getHairColor(colorID: Int): Int{
+        return Color.parseColor("#"+Integer.toHexString(ContextCompat.getColor(context!!, colorID)))
     }
 }
