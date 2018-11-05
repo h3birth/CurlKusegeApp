@@ -32,6 +32,8 @@ import javax.inject.Inject
  */
 class WeatherFragment : Fragment() {
 
+    val TAG = "weather"
+
     @Inject
     lateinit var weatherApiService: WeatherApiService
 

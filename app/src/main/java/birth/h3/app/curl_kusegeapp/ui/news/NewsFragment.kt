@@ -25,6 +25,8 @@ import javax.inject.Inject
  */
 class NewsFragment : Fragment() {
 
+    val TAG = "news"
+
     @Inject
     lateinit var newsService: NewsService
 

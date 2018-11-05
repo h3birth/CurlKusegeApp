@@ -39,6 +39,9 @@ import com.github.mikephil.charting.data.PieEntry
  *
  */
 class ChartFragment : Fragment(), OnChartValueSelectedListener {
+
+    val TAG = "chart"
+
     override fun onValueSelected(e: Entry?, h: Highlight?) {}
 
     override fun onNothingSelected() {}

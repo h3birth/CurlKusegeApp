@@ -3,6 +3,7 @@ package birth.h3.app.curl_kusegeapp
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import birth.h3.app.curl_kusegeapp.model.entity.News
 import birth.h3.app.curl_kusegeapp.ui.news.NewsFragment
 import birth.h3.app.curl_kusegeapp.ui.setting.SettingFragment
 import birth.h3.app.curl_kusegeapp.ui.util.BottomNavigationViewHelper
@@ -15,7 +16,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportFragmentManager.beginTransaction().replace(R.id.container, WeatherFragment()).commit()
+        supportFragmentManager.beginTransaction()
+                .add(R.id.container, WeatherFragment(), WeatherFragment().TAG)
+                .commit()
         setBottomNavigtionOption()
     }
 
@@ -23,14 +26,48 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationViewHelper = BottomNavigationViewHelper()
         bottomNavigationViewHelper.disableShiftMode(bottom_navigation)
         bottom_navigation.setOnNavigationItemSelectedListener  {
-            val fragment: Fragment? =  when (it.itemId) {
-                R.id.nav_top     -> WeatherFragment()
-                R.id.nav_chart   -> ChartFragment()
-                R.id.nav_news    -> NewsFragment()
-                R.id.nav_setting -> SettingFragment()
+            val fgManager = supportFragmentManager
+            val fgTransaction = supportFragmentManager.beginTransaction()
+            val fragments: List<Fragment>? = fgManager?.fragments
+            var fragment: Fragment? = null
+            var fragmentTag: String = ""
+
+            when (it.itemId) {
+                R.id.nav_top -> {
+                    fragment    = WeatherFragment()
+                    fragmentTag = WeatherFragment().TAG
+                }
+                R.id.nav_chart -> {
+                    fragment    = ChartFragment()
+                    fragmentTag = ChartFragment().TAG
+                }
+                R.id.nav_news -> {
+                    fragment    = NewsFragment()
+                    fragmentTag = NewsFragment().TAG
+                }
+                R.id.nav_setting -> {
+                    fragment    = SettingFragment()
+                    fragmentTag = SettingFragment().TAG
+                }
                 else -> null
             }
-            supportFragmentManager.beginTransaction().replace(R.id.container, fragment!!).commit()
+
+            var alreadyFragment = fgManager.findFragmentByTag(fragmentTag)
+
+            if( fragments!!.size > 0 ) {
+                fragments.forEach {
+                    fgTransaction.hide(it)
+                }
+            }
+
+            if( alreadyFragment == null ){
+                fgTransaction.add(R.id.container, fragment!!, fragmentTag)
+            }else{
+                fgTransaction.show(alreadyFragment)
+            }
+
+            fgTransaction.commit()
+
             true
         }
     }
