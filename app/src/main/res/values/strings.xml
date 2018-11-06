@@ -10,6 +10,13 @@
     <string name="tv_humidity">%d\%</string>
     <string name="tv_submit_read">あなたの髪は今どんな感じ？</string>
 
+    <!-- 時間ごと天気のヘッダー -->
+    <string name="tv_header_time">時刻</string>
+    <string name="tv_header_weather">天気</string>
+    <string name="tv_header_temp">気温</string>
+    <string name="tv_header_hum">湿度</string>
+    <string name="tv_format_number">%d</string>
+
     <!-- ログインフォーム -->
     <string name="tv_login_read">ログインするとあなたのかみのけのくせ度をきろく・ぶんせきします。</string>
     <string name="btn_login_mail">メールアドレスでログイン</string>

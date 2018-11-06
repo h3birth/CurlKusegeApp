@@ -27,20 +27,20 @@ class WeatherModule() {
 
         override fun getTimeWeather(): Single<List<TimeWeather>> = Single.just(
                 listOf(
-                        TimeWeather("09:00", "https://openweathermap.org/img/w/10n.png", 19,54),
-                        TimeWeather("10:00", "https://openweathermap.org/img/w/10n.png", 19,54),
-                        TimeWeather("11:00", "https://openweathermap.org/img/w/10n.png", 20,54),
-                        TimeWeather("12:00", "https://openweathermap.org/img/w/10n.png", 21,60),
-                        TimeWeather("13:00", "https://openweathermap.org/img/w/10n.png", 21,61),
-                        TimeWeather("14:00", "https://openweathermap.org/img/w/10n.png", 22,62),
-                        TimeWeather("15:00", "https://openweathermap.org/img/w/10n.png", 20,54),
-                        TimeWeather("16:00", "https://openweathermap.org/img/w/10n.png", 18,54),
-                        TimeWeather("17:00", "https://openweathermap.org/img/w/10n.png", 18,54),
-                        TimeWeather("18:00", "https://openweathermap.org/img/w/10n.png", 17,54),
-                        TimeWeather("19:00", "https://openweathermap.org/img/w/10n.png", 16,54),
-                        TimeWeather("20:00", "https://openweathermap.org/img/w/10n.png", 14,54),
-                        TimeWeather("21:00", "https://openweathermap.org/img/w/10n.png", 13,54),
-                        TimeWeather("22:00", "https://openweathermap.org/img/w/10n.png", 13,54)
+                        TimeWeather("9", "https://openweathermap.org/img/w/10n.png", 19,54),
+                        TimeWeather("10", "https://openweathermap.org/img/w/10n.png", 19,54),
+                        TimeWeather("11", "https://openweathermap.org/img/w/10n.png", 20,54),
+                        TimeWeather("12", "https://openweathermap.org/img/w/10n.png", 21,60),
+                        TimeWeather("13", "https://openweathermap.org/img/w/10n.png", 21,61),
+                        TimeWeather("14", "https://openweathermap.org/img/w/10n.png", 22,62),
+                        TimeWeather("15", "https://openweathermap.org/img/w/10n.png", 20,54),
+                        TimeWeather("16", "https://openweathermap.org/img/w/10n.png", 18,54),
+                        TimeWeather("17", "https://openweathermap.org/img/w/10n.png", 18,54),
+                        TimeWeather("18", "https://openweathermap.org/img/w/10n.png", 17,54),
+                        TimeWeather("19", "https://openweathermap.org/img/w/10n.png", 16,54),
+                        TimeWeather("20", "https://openweathermap.org/img/w/10n.png", 14,54),
+                        TimeWeather("21", "https://openweathermap.org/img/w/10n.png", 13,54),
+                        TimeWeather("22", "https://openweathermap.org/img/w/10n.png", 13,54)
                 )
         )
     }

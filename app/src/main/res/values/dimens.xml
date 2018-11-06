@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- common -->
     <dimen name="text_3s">8dp</dimen>
     <dimen name="text_2s">10dp</dimen>
     <dimen name="text_s">12dp</dimen>
@@ -8,15 +9,20 @@
     <dimen name="text_2l">24dp</dimen>
     <dimen name="text_3l">28dp</dimen>
     <dimen name="text_4l">32dp</dimen>
+    <dimen name="margin_s">5dp</dimen>
     <dimen name="margin_m">10dp</dimen>
     <dimen name="margin_l">20dp</dimen>
     <dimen name="margin_2l">30dp</dimen>
     <dimen name="margin_3l">40dp</dimen>
     <dimen name="margin_5l">100dp</dimen>
+    <dimen name="padding_xs">2dp</dimen>
     <dimen name="padding_s">5dp</dimen>
     <dimen name="padding_m">10dp</dimen>
     <dimen name="padding_l">20dp</dimen>
     <dimen name="padding_2l">30dp</dimen>
     <dimen name="padding_4l">50dp</dimen>
     <dimen name="padding_5l">100dp</dimen>
+
+    <!-- time weather -->
+    <dimen name="timeImage">30dp</dimen>
 </resources>

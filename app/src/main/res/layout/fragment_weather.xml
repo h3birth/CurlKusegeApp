@@ -199,20 +199,69 @@
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_time_weather"
+            <LinearLayout
+                android:id="@+id/ll_time_weather"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_m"
-                android:background="@drawable/style_border_gray"
-                app:layout_constraintTop_toBottomOf="@+id/cv_weather" />
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cv_weather">
+
+                <LinearLayout
+                    android:id="@+id/ll_time_weather_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/style_border_gray_bg_primary"
+                    android:foregroundGravity="center_horizontal|center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_m">
+
+                    <TextView
+                        android:id="@+id/tv_header_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_header_time" />
+
+                    <TextView
+                        android:id="@+id/tv_header_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/timeImage"
+                        android:layout_marginTop="@dimen/margin_m"
+                        android:layout_marginBottom="@dimen/margin_m"
+                        android:gravity="center"
+                        android:text="@string/tv_header_weather" />
+
+                    <TextView
+                        android:id="@+id/tv_header_temp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_header_temp" />
+
+                    <TextView
+                        android:id="@+id/tv_header_hum"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_header_hum" />
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_time_weather"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/style_border_gray">
+
+                </android.support.v7.widget.RecyclerView>
+
+            </LinearLayout>
 
             <android.support.v7.widget.CardView
                 android:id="@+id/cv_submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_m"
-                app:layout_constraintTop_toBottomOf="@+id/rv_time_weather">
+                app:layout_constraintTop_toBottomOf="@+id/ll_time_weather">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -237,7 +286,7 @@
                             android:layout_height="100dp"
                             android:layout_weight="1"
                             android:padding="@dimen/padding_m"
-                            app:srcCompat="@{viewmodel.submitImages.get(0)}"/>
+                            app:srcCompat="@{viewmodel.submitImages.get(0)}" />
 
                         <ImageView
                             android:id="@+id/iv_submit_curl"
