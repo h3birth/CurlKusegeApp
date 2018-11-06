@@ -9,6 +9,7 @@ import birth.h3.app.curl_kusegeapp.ui.setting.SettingFragment
 import birth.h3.app.curl_kusegeapp.ui.util.BottomNavigationViewHelper
 import birth.h3.app.curl_kusegeapp.ui.weather.WeatherFragment
 import birth.h3.app.curl_kusegeapp.ui.chart.ChartFragment
+import birth.h3.app.curl_kusegeapp.ui.top.TopFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportFragmentManager.beginTransaction()
-                .add(R.id.container, WeatherFragment(), WeatherFragment().TAG)
+                .add(R.id.container, TopFragment(), TopFragment().TAG)
                 .commit()
         setBottomNavigtionOption()
     }
@@ -34,8 +35,8 @@ class MainActivity : AppCompatActivity() {
 
             when (it.itemId) {
                 R.id.nav_top -> {
-                    fragment    = WeatherFragment()
-                    fragmentTag = WeatherFragment().TAG
+                    fragment    = TopFragment()
+                    fragmentTag = TopFragment().TAG
                 }
                 R.id.nav_chart -> {
                     fragment    = ChartFragment()

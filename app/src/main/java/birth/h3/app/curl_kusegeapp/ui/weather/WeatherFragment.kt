@@ -58,10 +58,6 @@ class WeatherFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (context?.applicationContext as CurlApp).component.inject(this)
 
-        // タイトル設定
-        app_toolbar.title = resources.getString(R.string.app_name)
-        (activity as AppCompatActivity).setSupportActionBar(app_toolbar)
-
         binding.setLifecycleOwner(this)
         binding.viewmodel = weatherViewModel
 
