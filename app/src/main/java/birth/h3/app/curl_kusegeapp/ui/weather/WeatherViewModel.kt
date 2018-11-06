@@ -10,10 +10,14 @@ import javax.inject.Inject
 class WeatherViewModel @Inject constructor(
         private val weather: BehaviorProcessor<List<Weather>>
 ) : ViewModel() {
+    val weatherText: MutableLiveData<String> = MutableLiveData()
+    val weatherImage: MutableLiveData<String> = MutableLiveData()
     val submitImages : MutableLiveData<List<Int>> = MutableLiveData<List<Int>>()
     val statusImage: MutableLiveData<Int> = MutableLiveData()
 
     init {
+        weatherText.value = "はれ"
+        weatherImage.value = "http://openweathermap.org/img/w/01d.png"
         submitImages.value = listOf(R.drawable.men_streat,
                                     R.drawable.men_curl,
                                     R.drawable.men_very_curl)

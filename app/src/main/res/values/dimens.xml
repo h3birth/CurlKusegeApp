@@ -23,6 +23,7 @@
     <dimen name="padding_4l">50dp</dimen>
     <dimen name="padding_5l">100dp</dimen>
 
-    <!-- time weather -->
+    <!-- image -->
+    <dimen name="weatherImage">75dp</dimen>
     <dimen name="timeImage">30dp</dimen>
 </resources>
