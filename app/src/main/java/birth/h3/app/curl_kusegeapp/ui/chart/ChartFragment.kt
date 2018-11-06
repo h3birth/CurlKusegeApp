@@ -42,6 +42,8 @@ class ChartFragment : Fragment(), OnChartValueSelectedListener {
 
     val TAG = "chart"
 
+    val titles = listOf("さらさら","ちょいくせ毛","ちょうくせ毛")
+
     override fun onValueSelected(e: Entry?, h: Highlight?) {}
 
     override fun onNothingSelected() {}
@@ -80,14 +82,10 @@ class ChartFragment : Fragment(), OnChartValueSelectedListener {
         weather_chart.setRotationEnabled(true)
         weather_chart.setHighlightPerTapEnabled(true)
 
-        // weather_chart.setUnit(" €");
-        // weather_chart.setDrawUnitsInweather_chart(true);
-
         // add a selection listener
         weather_chart.setOnChartValueSelectedListener(this)
 
         weather_chart.animateY(1400, Easing.EaseInOutQuad)
-        // weather_chart.spin(2000, 0, 360);
 
         val l = weather_chart.getLegend()
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP)
@@ -108,15 +106,13 @@ class ChartFragment : Fragment(), OnChartValueSelectedListener {
 
         val entries = ArrayList<PieEntry>()
 
-        // NOTE: The order of the entries when being added to the entries array determines their position around the center of
-        // the chart.
         for (i in 0 until count) {
             entries.add(PieEntry((Math.random() * range + range / 5).toFloat(),
-                    "test",
+                    titles[i],
                     resources.getDrawable(R.drawable.star)))
         }
 
-        val dataSet = PieDataSet(entries, "Election Results")
+        val dataSet = PieDataSet(entries, "")
 
         dataSet.setDrawIcons(false)
 
