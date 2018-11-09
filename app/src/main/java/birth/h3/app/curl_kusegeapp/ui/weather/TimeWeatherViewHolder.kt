@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.BR
 import birth.h3.app.curl_kusegeapp.model.entity.TimeWeather
+import birth.h3.app.curl_kusegeapp.model.entity.Icon
 
 class TimeWeatherViewHolder(
         private val binding: ViewDataBinding
@@ -15,6 +16,7 @@ class TimeWeatherViewHolder(
 
     fun bind(timeWeather: TimeWeather) {
         binding.setVariable(BR.timeWeather, timeWeather)
+        binding.setVariable(BR.icon, Icon(2))
     }
 
     companion object {

@@ -4,6 +4,9 @@
         <variable
             name="timeWeather"
             type="birth.h3.app.curl_kusegeapp.model.entity.TimeWeather" />
+        <variable
+            name="icon"
+            type="birth.h3.app.curl_kusegeapp.model.entity.Icon" />
     </data>
 
     <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -29,7 +32,7 @@
             android:layout_height="@dimen/timeImage"
             android:layout_marginTop="@dimen/margin_m"
             android:layout_marginBottom="@dimen/margin_m"
-            android:src="@{timeWeather.image}" />
+            app:srcCompat="@{icon.getIcon()}" />
 
         <TextView
             android:id="@+id/listItemTemp"

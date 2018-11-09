@@ -46,7 +46,7 @@
                             android:id="@+id/imageView"
                             android:layout_width="@dimen/weatherImage"
                             android:layout_height="@dimen/weatherImage"
-                            android:src="@{viewmodel.weatherImage}" />
+                            app:srcCompat="@{viewmodel.weatherImage}" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
