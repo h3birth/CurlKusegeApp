@@ -26,4 +26,5 @@
     <!-- image -->
     <dimen name="weatherImage">75dp</dimen>
     <dimen name="timeImage">30dp</dimen>
+    <dimen name="markImage">20dp</dimen>
 </resources>

@@ -16,6 +16,8 @@
     <string name="tv_header_temp">気温</string>
     <string name="tv_header_hum">湿度</string>
     <string name="tv_format_number">%d</string>
+    <string name="tv_header_wind">風速</string>
+    <string name="tv_header_rainy">降水確率</string>
 
     <!-- ログインフォーム -->
     <string name="tv_login_read">ログインするとあなたのかみのけのくせ度をきろく・ぶんせきします。</string>
