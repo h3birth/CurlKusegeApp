@@ -74,7 +74,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:gravity="center"
-                                    android:text="28"
+                                    android:text="@{String.format(@string/tv_temp,28)}"
                                     android:textColor="@android:color/holo_red_dark"
                                     android:textSize="@dimen/text_l" />
 
@@ -84,7 +84,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:gravity="center"
-                                    android:text="18"
+                                    android:text="@{String.format(@string/tv_temp,18)}"
                                     android:textColor="@android:color/holo_blue_dark"
                                     android:textSize="@dimen/text_l" />
 
