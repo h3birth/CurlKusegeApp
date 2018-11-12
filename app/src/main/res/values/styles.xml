@@ -16,4 +16,17 @@
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
+    <!-- TextView setting header -->
+    <style name="AppSettingHeader">
+        <item name="android:textColor">@color/colorNoActionText</item>
+        <item name="android:textSize">@dimen/text_s</item>
+    </style>
+    <style name="AppSettingSelectableText">
+        <item name="android:paddingTop">@dimen/padding_l</item>
+        <item name="android:paddingBottom">@dimen/padding_l</item>
+        <item name="android:paddingLeft">@dimen/padding_m</item>
+        <item name="android:clickable">true</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+    </style>
+
 </resources>
