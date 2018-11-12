@@ -8,16 +8,17 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/app_toolbar"
-        app:layout_scrollFlags="enterAlways|scroll"
-        app:title="@string/chart"
-        app:titleTextColor="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
+        android:elevation="@dimen/elevation"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_scrollFlags="enterAlways|scroll"
+        app:title="@string/chart"
+        app:titleTextColor="@color/colorPrimary" />
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/weather_chart"

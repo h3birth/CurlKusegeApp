@@ -416,7 +416,6 @@
                     android:gravity="center"
                     android:text="広告" />
             </LinearLayout>
-
         </android.support.constraint.ConstraintLayout>
 
     </android.support.v4.widget.NestedScrollView>
