@@ -23,6 +23,12 @@
     <string name="tv_login_read">ログインするとあなたのかみのけのくせ度をきろく・ぶんせきします。</string>
     <string name="btn_login_mail">メールアドレスでログイン</string>
     <string name="btn_login_twitter">Twitterでログイン</string>
+    
+    <!-- 設定ページ -->
+    <string name="tv_setting_app">アプリ設定</string>
+    <string name="tv_setting_icon">アイコン設定</string>
+    <string name="tv_setting_theme">テーマ設定</string>
+    <string name="tv_setting_push">プッシュ設定</string>
 
     <!-- その他 -->
     <string name="dash">-</string>
