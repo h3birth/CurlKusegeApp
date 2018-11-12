@@ -25,10 +25,17 @@
     <string name="btn_login_twitter">Twitterでログイン</string>
     
     <!-- 設定ページ -->
-    <string name="tv_setting_app">アプリ設定</string>
+    <string name="tv_setting_header_app">アプリ設定</string>
     <string name="tv_setting_icon">アイコン設定</string>
     <string name="tv_setting_theme">テーマ設定</string>
-    <string name="tv_setting_push">プッシュ設定</string>
+    <string name="tv_setting_push">プッシュ通知設定</string>
+    <string name="tv_setting_clear">データクリア</string>
+
+    <string name="tv_setting_header_etc">その他</string>
+    <string name="tv_setting_privacy_policy">プライバシーポリシー</string>
+    <string name="tv_setting_oss">オープンソースライセンス</string>
+    <string name="tv_setting_rule">利用規約</string>
+    <string name="tv_setting_version">バージョン</string>
 
     <!-- その他 -->
     <string name="dash">-</string>
