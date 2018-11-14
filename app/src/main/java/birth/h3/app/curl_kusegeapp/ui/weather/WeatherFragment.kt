@@ -68,10 +68,20 @@ class WeatherFragment : Fragment() {
             override fun onLocationChanged(location: Location) {
                 super.onLocationChanged(location)
                 Log.d("WeatherFragment", "lat = " + location.latitude.toString() + " lon =" + location.longitude.toString())
+                loadData(location.latitude, location.longitude)
             }
         }
+    }
 
+    fun loadData(lat: Double, lon: Double) {
         disposable.addAll(
+                weatherApiService
+                        .getWeather(lat, lon)
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeBy{
+                            binding.viewmodel!!.setWeather(it)
+                            Log.d("WeatherFragment", it.toString())
+                        },
                 weatherApiService
                         .getTimeWeather()
                         .observeOn(AndroidSchedulers.mainThread())

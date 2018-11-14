@@ -15,15 +15,23 @@ class WeatherModule() {
     @Singleton
     @Provides
     fun provideWeatherViewModel(): WeatherViewModel {
-        return WeatherViewModel(BehaviorProcessor.create())
+        return WeatherViewModel()
     }
 
     @Singleton
     @Provides
     fun provideWeatherApiService() = object : WeatherApiService {
-        override fun getWeather(): Single<List<Weather>> {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        }
+        override fun getWeather(lat: Double, lon: Double): Single<Weather> = Single.just(
+            Weather(
+                    3,
+                    "くもり",
+                    17,
+                    10,
+                    76,
+                    1,
+                    "乾燥しやすい季節。髪はスタイリングしやすい天気。"
+            )
+        )
 
         override fun getTimeWeather(): Single<List<TimeWeather>> = Single.just(
                 listOf(

@@ -66,8 +66,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:gravity="center"
-                                    android:text="@{viewmodel.weatherText}"
-                                    android:textSize="@dimen/text_3l" />
+                                    android:text="@{viewmodel.weather.weather_text}"
+                                    android:textSize="@dimen/text_2l" />
 
                                 <TextView
                                     android:id="@+id/tv_max_temp"
@@ -75,7 +75,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:gravity="center"
-                                    android:text="@{String.format(@string/tv_temp,28)}"
+                                    android:text="@{String.format(@string/tv_temp, viewmodel.weather.max_temp)}"
                                     android:textColor="@android:color/holo_red_dark"
                                     android:textSize="@dimen/text_l" />
 
@@ -85,7 +85,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:gravity="center"
-                                    android:text="@{String.format(@string/tv_temp,18)}"
+                                    android:text="@{String.format(@string/tv_temp, viewmodel.weather.min_temp)}"
                                     android:textColor="@android:color/holo_blue_dark"
                                     android:textSize="@dimen/text_l" />
 
@@ -265,7 +265,7 @@
 
                         <com.daasuu.bl.BubbleLayout
                             android:id="@+id/bl_message"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/padding_m"
                             app:bl_arrowDirection="left"
@@ -281,7 +281,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginRight="4dp"
-                                android:text="湿度が高く髪がまとまりにくい。。"
+                                android:text="@{viewmodel.weather.date_text}"
                                 android:textColor="@android:color/white" />
 
                         </com.daasuu.bl.BubbleLayout>

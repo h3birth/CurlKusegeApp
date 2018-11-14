@@ -8,19 +8,24 @@ import io.reactivex.processors.BehaviorProcessor
 import javax.inject.Inject
 
 class WeatherViewModel @Inject constructor(
-        private val weather: BehaviorProcessor<List<Weather>>
 ) : ViewModel() {
+    val weather: MutableLiveData<Weather> = MutableLiveData()
     val weatherText: MutableLiveData<String> = MutableLiveData()
     val weatherImage: MutableLiveData<Int> = MutableLiveData()
     val submitImages : MutableLiveData<List<Int>> = MutableLiveData<List<Int>>()
     val statusImage: MutableLiveData<Int> = MutableLiveData()
 
     init {
+        weather.value = Weather(0,"-", 0, 0, 0, 0, "よみこみ中...")
         weatherText.value = "はれ"
         weatherImage.value = R.drawable.ic_cloud
         submitImages.value = listOf(R.drawable.men_streat,
                                     R.drawable.men_curl,
                                     R.drawable.men_very_curl)
         statusImage.value = R.drawable.men_curl
+    }
+
+    fun setWeather(weather: Weather){
+        this.weather.value = weather
     }
 }
