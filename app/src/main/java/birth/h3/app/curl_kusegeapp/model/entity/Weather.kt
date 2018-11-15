@@ -6,6 +6,8 @@ data class Weather(
         var max_temp: Int,
         var min_temp: Int,
         var humidity: Int,
+        var wind: Int,
+        var rainy: Int,
         var kusege: Int,
         var date_text: String
 )

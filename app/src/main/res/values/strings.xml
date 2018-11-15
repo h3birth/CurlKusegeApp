@@ -7,7 +7,7 @@
 
     <!-- 天気情報 -->
     <string name="tv_temp">%d℃</string>
-    <string name="tv_humidity">%d\%</string>
+    <string name="tv_humidity">%d%%</string>
     <string name="tv_submit_read">あなたの髪は今どんな感じ？</string>
 
     <!-- 時間ごと天気のヘッダー -->
