@@ -61,6 +61,7 @@ class WeatherFragment : Fragment() {
 
         binding.setLifecycleOwner(this)
         binding.viewmodel = weatherViewModel
+        binding.viewmodel!!.setColorHex(context!!, R.color.colorHairCurl)
 
         rv_time_weather.adapter = adapter
         rv_time_weather.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
@@ -83,6 +84,13 @@ class WeatherFragment : Fragment() {
                         .subscribeBy{
                             binding.viewmodel!!.setWeather(it)
                             Log.d("WeatherFragment", it.toString())
+                            val kusegeColor = when(it.kusege){
+                                1 -> R.color.colorHairStreat
+                                2 -> R.color.colorHairCurl
+                                3 -> R.color.colorHairVeryCurl
+                                else -> R.color.colorHairCurl
+                            }
+                            binding.viewmodel!!.setColorHex(context!!, kusegeColor)
                         },
                 weatherApiService
                         .getTimeWeather(lat, lon)

@@ -7,6 +7,7 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.daasuu.bl.BubbleLayout
 
 /**
  * 画像 URLバインディング
@@ -46,4 +47,12 @@ fun srcCompat(imageView: ImageView, resourceId: Int) {
 fun setHeight(imageView: ImageView, height: Float) {
     imageView.layoutParams.height = imageView.width
     imageView.minimumHeight = imageView.width
+}
+
+/**
+ * バブルレイアウト背景色
+ */
+@BindingAdapter("app:bl_bubbleColor")
+fun setBlBubbleColor(bubbleLayout: BubbleLayout, color: Int){
+    bubbleLayout.bubbleColor = color
 }
