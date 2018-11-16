@@ -23,6 +23,7 @@ import birth.h3.app.curl_kusegeapp.ui.util.UtilGeolocation
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_weather.*
 import javax.inject.Inject
 
@@ -77,13 +78,15 @@ class WeatherFragment : Fragment() {
         disposable.addAll(
                 weatherApiService
                         .getWeather(lat, lon)
+                        .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeBy{
                             binding.viewmodel!!.setWeather(it)
                             Log.d("WeatherFragment", it.toString())
                         },
                 weatherApiService
-                        .getTimeWeather()
+                        .getTimeWeather(lat, lon)
+                        .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeBy {
                             adapter.setItems(it)

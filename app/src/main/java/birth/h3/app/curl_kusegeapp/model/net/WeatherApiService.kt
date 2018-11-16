@@ -10,6 +10,6 @@ interface WeatherApiService{
     @GET("public/api/weather/today")
     fun getWeather(@Query("lat") lat: Double, @Query("lon") lon: Double): Single<Weather>
 
-    @GET
-    fun getTimeWeather(): Single<List<TimeWeather>>
+    @GET("public/api/weather/forecast")
+    fun getTimeWeather(@Query("lat") lat: Double, @Query("lon") lon: Double): Single<List<TimeWeather>>
 }

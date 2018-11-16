@@ -16,7 +16,7 @@ class TimeWeatherViewHolder(
 
     fun bind(timeWeather: TimeWeather) {
         binding.setVariable(BR.timeWeather, timeWeather)
-        binding.setVariable(BR.icon, Icon(2))
+        binding.setVariable(BR.icon, Icon(timeWeather.weather))
     }
 
     companion object {

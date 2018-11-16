@@ -24,7 +24,7 @@
             android:id="@+id/listItemText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{timeWeather.time}" />
+            android:text="@{String.format(@string/tv_format_number,timeWeather.time)}" />
 
         <ImageView
             android:id="@+id/imageView"
