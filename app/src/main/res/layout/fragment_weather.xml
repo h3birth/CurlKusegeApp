@@ -169,7 +169,7 @@
                                         android:layout_height="match_parent"
                                         android:layout_marginLeft="@dimen/margin_s"
                                         android:gravity="left|center"
-                                        android:text="4m/s" />
+                                        android:text="@{String.format(@string/tv_wind, viewmodel.weather.wind)}" />
 
                                 </LinearLayout>
 
@@ -207,7 +207,7 @@
                                         android:layout_height="match_parent"
                                         android:layout_marginLeft="@dimen/margin_s"
                                         android:gravity="left|center"
-                                        android:text="40%" />
+                                        android:text="@{String.format(@string/tv_rainy, viewmodel.weather.rainy)}" />
 
                                 </LinearLayout>
 

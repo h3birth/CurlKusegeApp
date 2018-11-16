@@ -16,7 +16,15 @@ class WeatherViewModel @Inject constructor(
     val statusImage: MutableLiveData<Int> = MutableLiveData()
 
     init {
-        weather.value = Weather(0,"-", 0, 0, 0, 4, 20, 1, "よみこみ中...")
+        weather.value = Weather(0,
+                "-",
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                "よみこみ中...")
         weatherText.value = "はれ"
         weatherImage.value = R.drawable.ic_cloud
         submitImages.value = listOf(R.drawable.men_streat,
