@@ -46,7 +46,7 @@
                             android:id="@+id/iv_weather"
                             android:layout_width="@dimen/weatherImage"
                             android:layout_height="@dimen/weatherImage"
-                            app:srcCompat="@{viewmodel.weatherImage}" />
+                            app:srcCompat="@{viewmodel.icon.getIcon()}" />
 
                         <LinearLayout
                             android:layout_width="match_parent"

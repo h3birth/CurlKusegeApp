@@ -4,14 +4,14 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.model.entity.Weather
+import birth.h3.app.curl_kusegeapp.model.entity.Icon
 import io.reactivex.processors.BehaviorProcessor
 import javax.inject.Inject
 
 class WeatherViewModel @Inject constructor(
 ) : ViewModel() {
     val weather: MutableLiveData<Weather> = MutableLiveData()
-    val weatherText: MutableLiveData<String> = MutableLiveData()
-    val weatherImage: MutableLiveData<Int> = MutableLiveData()
+    val icon: MutableLiveData<Icon> = MutableLiveData()
     val submitImages : MutableLiveData<List<Int>> = MutableLiveData<List<Int>>()
     val statusImage: MutableLiveData<Int> = MutableLiveData()
 
@@ -25,8 +25,7 @@ class WeatherViewModel @Inject constructor(
                 0,
                 1,
                 "よみこみ中...")
-        weatherText.value = "はれ"
-        weatherImage.value = R.drawable.ic_cloud
+        icon.value = Icon(3)
         submitImages.value = listOf(R.drawable.men_streat,
                                     R.drawable.men_curl,
                                     R.drawable.men_very_curl)
@@ -35,5 +34,6 @@ class WeatherViewModel @Inject constructor(
 
     fun setWeather(weather: Weather){
         this.weather.value = weather
+        this.icon.value = Icon(weather.weather)
     }
 }
