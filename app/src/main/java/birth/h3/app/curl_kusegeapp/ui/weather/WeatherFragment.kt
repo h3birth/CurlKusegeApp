@@ -4,6 +4,8 @@ package birth.h3.app.curl_kusegeapp.ui.weather
 import android.Manifest
 import android.content.pm.PackageManager
 import android.databinding.DataBindingUtil
+import android.location.Address
+import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
@@ -25,6 +27,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_weather.*
+import java.util.*
 import javax.inject.Inject
 
 /**
@@ -70,7 +73,24 @@ class WeatherFragment : Fragment() {
             override fun onLocationChanged(location: Location) {
                 super.onLocationChanged(location)
                 Log.d("WeatherFragment", "lat = " + location.latitude.toString() + " lon =" + location.longitude.toString())
+                val address = geolocationAddress(location.latitude, location.longitude)
+                val city = getCity(address!!)
+                Log.d("WeatherFragment", city)
                 loadData(location.latitude, location.longitude)
+            }
+
+            fun geolocationAddress(lat: Double, lon: Double): Address?{
+                if (!Geocoder.isPresent()) return null
+
+                val geocode: Geocoder = Geocoder(context, Locale.JAPANESE)
+                val address = geocode.getFromLocation(lat, lon, 1)
+                Log.d("WeatherFragment", address[0].toString())
+
+                return address[0]
+            }
+
+            fun getCity(address: Address): String? {
+                return address?.locality
             }
         }
     }
