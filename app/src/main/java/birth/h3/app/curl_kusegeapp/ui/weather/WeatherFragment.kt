@@ -73,9 +73,12 @@ class WeatherFragment : Fragment() {
             override fun onLocationChanged(location: Location) {
                 super.onLocationChanged(location)
                 Log.d("WeatherFragment", "lat = " + location.latitude.toString() + " lon =" + location.longitude.toString())
+
                 val address = geolocationAddress(location.latitude, location.longitude)
                 val city = getCity(address!!)
                 Log.d("WeatherFragment", city)
+                setBindAddress(city!!)
+
                 loadData(location.latitude, location.longitude)
             }
 
@@ -93,6 +96,10 @@ class WeatherFragment : Fragment() {
                 return address?.locality
             }
         }
+    }
+
+    fun setBindAddress(address: String){
+        binding.viewmodel!!.setAddress(address)
     }
 
     fun loadData(lat: Double, lon: Double) {

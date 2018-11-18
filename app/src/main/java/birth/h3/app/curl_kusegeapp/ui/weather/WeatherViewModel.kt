@@ -18,6 +18,7 @@ class WeatherViewModel @Inject constructor(
     val submitImages : MutableLiveData<List<Int>> = MutableLiveData<List<Int>>()
     val statusImage: MutableLiveData<Int> = MutableLiveData()
     val kusegeColor: MutableLiveData<Int> = MutableLiveData()
+    val address: MutableLiveData<String> = MutableLiveData()
 
     init {
         weather.value = Weather(0,
@@ -34,6 +35,7 @@ class WeatherViewModel @Inject constructor(
                                     R.drawable.men_curl,
                                     R.drawable.men_very_curl)
         statusImage.value = R.drawable.men_curl
+        address.value = ""
     }
 
     fun setWeather(weather: Weather){
@@ -49,5 +51,9 @@ class WeatherViewModel @Inject constructor(
 
     fun setColorHex(context:Context, colorID: Int){
         this.kusegeColor.value = Color.parseColor("#" + Integer.toHexString(ContextCompat.getColor(context, colorID)))
+    }
+
+    fun setAddress(address: String){
+        this.address.value = address
     }
 }
