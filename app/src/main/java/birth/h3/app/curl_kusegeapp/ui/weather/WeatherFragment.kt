@@ -21,6 +21,7 @@ import birth.h3.app.curl_kusegeapp.CurlApp
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.databinding.FragmentWeatherBinding
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
+import birth.h3.app.curl_kusegeapp.ui.util.UtilDateTime
 import birth.h3.app.curl_kusegeapp.ui.util.UtilGeolocation
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -68,6 +69,9 @@ class WeatherFragment : Fragment() {
 
         rv_time_weather.adapter = adapter
         rv_time_weather.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+
+        val todayText = UtilDateTime().todayDateJa()
+        Log.d("WeatherFragment", todayText)
 
         val geolocation = object : UtilGeolocation(activity as AppCompatActivity) {
             override fun onLocationChanged(location: Location) {
