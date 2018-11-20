@@ -19,6 +19,7 @@ class WeatherViewModel @Inject constructor(
     val statusImage: MutableLiveData<Int> = MutableLiveData()
     val kusegeColor: MutableLiveData<Int> = MutableLiveData()
     val address: MutableLiveData<String> = MutableLiveData()
+    val day: MutableLiveData<String> = MutableLiveData()
 
     init {
         weather.value = Weather(0,
@@ -36,6 +37,7 @@ class WeatherViewModel @Inject constructor(
                                     R.drawable.men_very_curl)
         statusImage.value = R.drawable.men_curl
         address.value = ""
+        day.value = "11/21"
     }
 
     fun setWeather(weather: Weather){
