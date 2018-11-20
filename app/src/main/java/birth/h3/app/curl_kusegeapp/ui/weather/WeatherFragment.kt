@@ -70,8 +70,7 @@ class WeatherFragment : Fragment() {
         rv_time_weather.adapter = adapter
         rv_time_weather.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
-        val todayText = UtilDateTime().todayDateJa()
-        Log.d("WeatherFragment", todayText)
+        setBindDay()
 
         val geolocation = object : UtilGeolocation(activity as AppCompatActivity) {
             override fun onLocationChanged(location: Location) {
@@ -102,6 +101,11 @@ class WeatherFragment : Fragment() {
         }
     }
 
+    fun setBindDay(){
+        val todayText = UtilDateTime().todayDateJa()
+        Log.d("WeatherFragment", todayText)
+        binding.viewmodel!!.setDay(todayText)
+    }
     fun setBindAddress(address: String){
         binding.viewmodel!!.setAddress(address)
     }

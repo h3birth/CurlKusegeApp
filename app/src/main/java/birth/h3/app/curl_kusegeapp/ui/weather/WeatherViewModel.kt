@@ -58,4 +58,8 @@ class WeatherViewModel @Inject constructor(
     fun setAddress(address: String){
         this.address.value = address
     }
+
+    fun setDay(day: String){
+        this.day.value = day
+    }
 }
