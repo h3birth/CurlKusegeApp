@@ -1,16 +1,13 @@
 package birth.h3.app.curl_kusegeapp.ui.weather
 
 
-import android.Manifest
-import android.content.pm.PackageManager
+import android.arch.persistence.room.Room
 import android.databinding.DataBindingUtil
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
-import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
-import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
@@ -20,6 +17,7 @@ import android.view.ViewGroup
 import birth.h3.app.curl_kusegeapp.CurlApp
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.databinding.FragmentWeatherBinding
+import birth.h3.app.curl_kusegeapp.model.db.AppDatabase
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
 import birth.h3.app.curl_kusegeapp.ui.util.UtilDateTime
 import birth.h3.app.curl_kusegeapp.ui.util.UtilGeolocation
@@ -62,6 +60,9 @@ class WeatherFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (context?.applicationContext as CurlApp).component.inject(this)
+
+        // db接続
+        dbconnect()
 
         binding.setLifecycleOwner(this)
         binding.viewmodel = weatherViewModel
@@ -135,5 +136,13 @@ class WeatherFragment : Fragment() {
                             adapter.setItems(it)
                         }
         )
+    }
+
+    fun dbconnect(){
+        val db = Room.databaseBuilder(
+                context!!.applicationContext,
+                AppDatabase::class.java,
+                R.string.db_name.toString()
+        ).build()
     }
 }

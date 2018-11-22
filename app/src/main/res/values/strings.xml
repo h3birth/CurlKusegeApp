@@ -42,6 +42,6 @@
     <!-- その他 -->
     <string name="dash">-</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Database -->
+    <string name="db_name">curl_db</string>
 </resources>
