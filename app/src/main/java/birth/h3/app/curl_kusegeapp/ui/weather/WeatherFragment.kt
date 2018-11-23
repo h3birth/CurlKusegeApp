@@ -18,9 +18,11 @@ import birth.h3.app.curl_kusegeapp.CurlApp
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.databinding.FragmentWeatherBinding
 import birth.h3.app.curl_kusegeapp.model.db.AppDatabase
+import birth.h3.app.curl_kusegeapp.model.entity.City
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
 import birth.h3.app.curl_kusegeapp.ui.util.UtilDateTime
 import birth.h3.app.curl_kusegeapp.ui.util.UtilGeolocation
+import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
@@ -62,7 +64,9 @@ class WeatherFragment : Fragment() {
         (context?.applicationContext as CurlApp).component.inject(this)
 
         // db接続
-        dbconnect()
+//        dbconnect()
+
+        dbInsertCity()
 
         binding.setLifecycleOwner(this)
         binding.viewmodel = weatherViewModel
@@ -138,11 +142,20 @@ class WeatherFragment : Fragment() {
         )
     }
 
-    fun dbconnect(){
+    fun dbInsertCity(){
+        val dbconn = dbconnect()
+        Completable.fromAction {
+            dbconn.cityDao().insertAll(City(1, "中野区", 35.69089833333333, 139.67999999999998, 1))
+        }.subscribeOn(Schedulers.io())
+        .subscribe()
+    }
+
+    fun dbconnect(): AppDatabase {
         val db = Room.databaseBuilder(
                 context!!.applicationContext,
                 AppDatabase::class.java,
                 R.string.db_name.toString()
         ).build()
+        return db
     }
 }
