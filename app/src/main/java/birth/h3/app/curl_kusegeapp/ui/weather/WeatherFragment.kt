@@ -147,7 +147,11 @@ class WeatherFragment : Fragment() {
         Completable.fromAction {
             dbconn.cityDao().insertAll(City(1, "中野区", 35.69089833333333, 139.67999999999998, 1))
         }.subscribeOn(Schedulers.io())
-        .subscribe()
+        .subscribe({
+            Log.d("CityDao", "OK")
+        },{
+            Log.d("CityDao", it.toString())
+        })
     }
 
     fun dbconnect(): AppDatabase {
