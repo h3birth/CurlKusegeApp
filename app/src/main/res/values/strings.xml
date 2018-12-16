@@ -11,6 +11,7 @@
     <string name="tv_wind">%dm/s</string>
     <string name="tv_rainy">%d%%</string>
     <string name="tv_submit_read">あなたの髪は今どんな感じ？</string>
+    <string name="btn_city_register">エリアを登録</string>
 
     <!-- 時間ごと天気のヘッダー -->
     <string name="tv_header_time">時刻</string>
@@ -25,7 +26,7 @@
     <string name="tv_login_read">ログインするとあなたのかみのけのくせ度をきろく・ぶんせきします。</string>
     <string name="btn_login_mail">メールアドレスでログイン</string>
     <string name="btn_login_twitter">Twitterでログイン</string>
-    
+
     <!-- 設定ページ -->
     <string name="tv_setting_header_app">アプリ設定</string>
     <string name="tv_setting_icon">アイコン設定</string>
