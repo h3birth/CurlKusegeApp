@@ -35,7 +35,7 @@ import javax.inject.Inject
  * A simple [Fragment] subclass.
  *
  */
-class WeatherFragment : Fragment() {
+class WeatherFragment(position: Int) : Fragment() {
 
     val TAG = "weather"
 
