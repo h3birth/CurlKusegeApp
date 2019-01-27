@@ -1,7 +1,7 @@
 package birth.h3.app.curl_kusegeapp.model.db
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.RoomDatabase
+import androidx.room.Database
+import androidx.room.RoomDatabase
 import birth.h3.app.curl_kusegeapp.model.dao.CityDao
 import birth.h3.app.curl_kusegeapp.model.entity.City
 

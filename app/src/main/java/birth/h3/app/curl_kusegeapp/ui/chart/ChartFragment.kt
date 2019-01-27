@@ -1,12 +1,12 @@
 package birth.h3.app.curl_kusegeapp.ui.chart
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import birth.h3.app.curl_kusegeapp.R
-import android.databinding.adapters.SeekBarBindingAdapter.setProgress
+import androidx.databinding.adapters.SeekBarBindingAdapter.setProgress
 import android.graphics.Color
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.Legend
@@ -19,9 +19,9 @@ import com.github.mikephil.charting.utils.ColorTemplate
 import android.text.style.ForegroundColorSpan
 import android.graphics.Typeface
 import android.os.Build
-import android.support.design.R.attr.theme
-import android.support.v4.content.ContextCompat
-import android.support.v4.content.res.ResourcesCompat.getColor
+import com.google.android.material.R.attr.theme
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat.getColor
 import android.text.style.StyleSpan
 import android.text.style.RelativeSizeSpan
 import android.text.SpannableString
@@ -38,7 +38,7 @@ import com.github.mikephil.charting.data.PieEntry
  * A simple [Fragment] subclass.
  *
  */
-class ChartFragment : Fragment(), OnChartValueSelectedListener {
+class ChartFragment : androidx.fragment.app.Fragment(), OnChartValueSelectedListener {
 
     val TAG = "chart"
 

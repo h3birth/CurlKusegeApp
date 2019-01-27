@@ -1,6 +1,6 @@
 package birth.h3.app.curl_kusegeapp.ui.util
 
-import android.databinding.BindingAdapter
+import androidx.databinding.BindingAdapter
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.widget.ImageView

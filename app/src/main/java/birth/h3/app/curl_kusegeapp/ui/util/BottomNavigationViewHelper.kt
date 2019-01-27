@@ -1,9 +1,9 @@
 package birth.h3.app.curl_kusegeapp.ui.util
 
 import android.annotation.SuppressLint
-import android.support.design.internal.BottomNavigationItemView
-import android.support.design.internal.BottomNavigationMenuView
-import android.support.design.widget.BottomNavigationView
+import com.google.android.material.bottomnavigation.BottomNavigationItemView
+import com.google.android.material.bottomnavigation.BottomNavigationMenuView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class BottomNavigationViewHelper {
     @SuppressLint("RestrictedApi")
@@ -22,8 +22,6 @@ class BottomNavigationViewHelper {
                  * アイテムの幅調整
                  */
                 val bottomNavigationItemView = menuView.getChildAt(i) as BottomNavigationItemView
-
-                bottomNavigationItemView.setShiftingMode(false)
 
                 bottomNavigationItemView.setChecked(false)
 

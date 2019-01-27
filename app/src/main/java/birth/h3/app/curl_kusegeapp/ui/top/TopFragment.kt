@@ -2,9 +2,9 @@ package birth.h3.app.curl_kusegeapp.ui.top
 
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.viewpager.widget.ViewPager
+import androidx.appcompat.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_top.*
  * A simple [Fragment] subclass.
  *
  */
-class TopFragment : Fragment() {
+class TopFragment : androidx.fragment.app.Fragment() {
 
     val TAG = "top"
 
@@ -32,7 +32,7 @@ class TopFragment : Fragment() {
         app_toolbar.title = resources.getString(R.string.app_name)
         (activity as AppCompatActivity).setSupportActionBar(app_toolbar)
 
-        val fragmentManager: android.support.v4.app.FragmentManager = childFragmentManager
+        val fragmentManager: androidx.fragment.app.FragmentManager = childFragmentManager
         vp_weather.adapter = TopPagerAdapter(fragmentManager)
 
         tl_area.setupWithViewPager(vp_weather)

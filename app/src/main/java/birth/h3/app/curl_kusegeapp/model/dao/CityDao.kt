@@ -1,6 +1,6 @@
 package birth.h3.app.curl_kusegeapp.model.dao
 
-import android.arch.persistence.room.*
+import androidx.room.*
 import birth.h3.app.curl_kusegeapp.model.entity.City
 
 @Dao

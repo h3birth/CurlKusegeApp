@@ -1,9 +1,9 @@
 package birth.h3.app.curl_kusegeapp.ui.news
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,7 +23,7 @@ import javax.inject.Inject
  * A simple [Fragment] subclass.
  *
  */
-class NewsFragment : Fragment() {
+class NewsFragment : androidx.fragment.app.Fragment() {
 
     val TAG = "news"
 
@@ -47,7 +47,7 @@ class NewsFragment : Fragment() {
         (context?.applicationContext as CurlApp).component.inject(this)
 
         rv_news.adapter = adapter
-        rv_news.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        rv_news.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity, androidx.recyclerview.widget.LinearLayoutManager.VERTICAL, false)
 //        rv_news.addItemDecoration(DividerItemDecoration(activity, LinearLayoutManager.VERTICAL))
 
         disposable.addAll(

@@ -1,11 +1,11 @@
 package birth.h3.app.curl_kusegeapp.ui.weather
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import birth.h3.app.curl_kusegeapp.model.entity.TimeWeather
 import kotlin.math.max
 
-class TimeWeatherAdapter(): RecyclerView.Adapter<TimeWeatherViewHolder>() {
+class TimeWeatherAdapter(): androidx.recyclerview.widget.RecyclerView.Adapter<TimeWeatherViewHolder>() {
 
     private val items: MutableList<TimeWeather> = mutableListOf()
 

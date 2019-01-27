@@ -1,15 +1,15 @@
 package birth.h3.app.curl_kusegeapp.ui.weather
 
 
-import android.arch.persistence.room.Room
-import android.databinding.DataBindingUtil
+import androidx.room.Room
+import androidx.databinding.DataBindingUtil
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -35,7 +35,7 @@ import javax.inject.Inject
  * A simple [Fragment] subclass.
  *
  */
-class WeatherFragment(position: Int) : Fragment() {
+class WeatherFragment(position: Int) : androidx.fragment.app.Fragment() {
 
     val TAG = "weather"
 
@@ -73,7 +73,7 @@ class WeatherFragment(position: Int) : Fragment() {
         binding.viewmodel!!.setColorHex(context!!, R.color.colorHairCurl)
 
         rv_time_weather.adapter = adapter
-        rv_time_weather.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        rv_time_weather.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity, androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL, false)
 
         setBindDay()
 

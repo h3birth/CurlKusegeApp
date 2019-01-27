@@ -1,8 +1,8 @@
 package birth.h3.app.curl_kusegeapp
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import birth.h3.app.curl_kusegeapp.model.entity.News
 import birth.h3.app.curl_kusegeapp.ui.news.NewsFragment
 import birth.h3.app.curl_kusegeapp.ui.setting.SettingFragment
@@ -29,8 +29,8 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.setOnNavigationItemSelectedListener  {
             val fgManager = supportFragmentManager
             val fgTransaction = supportFragmentManager.beginTransaction()
-            val fragments: List<Fragment>? = fgManager?.fragments
-            var fragment: Fragment? = null
+            val fragments: List<androidx.fragment.app.Fragment>? = fgManager?.fragments
+            var fragment: androidx.fragment.app.Fragment? = null
             var fragmentTag: String = ""
 
             when (it.itemId) {

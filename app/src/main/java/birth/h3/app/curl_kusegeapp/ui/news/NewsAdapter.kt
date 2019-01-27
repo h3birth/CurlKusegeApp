@@ -1,13 +1,13 @@
 package birth.h3.app.curl_kusegeapp.ui.news
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import birth.h3.app.curl_kusegeapp.model.entity.News
 import birth.h3.app.curl_kusegeapp.model.entity.TimeWeather
 import birth.h3.app.curl_kusegeapp.ui.weather.TimeWeatherViewHolder
 import kotlin.math.max
 
-class NewsAdapter(): RecyclerView.Adapter<NewsViewHolder>() {
+class NewsAdapter(): androidx.recyclerview.widget.RecyclerView.Adapter<NewsViewHolder>() {
 
     private val items: MutableList<News> = mutableListOf()
 
