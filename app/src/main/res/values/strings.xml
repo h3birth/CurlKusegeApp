@@ -40,6 +40,9 @@
     <string name="tv_setting_rule">利用規約</string>
     <string name="tv_setting_version">バージョン</string>
 
+    <!-- エリア登録 -->
+    <string name="tv_register_city">エリア登録</string>
+
     <!-- その他 -->
     <string name="dash">-</string>
 
