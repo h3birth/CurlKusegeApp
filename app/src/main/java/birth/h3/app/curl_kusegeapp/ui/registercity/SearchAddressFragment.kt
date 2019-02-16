@@ -6,13 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.MainThread
 import androidx.appcompat.widget.SearchView
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import birth.h3.app.curl_kusegeapp.CurlApp
 import birth.h3.app.curl_kusegeapp.MainActivity
 import birth.h3.app.curl_kusegeapp.R
+import birth.h3.app.curl_kusegeapp.model.entity.Address
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
@@ -24,15 +27,14 @@ import javax.inject.Inject
  * A simple [Fragment] subclass.
  *
  */
-class SearchAddressFragment : Fragment() {
-
+class SearchAddressFragment : Fragment(), ItemCityController.listener {
     @Inject
     lateinit var viewModel: RegisterCityViewModel
 
     val TAG: String = "SearchAddressFragment"
 
     val controller: ItemCityController by lazy {
-        ItemCityController()
+        ItemCityController(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -67,6 +69,7 @@ class SearchAddressFragment : Fragment() {
         address_recycler_view.let{
             it.adapter = controller.adapter
             it.layoutManager = LinearLayoutManager(this.context, RecyclerView.VERTICAL, false)
+            it.addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
         }
 
         observe()
@@ -77,6 +80,10 @@ class SearchAddressFragment : Fragment() {
         viewModel.address.observeForever {
             controller.setData(it)
         }
+    }
+
+    override fun addressClickListener(address: Address) {
+
     }
 
 }
