@@ -1,9 +1,11 @@
 package birth.h3.app.curl_kusegeapp.model.net
 
+import birth.h3.app.curl_kusegeapp.model.entity.SearchAddressResponse
 import birth.h3.app.curl_kusegeapp.model.entity.TimeWeather
 import birth.h3.app.curl_kusegeapp.model.entity.Weather
 import io.reactivex.Single
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface WeatherApiService{
@@ -12,4 +14,9 @@ interface WeatherApiService{
 
     @GET("public/api/weather/forecast")
     fun getTimeWeather(@Query("lat") lat: Double, @Query("lon") lon: Double): Single<List<TimeWeather>>
+
+    @GET("public/api/address/search/{address}")
+    fun getAddress(
+        @Path("address") address: String
+    ): Single<SearchAddressResponse>
 }
