@@ -27,9 +27,6 @@ import javax.inject.Inject
 class SearchAddressFragment : Fragment() {
 
     @Inject
-    lateinit var weatherApiService: WeatherApiService
-
-    @Inject
     lateinit var viewModel: RegisterCityViewModel
 
     val TAG: String = "SearchAddressFragment"
@@ -60,13 +57,7 @@ class SearchAddressFragment : Fragment() {
                     }
 
                     override fun onQueryTextSubmit(query: String?): Boolean {
-                        weatherApiService
-                            .getAddress(query.toString())
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribeBy{
-                                viewModel.address.postValue(it)
-                            }
+                        viewModel.getAddress(query.toString())
                         return false
                     }
                 })
