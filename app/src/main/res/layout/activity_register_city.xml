@@ -10,7 +10,6 @@
         android:id="@+id/register_city_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="@string/tv_register_city"
         app:titleTextColor="@color/colorPrimary"
         android:background="@color/colorWhite"
         android:minHeight="?attr/actionBarSize"
