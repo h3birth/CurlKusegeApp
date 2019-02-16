@@ -6,16 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".ui.registercity.RegisterCityActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/register_city_toolbar"
+    <FrameLayout
+        android:id="@+id/register_city_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:titleTextColor="@color/colorPrimary"
-        android:background="@color/colorWhite"
-        android:minHeight="?attr/actionBarSize"
-        app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
-        tools:ignore="MissingConstraints">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    </androidx.appcompat.widget.Toolbar>
+    </FrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
