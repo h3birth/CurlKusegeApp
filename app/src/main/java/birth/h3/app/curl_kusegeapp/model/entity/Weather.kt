@@ -10,4 +10,16 @@ data class Weather(
         var rainy: Int,
         var kusege: Int,
         var date_text: String
-)
+) {
+    companion object {
+        fun placeholder() = Weather(0,
+            "-",
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            "よみこみ中...")
+    }
+}

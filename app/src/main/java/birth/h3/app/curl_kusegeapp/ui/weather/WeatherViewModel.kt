@@ -22,15 +22,7 @@ class WeatherViewModel @Inject constructor(
     val day: MutableLiveData<String> = MutableLiveData()
 
     init {
-        weather.value = Weather(0,
-                "-",
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                "よみこみ中...")
+        weather.value = Weather.placeholder()
         icon.value = Icon(3)
         submitImages.value = listOf(R.drawable.men_streat,
                                     R.drawable.men_curl,
