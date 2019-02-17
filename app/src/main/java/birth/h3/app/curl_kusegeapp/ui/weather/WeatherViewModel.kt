@@ -6,13 +6,16 @@ import android.content.Context
 import android.graphics.Color
 import androidx.core.content.ContextCompat
 import birth.h3.app.curl_kusegeapp.R
+import birth.h3.app.curl_kusegeapp.model.db.AppDatabase
 import birth.h3.app.curl_kusegeapp.model.entity.Weather
 import birth.h3.app.curl_kusegeapp.model.entity.Icon
+import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
 import io.reactivex.processors.BehaviorProcessor
 import javax.inject.Inject
 
-class WeatherViewModel @Inject constructor(
-) : ViewModel() {
+class WeatherViewModel @Inject constructor(private val weatherApiService: WeatherApiService,
+                                           private val builder: AppDatabase) : ViewModel() {
+    var page: Int = 0
     val weather: MutableLiveData<Weather> = MutableLiveData()
     val icon: MutableLiveData<Icon> = MutableLiveData()
     val submitImages : MutableLiveData<List<Int>> = MutableLiveData<List<Int>>()

@@ -4,8 +4,10 @@ import android.content.Context
 import androidx.room.Room
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.model.db.AppDatabase
+import birth.h3.app.curl_kusegeapp.model.entity.Weather
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
 import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityViewModel
+import birth.h3.app.curl_kusegeapp.ui.weather.WeatherViewModel
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -27,5 +29,10 @@ class ViewModelModule {
     @Provides
     fun provideRegisterCityViewModel(weatherApiService: WeatherApiService, builder:AppDatabase): RegisterCityViewModel {
         return RegisterCityViewModel(weatherApiService, builder)
+    }
+
+    @Provides
+    fun provideWeatherViewModel(weatherApiService: WeatherApiService, builder:AppDatabase) : WeatherViewModel {
+        return WeatherViewModel(weatherApiService, builder)
     }
 }

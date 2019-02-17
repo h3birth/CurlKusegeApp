@@ -9,7 +9,7 @@ interface CityDao{
     fun getAll(): List<City>
 
     @Query("SELECT * FROM city WHERE uid = :uid")
-    fun getCityByUid(uid: Int): City
+    fun getCityByUid(uid: Int): City?
 
     @Insert
     fun insertAll(vararg  cities: City)

@@ -47,12 +47,6 @@ class WeatherModule() {
 
     @Singleton
     @Provides
-    fun provideWeatherViewModel(): WeatherViewModel {
-        return WeatherViewModel()
-    }
-
-    @Singleton
-    @Provides
     fun provideWeatherApiService(retrofit: Retrofit): WeatherApiService {
         return retrofit.create(WeatherApiService::class.java)
     }

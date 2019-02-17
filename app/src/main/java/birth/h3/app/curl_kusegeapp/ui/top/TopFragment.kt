@@ -8,15 +8,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import birth.h3.app.curl_kusegeapp.CurlApp
 import birth.h3.app.curl_kusegeapp.R
+import birth.h3.app.curl_kusegeapp.ui.weather.WeatherViewModel
 import kotlinx.android.synthetic.main.fragment_top.*
+import javax.inject.Inject
 
 /**
  * A simple [Fragment] subclass.
  *
  */
 class TopFragment : androidx.fragment.app.Fragment() {
-
     val TAG = "top"
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

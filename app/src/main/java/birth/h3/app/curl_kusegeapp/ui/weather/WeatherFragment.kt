@@ -35,7 +35,7 @@ import javax.inject.Inject
  * A simple [Fragment] subclass.
  *
  */
-class WeatherFragment(position: Int) : androidx.fragment.app.Fragment() {
+class WeatherFragment : androidx.fragment.app.Fragment() {
 
     val TAG = "weather"
 
@@ -59,9 +59,11 @@ class WeatherFragment(position: Int) : androidx.fragment.app.Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         (context?.applicationContext as CurlApp).component.inject(this)
+
+        weatherViewModel.page = arguments!!.getInt("PAGE")
 
 
         binding.setLifecycleOwner(this)
@@ -73,17 +75,30 @@ class WeatherFragment(position: Int) : androidx.fragment.app.Fragment() {
 
         setBindDay()
 
+        when(weatherViewModel.page){
+            0 -> getGeolocation()
+            else -> {
+                Log.d("PAGE", weatherViewModel.page.toString())
+            }
+        }
+    }
+
+    fun getGeolocation() {
         val geolocation = object : UtilGeolocation(activity as AppCompatActivity) {
+            var city: String? = null
             override fun onLocationChanged(location: Location) {
                 super.onLocationChanged(location)
                 Log.d("WeatherFragment", "lat = " + location.latitude.toString() + " lon =" + location.longitude.toString())
 
                 val address = geolocationAddress(location.latitude, location.longitude)
-                val city = getCity(address!!)
-                Log.d("WeatherFragment", city)
-                setBindAddress(city!!)
+                val newCity = getCity(address!!)
+                Log.d("WeatherFragment", newCity)
 
-                loadData(location.latitude, location.longitude)
+                if( city != newCity || city.isNullOrBlank() ) {
+                    city = newCity
+                    setBindAddress(city!!)
+                    loadData(location.latitude, location.longitude)
+                }
             }
 
             fun geolocationAddress(lat: Double, lon: Double): Address?{
