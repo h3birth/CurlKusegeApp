@@ -32,7 +32,7 @@ class RegisterCityViewModel @Inject constructor(private val weatherApiService: W
 
     fun insertAddress(address: Address){
         Completable.fromAction {
-            builder.cityDao().insertAll(City(1, "中野区", 35.69089833333333, 139.67999999999998, 1))
+            builder.cityDao().updateCities(City(1, address.short_name, address.location.lat, address.location.lng, 1))
         }.subscribeOn(Schedulers.io())
             .subscribe({
                 Log.d("CityDao", "OK")

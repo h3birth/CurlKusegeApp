@@ -63,10 +63,6 @@ class WeatherFragment(position: Int) : androidx.fragment.app.Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (context?.applicationContext as CurlApp).component.inject(this)
 
-        // db接続
-//        dbconnect()
-
-        dbInsertCity()
 
         binding.setLifecycleOwner(this)
         binding.viewmodel = weatherViewModel
@@ -140,26 +136,5 @@ class WeatherFragment(position: Int) : androidx.fragment.app.Fragment() {
                             adapter.setItems(it)
                         }
         )
-    }
-
-    fun dbInsertCity(){
-        val dbconn = dbconnect()
-        Completable.fromAction {
-            dbconn.cityDao().insertAll(City(1, "中野区", 35.69089833333333, 139.67999999999998, 1))
-        }.subscribeOn(Schedulers.io())
-        .subscribe({
-            Log.d("CityDao", "OK")
-        },{
-            Log.d("CityDao", it.toString())
-        })
-    }
-
-    fun dbconnect(): AppDatabase {
-        val db = Room.databaseBuilder(
-                context!!.applicationContext,
-                AppDatabase::class.java,
-                R.string.db_name.toString()
-        ).build()
-        return db
     }
 }

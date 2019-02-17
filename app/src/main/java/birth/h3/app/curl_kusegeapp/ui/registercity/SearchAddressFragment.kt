@@ -83,7 +83,8 @@ class SearchAddressFragment : Fragment(), ItemCityController.listener {
     }
 
     override fun addressClickListener(address: Address) {
-
+        viewModel.insertAddress(address)
+        this.activity?.finish()
     }
 
 }
