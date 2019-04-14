@@ -12,6 +12,7 @@ import birth.h3.app.curl_kusegeapp.CurlApp
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.ui.weather.WeatherViewModel
 import kotlinx.android.synthetic.main.fragment_top.*
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -21,6 +22,9 @@ import javax.inject.Inject
 class TopFragment : androidx.fragment.app.Fragment() {
     val TAG = "top"
 
+    @Inject
+    lateinit var viewModel: TopViewModel
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -29,14 +33,23 @@ class TopFragment : androidx.fragment.app.Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        (context?.applicationContext as CurlApp).component.inject(this)
 
         // タイトル設定
         app_toolbar.title = resources.getString(R.string.app_name)
         (activity as AppCompatActivity).setSupportActionBar(app_toolbar)
 
         val fragmentManager: androidx.fragment.app.FragmentManager = childFragmentManager
-        vp_weather.adapter = TopPagerAdapter(fragmentManager)
+        vp_weather.adapter = TopPagerAdapter(fragmentManager, context!!)
 
         tl_area.setupWithViewPager(vp_weather)
+
+        setObserve()
+    }
+
+    private fun setObserve() {
+        viewModel.cities.observeForever {
+            Timber.d("cities is ${it}")
+        }
     }
 }

@@ -1,38 +1,24 @@
 package birth.h3.app.curl_kusegeapp.ui.chart
 
+import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import birth.h3.app.curl_kusegeapp.R
-import androidx.databinding.adapters.SeekBarBindingAdapter.setProgress
-import android.graphics.Color
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.highlight.Highlight
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener
-import kotlinx.android.synthetic.main.fragment_chart.*
-import com.github.mikephil.charting.utils.ColorTemplate
-import android.text.style.ForegroundColorSpan
-import android.graphics.Typeface
-import android.os.Build
-import com.google.android.material.R.attr.theme
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat.getColor
-import android.text.style.StyleSpan
-import android.text.style.RelativeSizeSpan
-import android.text.SpannableString
-import android.util.Log
-import androidx.annotation.RequiresApi
-import birth.h3.app.curl_kusegeapp.R.string.chart
-import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.data.PieData
-import com.github.mikephil.charting.utils.MPPointF
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.formatter.PercentFormatter
+import com.github.mikephil.charting.highlight.Highlight
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener
+import com.github.mikephil.charting.utils.MPPointF
+import kotlinx.android.synthetic.main.fragment_chart.*
 
 /**
  * A simple [Fragment] subclass.

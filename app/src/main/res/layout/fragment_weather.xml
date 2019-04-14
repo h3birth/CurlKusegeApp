@@ -9,10 +9,38 @@
             type="birth.h3.app.curl_kusegeapp.ui.weather.WeatherViewModel" />
     </data>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="@{viewmodel.isContentVisibility == View.VISIBLE ?  View.GONE : View.VISIBLE }"
+        tools:context=".ui.weather.EmptyCityFragment">
+
+        <Button
+            android:id="@+id/button_register_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/style_border_radius"
+            android:paddingLeft="@dimen/padding_2l"
+            android:paddingRight="@dimen/padding_2l"
+            android:text="@string/btn_city_register"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
+        android:visibility="@{viewmodel.isContentVisibility}"
         tools:context=".ui.weather.WeatherFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -408,4 +436,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
 </layout>

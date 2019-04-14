@@ -129,4 +129,7 @@ dependencies {
     kapt 'com.airbnb.android:epoxy-processor:3.3.0'
     implementation 'com.airbnb.android:epoxy-databinding:3.3.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
+    // Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 }

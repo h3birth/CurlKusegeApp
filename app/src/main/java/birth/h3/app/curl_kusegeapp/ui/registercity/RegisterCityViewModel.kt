@@ -11,6 +11,7 @@ import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 import javax.inject.Inject
 
 class RegisterCityViewModel @Inject constructor(private val weatherApiService: WeatherApiService,
@@ -30,9 +31,19 @@ class RegisterCityViewModel @Inject constructor(private val weatherApiService: W
             })
     }
 
-    fun insertAddress(address: Address){
+    fun insertAddress(index: Int, address: Address){
         Completable.fromAction {
-            builder.cityDao().updateCities(City(1, address.short_name, address.location.lat, address.location.lng, 1))
+            val dao = builder.cityDao()
+            val oldCity = dao.getCityByUid(index)
+
+            Timber.d("oldCity is ${oldCity.toString()}")
+
+            if(oldCity == null) {
+                dao.insertAll(City(index, address.short_name, address.location.lat, address.location.lng, index))
+            } else {
+                dao.updateCities(City(index, address.short_name, address.location.lat, address.location.lng, index))
+            }
+
         }.subscribeOn(Schedulers.io())
             .subscribe({
                 Log.d("CityDao", "OK")

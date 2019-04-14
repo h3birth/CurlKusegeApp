@@ -1,6 +1,7 @@
 package birth.h3.app.curl_kusegeapp.di
 
 import android.content.Context
+import androidx.fragment.app.FragmentManager
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

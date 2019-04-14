@@ -7,6 +7,7 @@ import birth.h3.app.curl_kusegeapp.model.db.AppDatabase
 import birth.h3.app.curl_kusegeapp.model.entity.Weather
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
 import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityViewModel
+import birth.h3.app.curl_kusegeapp.ui.top.TopViewModel
 import birth.h3.app.curl_kusegeapp.ui.weather.WeatherViewModel
 import dagger.Module
 import dagger.Provides
@@ -18,12 +19,11 @@ class ViewModelModule {
     @Singleton
     @Provides
     fun provideDatabase(context: Context): AppDatabase {
-        val db = Room.databaseBuilder(
-            context!!.applicationContext,
+        return Room.databaseBuilder(
+            context.applicationContext,
             AppDatabase::class.java,
             R.string.db_name.toString()
         ).build()
-        return db
     }
 
     @Provides
@@ -34,5 +34,10 @@ class ViewModelModule {
     @Provides
     fun provideWeatherViewModel(weatherApiService: WeatherApiService, builder:AppDatabase) : WeatherViewModel {
         return WeatherViewModel(weatherApiService, builder)
+    }
+
+    @Provides
+    fun provideTopViewModel(weatherApiService: WeatherApiService, builder:AppDatabase) : TopViewModel {
+        return TopViewModel(weatherApiService, builder)
     }
 }
