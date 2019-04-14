@@ -18,6 +18,7 @@ import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityActivity
 import birth.h3.app.curl_kusegeapp.ui.util.UtilDateTime
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_weather.*
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -53,7 +54,7 @@ class WeatherFragment : androidx.fragment.app.Fragment() {
         (context?.applicationContext as CurlApp).component.inject(this)
 
         val page = arguments!!.getInt(context!!.getString(R.string.arg_page))
-        weatherViewModel.page.postValue(page)
+        weatherViewModel.page.value = page
 
 
         binding.setLifecycleOwner(this)
@@ -77,15 +78,31 @@ class WeatherFragment : androidx.fragment.app.Fragment() {
 
     private fun setObserve() {
         weatherViewModel.city.observeForever {
-            if(weatherViewModel.page.value != 0 && it == null) {
+            Timber.d("page is ${weatherViewModel.page.value} City is ${it.toString()}")
+            if(it == null) {
                 weatherViewModel.isContentVisibility.postValue(View.GONE)
             } else {
                 weatherViewModel.isContentVisibility.postValue(View.VISIBLE)
+                weatherViewModel.address.postValue(it.cityName)
+                weatherViewModel.loadData(it.latitude!!, it.longitude!!)
             }
+        }
+        weatherViewModel.weather.observeForever {
+            Timber.d(it.toString())
+            val kusegeColor = when(it.kusege){
+                1 -> R.color.colorHairStreat
+                2 -> R.color.colorHairCurl
+                3 -> R.color.colorHairVeryCurl
+                else -> R.color.colorHairCurl
+            }
+            binding.viewmodel!!.setColorHex(context!!, kusegeColor)
+        }
+        weatherViewModel.timeWeather.observeForever {
+            adapter.setItems(it)
         }
     }
 
-    fun setBindDay(){
+    fun setBindDay() {
         val todayText = UtilDateTime().todayDateJa()
         Log.d("WeatherFragment", todayText)
         binding.viewmodel!!.setDay(todayText)
