@@ -2,6 +2,8 @@ package birth.h3.app.curl_kusegeapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import birth.h3.app.curl_kusegeapp.model.entity.News
 import birth.h3.app.curl_kusegeapp.ui.news.NewsFragment
@@ -21,6 +23,19 @@ class MainActivity : AppCompatActivity() {
                 .add(R.id.container, TopFragment(), TopFragment().TAG)
                 .commit()
         setBottomNavigtionOption()
+
+        floatingActionButton.setOnClickListener {
+            when(cv_submit.visibility) {
+                View.GONE -> {
+                    cv_submit.startAnimation( AnimationUtils.loadAnimation(this, R.anim.out_animation))
+                    cv_submit.visibility = View.VISIBLE
+                }
+                View.VISIBLE -> {
+                    cv_submit.startAnimation( AnimationUtils.loadAnimation(this, R.anim.in_animation))
+                    cv_submit.visibility = View.GONE
+                }
+            }
+        }
     }
 
     fun setBottomNavigtionOption() {

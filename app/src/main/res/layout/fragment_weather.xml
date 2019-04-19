@@ -363,58 +363,6 @@
 
             </LinearLayout>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_submit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_m"
-                app:layout_constraintTop_toBottomOf="@+id/ll_time_weather">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView13"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/tv_submit_read" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/iv_submit_streat"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_weight="1"
-                            android:padding="@dimen/padding_m"
-                            app:srcCompat="@{viewmodel.submitImages.get(0)}" />
-
-                        <ImageView
-                            android:id="@+id/iv_submit_curl"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_weight="1"
-                            android:padding="@dimen/padding_m"
-                            app:srcCompat="@{viewmodel.submitImages.get(1)}" />
-
-                        <ImageView
-                            android:id="@+id/iv_submit_very_curl"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_weight="1"
-                            android:padding="@dimen/padding_m"
-                            app:srcCompat="@{viewmodel.submitImages.get(2)}" />
-
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
             <LinearLayout
                 android:id="@+id/adArea"
                 android:layout_width="match_parent"
@@ -424,7 +372,7 @@
                 android:elevation="4dp"
                 android:gravity="center"
                 android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@+id/cv_submit">
+                app:layout_constraintTop_toBottomOf="@+id/ll_time_weather">
 
                 <TextView
                     android:id="@+id/textView14"
