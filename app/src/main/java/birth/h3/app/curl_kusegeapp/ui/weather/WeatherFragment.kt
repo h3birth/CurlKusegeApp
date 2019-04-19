@@ -76,6 +76,12 @@ class WeatherFragment : androidx.fragment.app.Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        Timber.d("onResume")
+        weatherViewModel.getCity()
+    }
+
     private fun setObserve() {
         weatherViewModel.city.observeForever {
             Timber.d("page is ${weatherViewModel.page.value} City is ${it.toString()}")
