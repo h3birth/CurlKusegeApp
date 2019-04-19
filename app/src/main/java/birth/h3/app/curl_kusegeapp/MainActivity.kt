@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
+import birth.h3.app.curl_kusegeapp.databinding.ActivityMainBinding
 import birth.h3.app.curl_kusegeapp.model.entity.News
 import birth.h3.app.curl_kusegeapp.ui.news.NewsFragment
 import birth.h3.app.curl_kusegeapp.ui.setting.SettingFragment
@@ -12,13 +15,22 @@ import birth.h3.app.curl_kusegeapp.ui.util.BottomNavigationViewHelper
 import birth.h3.app.curl_kusegeapp.ui.weather.WeatherFragment
 import birth.h3.app.curl_kusegeapp.ui.chart.ChartFragment
 import birth.h3.app.curl_kusegeapp.ui.top.TopFragment
+import birth.h3.app.curl_kusegeapp.ui.weather.WeatherViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
+    @Inject
+    lateinit var viewModel: MainViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        (applicationContext as CurlApp).component.inject(this)
+
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.setLifecycleOwner(this)
+        binding.viewModel = viewModel
         supportFragmentManager.beginTransaction()
                 .add(R.id.container, TopFragment(), TopFragment().TAG)
                 .commit()

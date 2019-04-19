@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        
+        <variable
+            name="viewModel"
+            type="birth.h3.app.curl_kusegeapp.MainViewModel" />
+
+    </data>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -19,7 +27,8 @@
         android:layout_marginBottom="100dp"
         android:layout_marginStart="@dimen/margin_m"
         android:layout_marginEnd="@dimen/margin_m"
-        android:visibility="gone">
+        android:visibility="gone"
+        tools:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,7 +56,7 @@
                     android:layout_height="100dp"
                     android:layout_weight="1"
                     android:padding="@dimen/padding_m"
-                    app:srcCompat="@drawable/men_streat" />
+                    app:srcCompat="@{viewModel.submitImages.get(0)}" />
 
                 <ImageView
                     android:id="@+id/iv_submit_curl"
@@ -55,7 +64,7 @@
                     android:layout_height="100dp"
                     android:layout_weight="1"
                     android:padding="@dimen/padding_m"
-                    app:srcCompat="@drawable/men_curl" />
+                    app:srcCompat="@{viewModel.submitImages.get(1)}" />
 
                 <ImageView
                     android:id="@+id/iv_submit_very_curl"
@@ -63,7 +72,7 @@
                     android:layout_height="100dp"
                     android:layout_weight="1"
                     android:padding="@dimen/padding_m"
-                    app:srcCompat="@drawable/men_very_curl" />
+                    app:srcCompat="@{viewModel.submitImages.get(2)}" />
 
             </LinearLayout>
         </LinearLayout>
@@ -99,3 +108,4 @@
         app:layout_anchorGravity="center"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

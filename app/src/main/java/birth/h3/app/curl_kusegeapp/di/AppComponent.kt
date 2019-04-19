@@ -1,6 +1,8 @@
 package birth.h3.app.curl_kusegeapp.di
 
+import birth.h3.app.curl_kusegeapp.MainActivity
 import birth.h3.app.curl_kusegeapp.ui.news.NewsFragment
+import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityActivity
 import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityViewModel
 import birth.h3.app.curl_kusegeapp.ui.registercity.SearchAddressFragment
 import birth.h3.app.curl_kusegeapp.ui.top.TopFragment
@@ -21,6 +23,7 @@ import javax.inject.Singleton
     FragmentModule::class
 ])
 interface AppComponent {
+    fun inject(activity: MainActivity)
     fun inject(fragment: TopFragment)
     fun inject(fragment: WeatherFragment)
     fun inject(fragment: GeolocationWeatherFragment)

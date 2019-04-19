@@ -2,6 +2,7 @@ package birth.h3.app.curl_kusegeapp.di
 
 import android.content.Context
 import androidx.room.Room
+import birth.h3.app.curl_kusegeapp.MainViewModel
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.model.db.AppDatabase
 import birth.h3.app.curl_kusegeapp.model.entity.Weather
@@ -24,6 +25,11 @@ class ViewModelModule {
             AppDatabase::class.java,
             R.string.db_name.toString()
         ).build()
+    }
+
+    @Provides
+    fun provideMainViewModel(): MainViewModel {
+        return MainViewModel()
     }
 
     @Provides
