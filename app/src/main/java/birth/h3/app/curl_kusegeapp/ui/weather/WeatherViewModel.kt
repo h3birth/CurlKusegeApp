@@ -1,6 +1,5 @@
 package birth.h3.app.curl_kusegeapp.ui.weather
 
-import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.content.Context
@@ -75,13 +74,14 @@ class WeatherViewModel @Inject constructor(private val weatherApiService: Weathe
         this.day.value = day
     }
 
-    @SuppressLint("CheckResult")
     fun getCity() {
-        builder.cityDao().getCityByUid(this.page.value!!).subscribeOn(Schedulers.io()).subscribe({
-            this.city.postValue(it)
-        }, {
-            Timber.e(it)
-        })
+        Single.fromCallable { builder.cityDao().getCityByUid(this.page.value!!) }
+            .subscribeOn(Schedulers.io())
+            .subscribe ({
+                this.city.postValue(it)
+            }, {
+                Timber.e(it)
+            })
     }
 
     fun loadData(lat: Double, lon: Double) {

@@ -1,29 +1,22 @@
 package birth.h3.app.curl_kusegeapp.model.dao
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import birth.h3.app.curl_kusegeapp.model.entity.City
-import io.reactivex.Completable
-import io.reactivex.Flowable
-import io.reactivex.Single
 
 @Dao
 interface CityDao{
     @Query("SELECT * FROM city")
-    fun getAll(): Single<List<City>>
+    fun getAll(): List<City>
 
     @Query("SELECT * FROM city WHERE uid = :uid")
-    fun getCityByUid(uid: Int): Flowable<City?>
+    fun getCityByUid(uid: Int): City?
 
     @Insert
-    fun insertAll(vararg  cities: City): Completable
+    fun insertAll(vararg  cities: City)
 
     @Update
-    fun updateCities(vararg cities: City): Completable
+    fun updateCities(vararg cities: City)
 
     @Delete
-    fun delete(city: City): Single<Int>
+    fun delete(city: City)
 }
