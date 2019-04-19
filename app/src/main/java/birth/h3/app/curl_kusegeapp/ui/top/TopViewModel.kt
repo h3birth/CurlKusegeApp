@@ -1,5 +1,6 @@
 package birth.h3.app.curl_kusegeapp.ui.top
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import birth.h3.app.curl_kusegeapp.model.db.AppDatabase
@@ -20,13 +21,12 @@ class TopViewModel @Inject constructor(private val weatherApiService: WeatherApi
         getCity()
     }
 
+    @SuppressLint("CheckResult")
     fun getCity() {
-        Single.fromCallable { builder.cityDao().getAll() }
-            .subscribeOn(Schedulers.io())
-            .subscribe ({
-                this.cities.postValue(it)
-            }, {
-                Timber.e(it)
-            })
+        builder.cityDao().getAll().subscribeOn(Schedulers.io()).subscribe({
+            this.cities.postValue(it)
+        },{
+            Timber.e(it)
+        })
     }
 }
