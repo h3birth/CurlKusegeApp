@@ -132,4 +132,7 @@ dependencies {
 
     // Timber
     implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    // viewrevealanimator
+    implementation 'it.sephiroth.android.library.viewrevealanimator:view-reveal-animator:1.1.4'
 }

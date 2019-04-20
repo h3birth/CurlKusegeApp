@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         
         <variable
@@ -8,7 +8,6 @@
 
     </data>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,73 +16,98 @@
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="?attr/actionBarSize"/>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_submit"
+    <it.sephiroth.android.library.viewrevealanimator.ViewRevealAnimator
+        android:layout_gravity="bottom"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/animator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="100dp"
-        android:layout_marginStart="@dimen/margin_m"
-        android:layout_marginEnd="@dimen/margin_m"
-        android:visibility="gone"
-        tools:visibility="visible">
+        android:animationDuration="@android:integer/config_longAnimTime"
+        app:vra_hideBeforeReveal="false"
+        android:measureAllChildren="true"
+        android:animateFirstView="true"
+        android:outAnimation="@anim/out_animation"
+        android:inAnimation="@anim/in_animation"
+        android:interpolator="@android:interpolator/accelerate_decelerate">
 
         <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:layout_marginBottom="@dimen/margin_l">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tv_submit_read"
-                android:layout_marginTop="@dimen/margin_l"
-                android:layout_marginBottom="@dimen/margin_l"/>
-
-            <LinearLayout
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="100dp"
+                android:layout_marginStart="@dimen/margin_m"
+                android:layout_marginEnd="@dimen/margin_m">
 
-                <ImageView
-                    android:id="@+id/iv_submit_streat"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:padding="@dimen/padding_m"
-                    app:srcCompat="@{viewModel.submitImages.get(0)}" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="@dimen/margin_l">
 
-                <ImageView
-                    android:id="@+id/iv_submit_curl"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:padding="@dimen/padding_m"
-                    app:srcCompat="@{viewModel.submitImages.get(1)}" />
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_submit_read"
+                        android:layout_marginTop="@dimen/margin_l"
+                        android:layout_marginBottom="@dimen/margin_l"/>
 
-                <ImageView
-                    android:id="@+id/iv_submit_very_curl"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:padding="@dimen/padding_m"
-                    app:srcCompat="@{viewModel.submitImages.get(2)}" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-            </LinearLayout>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                        <ImageView
+                            android:id="@+id/iv_submit_streat"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:padding="@dimen/padding_m"
+                            app:srcCompat="@{viewModel.submitImages.get(0)}" />
+
+                        <ImageView
+                            android:id="@+id/iv_submit_curl"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:padding="@dimen/padding_m"
+                            app:srcCompat="@{viewModel.submitImages.get(1)}" />
+
+                        <ImageView
+                            android:id="@+id/iv_submit_very_curl"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:padding="@dimen/padding_m"
+                            app:srcCompat="@{viewModel.submitImages.get(2)}" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </FrameLayout>
+
+    </it.sephiroth.android.library.viewrevealanimator.ViewRevealAnimator>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_app_bar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_gravity="bottom"
-        android:backgroundTint="@android:color/white"
+        android:backgroundTint="@color/colorPrimaryDark"
         app:fabAlignmentMode="center">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -91,6 +115,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            app:itemIconTint="@drawable/bottom_navigation_item_state"
+            app:itemTextColor="@drawable/bottom_navigation_item_state"
             app:labelVisibilityMode="labeled"
             app:menu="@menu/bottom_navigation_item" />
 
@@ -103,9 +129,9 @@
         android:clickable="true"
         android:focusable="true"
         app:layout_anchor="@+id/bottom_app_bar"
-        app:backgroundTint="@color/colorHairCurl"
+        app:backgroundTint="@color/colorWhite"
         android:src="@drawable/men_curl"
-        app:layout_anchorGravity="center"/>
+        app:layout_anchorGravity="center" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

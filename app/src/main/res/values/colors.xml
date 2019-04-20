@@ -12,4 +12,7 @@
     <color name="colorHairCurl">#55C8CE</color>
     <color name="colorHairStreat">#91D154</color>
     <color name="colorHairVeryCurl">#AD506F</color>
+
+    <color name="colorMaskBlack">#80000000</color>
+    <color name="colorDefaultBarItem">#8DA8BE</color>
 </resources>

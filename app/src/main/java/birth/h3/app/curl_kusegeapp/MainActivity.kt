@@ -1,21 +1,14 @@
 package birth.h3.app.curl_kusegeapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.view.animation.AnimationUtils
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
 import birth.h3.app.curl_kusegeapp.databinding.ActivityMainBinding
-import birth.h3.app.curl_kusegeapp.model.entity.News
+import birth.h3.app.curl_kusegeapp.ui.chart.ChartFragment
 import birth.h3.app.curl_kusegeapp.ui.news.NewsFragment
 import birth.h3.app.curl_kusegeapp.ui.setting.SettingFragment
-import birth.h3.app.curl_kusegeapp.ui.util.BottomNavigationViewHelper
-import birth.h3.app.curl_kusegeapp.ui.weather.WeatherFragment
-import birth.h3.app.curl_kusegeapp.ui.chart.ChartFragment
 import birth.h3.app.curl_kusegeapp.ui.top.TopFragment
-import birth.h3.app.curl_kusegeapp.ui.weather.WeatherViewModel
+import birth.h3.app.curl_kusegeapp.ui.util.BottomNavigationViewHelper
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -36,18 +29,7 @@ class MainActivity : AppCompatActivity() {
                 .commit()
         setBottomNavigtionOption()
 
-        floatingActionButton.setOnClickListener {
-            when(cv_submit.visibility) {
-                View.GONE -> {
-                    cv_submit.startAnimation( AnimationUtils.loadAnimation(this, R.anim.out_animation))
-                    cv_submit.visibility = View.VISIBLE
-                }
-                View.VISIBLE -> {
-                    cv_submit.startAnimation( AnimationUtils.loadAnimation(this, R.anim.in_animation))
-                    cv_submit.visibility = View.GONE
-                }
-            }
-        }
+        floatingActionButton.setOnClickListener { animator.showNext() }
     }
 
     fun setBottomNavigtionOption() {
