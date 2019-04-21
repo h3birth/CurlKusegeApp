@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import birth.h3.app.curl_kusegeapp.databinding.ActivityMainBinding
 import birth.h3.app.curl_kusegeapp.ui.chart.ChartFragment
+import birth.h3.app.curl_kusegeapp.ui.mydata.MyDataFragment
 import birth.h3.app.curl_kusegeapp.ui.news.NewsFragment
 import birth.h3.app.curl_kusegeapp.ui.setting.SettingFragment
 import birth.h3.app.curl_kusegeapp.ui.top.TopFragment
@@ -47,9 +48,9 @@ class MainActivity : AppCompatActivity() {
                     fragment    = TopFragment()
                     fragmentTag = TopFragment().TAG
                 }
-                R.id.nav_chart -> {
-                    fragment    = ChartFragment()
-                    fragmentTag = ChartFragment().TAG
+                R.id.nav_mydata -> {
+                    fragment    = MyDataFragment()
+                    fragmentTag = MyDataFragment().TAG
                 }
                 R.id.nav_news -> {
                     fragment    = NewsFragment()

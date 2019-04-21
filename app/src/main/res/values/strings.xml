@@ -2,6 +2,7 @@
     <!-- ページタイトル -->
     <string name="app_name">か～る</string>
     <string name="chart">チャート</string>
+    <string name="mydata">あなたのデータ</string>
     <string name="news">お知らせ</string>
     <string name="setting">設定</string>
 

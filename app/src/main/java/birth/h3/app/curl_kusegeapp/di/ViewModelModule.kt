@@ -7,6 +7,7 @@ import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.model.db.AppDatabase
 import birth.h3.app.curl_kusegeapp.model.entity.Weather
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
+import birth.h3.app.curl_kusegeapp.ui.mydata.MyDataViewModel
 import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityViewModel
 import birth.h3.app.curl_kusegeapp.ui.top.TopViewModel
 import birth.h3.app.curl_kusegeapp.ui.weather.WeatherViewModel
@@ -45,5 +46,10 @@ class ViewModelModule {
     @Provides
     fun provideTopViewModel(weatherApiService: WeatherApiService, builder:AppDatabase) : TopViewModel {
         return TopViewModel(weatherApiService, builder)
+    }
+
+    @Provides
+    fun provideMyDataViewModel(weatherApiService: WeatherApiService, builder:AppDatabase) : MyDataViewModel {
+        return MyDataViewModel(weatherApiService, builder)
     }
 }
