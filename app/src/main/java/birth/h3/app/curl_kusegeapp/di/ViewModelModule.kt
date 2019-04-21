@@ -29,8 +29,8 @@ class ViewModelModule {
     }
 
     @Provides
-    fun provideMainViewModel(): MainViewModel {
-        return MainViewModel()
+    fun provideMainViewModel(weatherApiService: WeatherApiService, builder:AppDatabase): MainViewModel {
+        return MainViewModel(weatherApiService, builder)
     }
 
     @Provides

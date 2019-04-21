@@ -1,6 +1,7 @@
 package birth.h3.app.curl_kusegeapp.di
 
 import birth.h3.app.curl_kusegeapp.MainActivity
+import birth.h3.app.curl_kusegeapp.MainViewModel
 import birth.h3.app.curl_kusegeapp.ui.mydata.MyDataFragment
 import birth.h3.app.curl_kusegeapp.ui.mydata.MyDataViewModel
 import birth.h3.app.curl_kusegeapp.ui.news.NewsFragment
@@ -32,6 +33,7 @@ interface AppComponent {
     fun inject(fragment: NewsFragment)
     fun inject(fragment: SearchAddressFragment)
     fun inject(fragment: MyDataFragment)
+    fun inject(viewModel: MainViewModel)
     fun inject(viewModel: RegisterCityViewModel)
     fun inject(viewModel: WeatherViewModel)
     fun inject(viewModel: TopViewModel)

@@ -1,9 +1,17 @@
 package birth.h3.app.curl_kusegeapp.ui.util
 
+import android.text.format.DateFormat
 import java.text.SimpleDateFormat
-import java.util.Date
+import java.util.*
 
 class UtilDateTime{
+
+    private val cal = Calendar.getInstance()
+    val year = cal.get(Calendar.YEAR)
+    val month = cal.get(Calendar.MONTH) + 1
+    val date = cal.get(Calendar.DATE)
+    val today = DateFormat.format("yyyy年MM月dd日", cal)
+
 
     fun today(): Date{
         return Date(System.currentTimeMillis())

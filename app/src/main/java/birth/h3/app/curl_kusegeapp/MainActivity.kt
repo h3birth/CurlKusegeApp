@@ -4,13 +4,16 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import birth.h3.app.curl_kusegeapp.databinding.ActivityMainBinding
+import birth.h3.app.curl_kusegeapp.model.enums.HairStatus
 import birth.h3.app.curl_kusegeapp.ui.chart.ChartFragment
 import birth.h3.app.curl_kusegeapp.ui.mydata.MyDataFragment
 import birth.h3.app.curl_kusegeapp.ui.news.NewsFragment
 import birth.h3.app.curl_kusegeapp.ui.setting.SettingFragment
 import birth.h3.app.curl_kusegeapp.ui.top.TopFragment
 import birth.h3.app.curl_kusegeapp.ui.util.BottomNavigationViewHelper
+import birth.h3.app.curl_kusegeapp.ui.util.UtilDateTime
 import kotlinx.android.synthetic.main.activity_main.*
+import timber.log.Timber
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -31,6 +34,8 @@ class MainActivity : AppCompatActivity() {
         setBottomNavigtionOption()
 
         floatingActionButton.setOnClickListener { animator.showNext() }
+
+        onSubmitClickLister()
     }
 
     fun setBottomNavigtionOption() {
@@ -80,6 +85,25 @@ class MainActivity : AppCompatActivity() {
             fgTransaction.commit()
 
             true
+        }
+    }
+
+    private fun onSubmitClickLister() {
+        // サラサラ
+        iv_submit_straight.setOnClickListener {
+            viewModel.insertStatus(HairStatus.STRAIGHT.rawValue)
+            animator.showNext()
+            floatingActionButton.setImageResource(R.drawable.men_streat)
+        }
+        iv_submit_curl.setOnClickListener {
+            viewModel.insertStatus(HairStatus.CURL.rawValue)
+            animator.showNext()
+            floatingActionButton.setImageResource(R.drawable.men_curl)
+        }
+        iv_submit_very_curl.setOnClickListener {
+            viewModel.insertStatus(HairStatus.VERY_CURL.rawValue)
+            animator.showNext()
+            floatingActionButton.setImageResource(R.drawable.men_very_curl)
         }
     }
 }

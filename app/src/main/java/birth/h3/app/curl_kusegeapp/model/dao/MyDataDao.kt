@@ -9,7 +9,7 @@ import birth.h3.app.curl_kusegeapp.model.entity.MyData
 
 @Dao
 interface MyDataDao {
-    @Query("SELECT * FROM mydata WHERE is_deleted = 0 LIMIT :per OFFSET :offset")
+    @Query("SELECT * FROM mydata WHERE deleted = 0 ORDER BY submit_year DESC, submit_month DESC, submit_day DESC LIMIT :per OFFSET :offset")
     fun getMyData(per: Int, offset: Int): List<MyData>
 
     @Insert

@@ -30,5 +30,13 @@ class MyDataFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (context?.applicationContext as CurlApp).component.inject(this)
+
+        setObserve()
+    }
+
+    private fun setObserve(){
+        viewModel.myData.observeForever {
+
+        }
     }
 }
