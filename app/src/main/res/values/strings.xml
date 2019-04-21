@@ -53,6 +53,12 @@
     <!-- Intent/Argment -->
     <string name="arg_page">PAGE</string>
 
+    <!-- ステータス -->
+    <string name="submited_day">%d日</string>
+    <string name="hair_status_straight">さらさら</string>
+    <string name="hair_status_curl">くるくる</string>
+    <string name="hair_status_very_curl">ごわごわ</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

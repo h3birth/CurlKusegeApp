@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import birth.h3.app.curl_kusegeapp.R
+import birth.h3.app.curl_kusegeapp.model.enums.HairStatus
 
 @Entity(indices = arrayOf(
     Index(value = ["deleted"]),
@@ -36,6 +38,24 @@ class MyData {
             myData.submitDay = submitDay
             myData.HairStatus = HairStatus
             return myData
+        }
+    }
+
+    fun getIcon(): Int {
+        val status = birth.h3.app.curl_kusegeapp.model.enums.HairStatus.fromValue(HairStatus!!)
+        return when(status) {
+            birth.h3.app.curl_kusegeapp.model.enums.HairStatus.STRAIGHT -> R.drawable.men_streat
+            birth.h3.app.curl_kusegeapp.model.enums.HairStatus.CURL -> R.drawable.men_curl
+            birth.h3.app.curl_kusegeapp.model.enums.HairStatus.VERY_CURL -> R.drawable.men_very_curl
+        }
+    }
+
+    fun getText(): String {
+        val status = birth.h3.app.curl_kusegeapp.model.enums.HairStatus.fromValue(HairStatus!!)
+        return when(status) {
+            birth.h3.app.curl_kusegeapp.model.enums.HairStatus.STRAIGHT -> "さらさら"
+            birth.h3.app.curl_kusegeapp.model.enums.HairStatus.CURL -> "くるくる"
+            birth.h3.app.curl_kusegeapp.model.enums.HairStatus.VERY_CURL -> "ごわごわ"
         }
     }
 }

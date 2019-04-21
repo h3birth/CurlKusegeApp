@@ -23,7 +23,7 @@ class MyDataViewModel @Inject constructor(private val weatherApiService: Weather
     }
 
     fun getMyData() {
-        Single.fromCallable { builder.myDataDao().getMyData(offset, limit) }
+        Single.fromCallable { builder.myDataDao().getMyData(limit, offset) }
             .subscribeOn(Schedulers.io())
             .subscribe ({
                 myData.postValue(it)
