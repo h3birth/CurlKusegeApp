@@ -27,6 +27,7 @@
     <string name="tv_login_read">ログインするとあなたのかみのけのくせ度をきろく・ぶんせきします。</string>
     <string name="btn_login_mail">メールアドレスでログイン</string>
     <string name="btn_login_twitter">Twitterでログイン</string>
+    <string name="btn_sign_up">新規登録</string>
 
     <!-- 設定ページ -->
     <string name="tv_setting_header_app">アプリ設定</string>

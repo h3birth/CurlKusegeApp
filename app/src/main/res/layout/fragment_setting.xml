@@ -56,18 +56,24 @@
                     android:text="@string/tv_login_read" />
 
                 <Button
+                    android:id="@+id/btn_signup"
+                    style="@style/Widget.AppCompat.Button"
+                    android:background="@color/colorOrage"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_sign_up"
+                    android:layout_marginBottom="@dimen/margin_m"/>
+
+                <Button
                     android:id="@+id/btn_login_mail"
                     style="@style/Widget.AppCompat.Button"
+                    android:background="@color/colorWhite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/btn_login_mail" />
 
-                <Button
-                    android:id="@+id/btn_login_twitter"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/btn_login_twitter" />
             </LinearLayout>
 
             <LinearLayout
