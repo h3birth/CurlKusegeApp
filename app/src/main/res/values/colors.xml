@@ -9,6 +9,7 @@
     <color name="colorPrimaryOpacity">#332196f3</color>
     <color name="colorNoActionText">#aaaaaa</color>
     <color name="colorOrage">#FF9800</color>
+    <color name="colorMessageCurl">#FFFFFF</color>
 
     <color name="colorHairCurl">#55C8CE</color>
     <color name="colorHairStreat">#91D154</color>

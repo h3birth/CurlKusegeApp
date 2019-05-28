@@ -6,9 +6,11 @@ import birth.h3.app.curl_kusegeapp.MainViewModel
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.model.db.AppDatabase
 import birth.h3.app.curl_kusegeapp.model.entity.Weather
+import birth.h3.app.curl_kusegeapp.model.net.UserApiService
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
 import birth.h3.app.curl_kusegeapp.ui.mydata.MyDataViewModel
 import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityViewModel
+import birth.h3.app.curl_kusegeapp.ui.signup.SignUpViewModel
 import birth.h3.app.curl_kusegeapp.ui.top.TopViewModel
 import birth.h3.app.curl_kusegeapp.ui.weather.WeatherViewModel
 import dagger.Module
@@ -51,5 +53,10 @@ class ViewModelModule {
     @Provides
     fun provideMyDataViewModel(weatherApiService: WeatherApiService, builder:AppDatabase) : MyDataViewModel {
         return MyDataViewModel(weatherApiService, builder)
+    }
+
+    @Provides
+    fun provideSignUpViewModel(userApiService: UserApiService, builder:AppDatabase) : SignUpViewModel {
+        return SignUpViewModel(userApiService, builder)
     }
 }
