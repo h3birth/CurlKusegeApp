@@ -1,16 +1,12 @@
 package birth.h3.app.curl_kusegeapp.di
 
-import birth.h3.app.curl_kusegeapp.model.entity.TimeWeather
-import birth.h3.app.curl_kusegeapp.model.entity.Weather
+import birth.h3.app.curl_kusegeapp.model.net.UserApiService
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
-import birth.h3.app.curl_kusegeapp.ui.weather.WeatherViewModel
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import dagger.Module
 import dagger.Provides
-import io.reactivex.Single
-import io.reactivex.processors.BehaviorProcessor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -49,5 +45,11 @@ class WeatherModule() {
     @Provides
     fun provideWeatherApiService(retrofit: Retrofit): WeatherApiService {
         return retrofit.create(WeatherApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideUserApiService(retrofit: Retrofit): UserApiService {
+        return retrofit.create(UserApiService::class.java)
     }
 }
