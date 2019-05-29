@@ -37,8 +37,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@{viewModel.firstButtonText}"
-                android:background="@color/colorHairStreat"
-                android:textColor="@color/colorWhite"
+                android:background="@drawable/style_border_radius"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:textStyle="bold"
                 tools:text="さらさら"
                 android:layout_margin="@dimen/margin_m"/>
@@ -49,8 +49,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@{viewModel.secondButtonText}"
-                android:background="@color/colorHairCurl"
-                android:textColor="@color/colorWhite"
+                android:background="@drawable/style_border_radius"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:textStyle="bold"
                 tools:text="ちょいくせ"
                 android:layout_margin="@dimen/margin_m"/>
@@ -61,8 +61,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@{viewModel.thirdButtonText}"
-                android:background="@color/colorHairVeryCurl"
-                android:textColor="@color/colorWhite"
+                android:background="@drawable/style_border_radius"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:textStyle="bold"
                 tools:text="ちょうくせ"
                 android:layout_margin="@dimen/margin_m"/>

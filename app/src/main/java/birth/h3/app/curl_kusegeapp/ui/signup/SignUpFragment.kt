@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import birth.h3.app.curl_kusegeapp.CurlApp
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.databinding.FragmentSignUpBinding
+import birth.h3.app.curl_kusegeapp.model.entity.SignupMessage
+import birth.h3.app.curl_kusegeapp.model.enums.MessageOwner
 import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityViewModel
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 import timber.log.Timber
@@ -60,6 +62,10 @@ class SignUpFragment : Fragment() {
             layoutManager = LinearLayoutManager(this.context, RecyclerView.VERTICAL, false)
         }
 
+        first_submit_button.setOnClickListener {postUserAction(viewModel.firstButtonText.value!!)}
+        second_submit_button.setOnClickListener {postUserAction(viewModel.secondButtonText.value!!)}
+        third_submit_button.setOnClickListener {postUserAction(viewModel.thirdButtonText.value!!)}
+
         observe()
     }
 
@@ -68,7 +74,6 @@ class SignUpFragment : Fragment() {
             viewModel.postMessage()?.let {
                 Timber.d("message is " + it.toString())
                 controller.setData(it)
-                signup_recycler_view.smoothScrollToPosition(it.lastIndex)
                 when(it.last().wait) {
                     true -> {
                         viewModel.buttonVisibility.postValue(View.VISIBLE)
@@ -78,13 +83,21 @@ class SignUpFragment : Fragment() {
                         handler.postDelayed(runnable, 1000)
                     }
                 }
+                signup_recycler_view.smoothScrollToPosition(it.lastIndex)
             } ?: removeRunner()
         }
         handler.postDelayed(runnable, 1000)
     }
 
+    private fun postUserAction(userText: String) {
+        viewModel.insertUserMessage(SignupMessage(0, MessageOwner.USER, userText,false))
+        handler.post(runnable)
+        viewModel.buttonVisibility.postValue(View.INVISIBLE)
+    }
+
     private fun setButtonText(position: Int) = when(position) {
         2 -> viewModel.setButtonText("さらさら", "ちょいくせ", "ちょうくせ")
+        5 -> viewModel.setButtonText("男性", "女性", "答えない")
         else -> viewModel.setButtonText("", "", "")
     }
 
