@@ -16,7 +16,7 @@ data class SignupMessage(
                 SignupMessage(2, MessageOwner.CURL, "新規登録の準備をしてます。ちょっと待っててね。", false, false, null),
                 SignupMessage(3, MessageOwner.CURL, "始めにあなたの髪質を教えてください。", true, false, SignUpAnswerMessages("さらさら","ちょいくせ", "ちょうくせ")),
                 SignupMessage(4, MessageOwner.CURL, "%sですね！", false, true, null),
-                SignupMessage(5, MessageOwner.CURL, "あなたの性別を教えてください。あっ、教えたくない場合は「答えない」を選んでね。", true, false, SignUpAnswerMessages("さらさら","ちょいくせ", "ちょうくせ")),
+                SignupMessage(5, MessageOwner.CURL, "あなたの性別を教えてください。あっ、教えたくない場合は「答えない」を選んでね。", true, false, SignUpAnswerMessages("男性","女性", "答えない")),
                 SignupMessage(6, MessageOwner.CURL, "教えてくれてありがとう！", false, false, null),
                 SignupMessage(7, MessageOwner.CURL, "もう少しだけあなたのことを教えてね。", false, false, null),
                 SignupMessage(8, MessageOwner.CURL, "あ、あなたをなんて呼べばいいかな？名前を教えて！", true, false, null),

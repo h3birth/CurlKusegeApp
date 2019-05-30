@@ -63,6 +63,8 @@ class SignUpFragment : Fragment(), SignUpController.Listener {
             layoutManager = LinearLayoutManager(this.context, RecyclerView.VERTICAL, false)
         }
 
+        signup_clear_icon.setOnClickListener { this.activity?.finish() }
+
         first_submit_button.setOnClickListener {postUserAction(viewModel.firstButtonText.value!!)}
         second_submit_button.setOnClickListener {postUserAction(viewModel.secondButtonText.value!!)}
         third_submit_button.setOnClickListener {postUserAction(viewModel.thirdButtonText.value!!)}
@@ -78,7 +80,10 @@ class SignUpFragment : Fragment(), SignUpController.Listener {
                 when(it.last().wait) {
                     true -> {
                         viewModel.buttonVisibility.postValue(View.VISIBLE)
-                        setButtonText(it.last())
+                        when(it.last().userMessage) {
+                            null -> {} // キーボード表示
+                            else -> setButtonText(it.last())
+                        }
                     }
                     false -> {
                         handler.postDelayed(runnable, 1000)
