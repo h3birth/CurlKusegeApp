@@ -5,6 +5,10 @@
         <variable
             name="signupMessage"
             type="birth.h3.app.curl_kusegeapp.model.entity.SignupMessage" />
+
+        <variable
+            name="viewModel"
+            type="birth.h3.app.curl_kusegeapp.ui.signup.SignUpViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -48,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="4dp"
-                android:text="@{signupMessage.message}"
+                android:text="@{signupMessage.response ? String.format(signupMessage.message, viewModel.lastAnswerText)  : signupMessage.message}"
                 tools:text="Curlをインストールいただきありがとうございます！" />
 
         </com.daasuu.bl.BubbleLayout>

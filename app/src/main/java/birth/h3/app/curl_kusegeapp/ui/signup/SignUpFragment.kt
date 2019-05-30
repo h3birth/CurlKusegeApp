@@ -16,6 +16,7 @@ import birth.h3.app.curl_kusegeapp.databinding.FragmentSignUpBinding
 import birth.h3.app.curl_kusegeapp.model.entity.SignupMessage
 import birth.h3.app.curl_kusegeapp.model.enums.MessageOwner
 import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityViewModel
+import com.airbnb.epoxy.DataBindingEpoxyModel
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 import timber.log.Timber
 import javax.inject.Inject
@@ -27,7 +28,7 @@ import javax.inject.Inject
  * create an instance of this fragment.
  *
  */
-class SignUpFragment : Fragment() {
+class SignUpFragment : Fragment(), SignUpController.Listener {
     companion object {
         @JvmStatic
         fun newInstance() = SignUpFragment()
@@ -39,7 +40,7 @@ class SignUpFragment : Fragment() {
     lateinit var viewModel: SignUpViewModel
 
     private lateinit var binding: FragmentSignUpBinding
-    private val controller by lazy { SignUpController() }
+    private val controller by lazy { SignUpController(this, viewModel) }
 
     private val handler = Handler()
     private var runnable: Runnable? = null
@@ -77,7 +78,7 @@ class SignUpFragment : Fragment() {
                 when(it.last().wait) {
                     true -> {
                         viewModel.buttonVisibility.postValue(View.VISIBLE)
-                        setButtonText(it.lastIndex)
+                        setButtonText(it.last())
                     }
                     false -> {
                         handler.postDelayed(runnable, 1000)
@@ -90,16 +91,13 @@ class SignUpFragment : Fragment() {
     }
 
     private fun postUserAction(userText: String) {
-        viewModel.insertUserMessage(SignupMessage(0, MessageOwner.USER, userText,false))
+        viewModel.lastAnswerText.postValue(userText)
+        viewModel.insertUserMessage(SignupMessage(0, MessageOwner.USER, userText,false, false, null))
         handler.post(runnable)
         viewModel.buttonVisibility.postValue(View.INVISIBLE)
     }
 
-    private fun setButtonText(position: Int) = when(position) {
-        2 -> viewModel.setButtonText("さらさら", "ちょいくせ", "ちょうくせ")
-        5 -> viewModel.setButtonText("男性", "女性", "答えない")
-        else -> viewModel.setButtonText("", "", "")
-    }
+    private fun setButtonText(signupMessage: SignupMessage) = viewModel.setButtonText(signupMessage.userMessage!!)
 
     private fun removeRunner() {
         handler.removeCallbacks(runnable)
@@ -108,5 +106,9 @@ class SignUpFragment : Fragment() {
     override fun onDetach() {
         super.onDetach()
         removeRunner()
+    }
+
+    override fun onBindCurl(view: DataBindingEpoxyModel.DataBindingHolder) {
+        view.dataBinding.setLifecycleOwner(this)
     }
 }

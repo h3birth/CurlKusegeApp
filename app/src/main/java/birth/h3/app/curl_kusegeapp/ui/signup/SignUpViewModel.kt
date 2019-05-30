@@ -4,6 +4,7 @@ import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import birth.h3.app.curl_kusegeapp.model.db.AppDatabase
+import birth.h3.app.curl_kusegeapp.model.entity.SignUpAnswerMessages
 import birth.h3.app.curl_kusegeapp.model.entity.SignupMessage
 import birth.h3.app.curl_kusegeapp.model.net.UserApiService
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
@@ -17,6 +18,7 @@ class SignUpViewModel @Inject constructor(private val userApiService: UserApiSer
     val firstButtonText: MutableLiveData<String> = MutableLiveData()
     val secondButtonText: MutableLiveData<String> = MutableLiveData()
     val thirdButtonText: MutableLiveData<String> = MutableLiveData()
+    val lastAnswerText: MutableLiveData<String> = MutableLiveData()
     val signupMessages = SignupMessage.signUpMessages().toMutableList()
     var postIndex: Int = 0
 
@@ -28,10 +30,10 @@ class SignUpViewModel @Inject constructor(private val userApiService: UserApiSer
         return messages
     }
 
-    fun setButtonText(firstText: String, secondText: String, thirdText: String) {
-        firstButtonText.postValue(firstText)
-        secondButtonText.postValue(secondText)
-        thirdButtonText.postValue(thirdText)
+    fun setButtonText(signUpAnswerMessages: SignUpAnswerMessages) {
+        firstButtonText.postValue(signUpAnswerMessages.firstMessage)
+        secondButtonText.postValue(signUpAnswerMessages.secondMessage)
+        thirdButtonText.postValue(signUpAnswerMessages.thirdMessage)
     }
 
     fun insertUserMessage(signupMessage: SignupMessage) {
