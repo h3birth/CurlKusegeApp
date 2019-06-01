@@ -31,6 +31,11 @@
     <string name="btn_sign_up">新規登録</string>
 
     <!-- 設定ページ -->
+    <string name="user_account_setting">アカウント設定</string>
+    <string name="user_account_change">アカウント変更</string>
+    <string name="user_mail_change">メールアドレス変更</string>
+    <string name="user_password_change">パスワード変更</string>
+
     <string name="tv_setting_header_app">アプリ設定</string>
     <string name="tv_setting_icon">アイコン設定</string>
     <string name="tv_setting_theme">テーマ設定</string>

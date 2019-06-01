@@ -8,6 +8,8 @@ import birth.h3.app.curl_kusegeapp.ui.news.NewsFragment
 import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityActivity
 import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityViewModel
 import birth.h3.app.curl_kusegeapp.ui.registercity.SearchAddressFragment
+import birth.h3.app.curl_kusegeapp.ui.setting.SettingFragment
+import birth.h3.app.curl_kusegeapp.ui.setting.SettingViewModel
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInFragment
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInViewModel
 import birth.h3.app.curl_kusegeapp.ui.signup.SignUpFragment
@@ -39,6 +41,7 @@ interface AppComponent {
     fun inject(fragment: MyDataFragment)
     fun inject(fragment: SignUpFragment)
     fun inject(fragment: SignInFragment)
+    fun inject(fragment: SettingFragment)
     fun inject(viewModel: MainViewModel)
     fun inject(viewModel: RegisterCityViewModel)
     fun inject(viewModel: WeatherViewModel)
@@ -46,4 +49,5 @@ interface AppComponent {
     fun inject(viewModel: MyDataViewModel)
     fun inject(viewModel: SignUpViewModel)
     fun inject(viewModel: SignInViewModel)
+    fun inject(viewModel: SettingViewModel)
 }

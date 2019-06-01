@@ -10,6 +10,7 @@ import birth.h3.app.curl_kusegeapp.model.net.UserApiService
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
 import birth.h3.app.curl_kusegeapp.ui.mydata.MyDataViewModel
 import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityViewModel
+import birth.h3.app.curl_kusegeapp.ui.setting.SettingViewModel
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInViewModel
 import birth.h3.app.curl_kusegeapp.ui.signup.SignUpViewModel
 import birth.h3.app.curl_kusegeapp.ui.top.TopViewModel
@@ -64,5 +65,10 @@ class ViewModelModule {
     @Provides
     fun provideSignInViewModel(userApiService: UserApiService, builder:AppDatabase) : SignInViewModel {
         return SignInViewModel(userApiService, builder)
+    }
+
+    @Provides
+    fun provideSettingViewModel(userApiService: UserApiService, builder:AppDatabase) : SettingViewModel {
+        return SettingViewModel(userApiService, builder)
     }
 }
