@@ -17,6 +17,7 @@ import birth.h3.app.curl_kusegeapp.model.entity.SignupMessage
 import birth.h3.app.curl_kusegeapp.model.enums.MessageOwner
 import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityViewModel
 import com.airbnb.epoxy.DataBindingEpoxyModel
+import kotlinx.android.synthetic.main.fragment_sign_in.*
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 import timber.log.Timber
 import javax.inject.Inject
@@ -63,7 +64,9 @@ class SignUpFragment : Fragment(), SignUpController.Listener {
             layoutManager = LinearLayoutManager(this.context, RecyclerView.VERTICAL, false)
         }
 
-        signup_clear_icon.setOnClickListener { this.activity?.finish() }
+        signup_toolbar.setOnClickListener {
+            this.activity?.finish()
+        }
 
         first_submit_button.setOnClickListener {postUserAction(viewModel.firstButtonText.value!!)}
         second_submit_button.setOnClickListener {postUserAction(viewModel.secondButtonText.value!!)}

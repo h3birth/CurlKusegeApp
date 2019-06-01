@@ -64,6 +64,9 @@ class SearchAddressFragment : Fragment(), ItemCityController.listener {
                     }
                 })
             }
+            it.setOnClickListener {
+                this.activity?.finish()
+            }
         } ?: IllegalAccessException("Toolbar cannot be null")
 
         address_recycler_view.let{

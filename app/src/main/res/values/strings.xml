@@ -5,6 +5,7 @@
     <string name="mydata">あなたのデータ</string>
     <string name="news">お知らせ</string>
     <string name="setting">設定</string>
+    <string name="login">ログイン</string>
 
     <!-- 天気情報 -->
     <string name="tv_temp">%d℃</string>
@@ -60,8 +61,12 @@
     <string name="hair_status_curl">くるくる</string>
     <string name="hair_status_very_curl">ごわごわ</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="submit_login_read">ログインすると今のあなたの髪の状態を記録・管理できるようになります。</string>
+
+    <!-- ログインページ -->
+    <string name="email">メールアドレス</string>
+    <string name="password">パスワード</string>
+    <string name="btn_login">ログイン</string>
+    <string name="forget_password">パスワードを忘れた方</string>
+    <string name="signup_goto">新規会員登録はこちら</string>
 </resources>

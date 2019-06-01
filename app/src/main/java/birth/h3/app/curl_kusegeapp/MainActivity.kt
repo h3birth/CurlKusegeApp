@@ -11,6 +11,7 @@ import birth.h3.app.curl_kusegeapp.ui.chart.ChartFragment
 import birth.h3.app.curl_kusegeapp.ui.mydata.MyDataFragment
 import birth.h3.app.curl_kusegeapp.ui.news.NewsFragment
 import birth.h3.app.curl_kusegeapp.ui.setting.SettingFragment
+import birth.h3.app.curl_kusegeapp.ui.signin.SignInActivity
 import birth.h3.app.curl_kusegeapp.ui.signup.SignUpActivity
 import birth.h3.app.curl_kusegeapp.ui.top.TopFragment
 import birth.h3.app.curl_kusegeapp.ui.util.BottomNavigationViewHelper
@@ -43,6 +44,12 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btn_signup).setOnClickListener {
             val intent = Intent(this.application, SignUpActivity::class.java)
             startActivity(intent)
+            animator.showNext()
+        }
+        findViewById<Button>(R.id.btn_login_mail).setOnClickListener {
+            val intent = Intent(this.application, SignInActivity::class.java)
+            startActivity(intent)
+            animator.showNext()
         }
     }
 
