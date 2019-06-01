@@ -52,6 +52,14 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
+                        android:id="@+id/account_setting_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/markImage"
+                        android:src="@drawable/ic_settings_black_24dp"
+                        android:layout_gravity="right"
+                        android:visibility="@{viewModel.user == null ? View.GONE : View.VISIBLE}"/>
+
+                    <ImageView
                         android:id="@+id/user_avatar_icon"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/weatherImage"
@@ -69,39 +77,6 @@
                         android:textSize="@dimen/text_2l"
                         android:text='@{viewModel.user == null ? "" : viewModel.user.nickname}'
                         tools:text="kako351"
-                        android:visibility="@{viewModel.user == null ? View.GONE : View.VISIBLE}"/>
-
-                    <TextView
-                        android:id="@+id/user_account_setting"
-                        style="@style/AppSettingHeader"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_m"
-                        android:text="@string/user_account_setting"
-                        android:visibility="@{viewModel.user == null ? View.GONE : View.VISIBLE}"/>
-
-                    <TextView
-                        android:id="@+id/user_change"
-                        style="@style/AppSettingSelectableText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/user_account_change"
-                        android:visibility="@{viewModel.user == null ? View.GONE : View.VISIBLE}"/>
-
-                    <TextView
-                        android:id="@+id/mail_change"
-                        style="@style/AppSettingSelectableText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/user_mail_change"
-                        android:visibility="@{viewModel.user == null ? View.GONE : View.VISIBLE}"/>
-
-                    <TextView
-                        android:id="@+id/password_change"
-                        style="@style/AppSettingSelectableText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/user_password_change"
                         android:visibility="@{viewModel.user == null ? View.GONE : View.VISIBLE}"/>
 
                     <ImageView

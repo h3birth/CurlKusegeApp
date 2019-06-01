@@ -74,4 +74,6 @@
     <string name="btn_login">ログイン</string>
     <string name="forget_password">パスワードを忘れた方</string>
     <string name="signup_goto">新規会員登録はこちら</string>
+
+    <string name="logout">ログアウト</string>
 </resources>

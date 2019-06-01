@@ -11,10 +11,12 @@ import birth.h3.app.curl_kusegeapp.CurlApp
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.databinding.FragmentSettingBinding
 import birth.h3.app.curl_kusegeapp.databinding.FragmentSignInBinding
+import birth.h3.app.curl_kusegeapp.ui.setting.account.AccountActivity
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInActivity
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInViewModel
 import birth.h3.app.curl_kusegeapp.ui.signup.SignUpActivity
 import kotlinx.android.synthetic.main.fragment_setting.*
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -54,6 +56,11 @@ class SettingFragment : androidx.fragment.app.Fragment() {
             startActivity(intent)
         }
 
+        account_setting_icon.setOnClickListener {
+            val intent = Intent(this.activity?.application, AccountActivity::class.java)
+            startActivity(intent)
+        }
+
         setObserve()
     }
 
@@ -63,6 +70,7 @@ class SettingFragment : androidx.fragment.app.Fragment() {
 
     override fun onResume() {
         super.onResume()
+        Timber.d("onResume")
         viewModel.getUser()
     }
 

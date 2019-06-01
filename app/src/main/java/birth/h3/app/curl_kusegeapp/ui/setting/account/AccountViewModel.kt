@@ -1,4 +1,4 @@
-package birth.h3.app.curl_kusegeapp.ui.setting
+package birth.h3.app.curl_kusegeapp.ui.setting.account
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,7 +13,7 @@ import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 import javax.inject.Inject
 
-class SettingViewModel @Inject constructor(private val userApiService: UserApiService,
+class AccountViewModel @Inject constructor(private val userApiService: UserApiService,
                                            private val builder: AppDatabase) : ViewModel() {
     private val disposable = CompositeDisposable()
 
@@ -27,10 +27,19 @@ class SettingViewModel @Inject constructor(private val userApiService: UserApiSe
     fun getUser() {
         Single.fromCallable { builder.userDao().getMe() }
                 .subscribeOn(Schedulers.io())
-                .subscribe ({
+                .subscribe({
                     user.postValue(it)
                 }, {
+                    Timber.e(it)
+                }).addTo(disposable)
+    }
+
+    fun logout() {
+        Single.fromCallable { builder.userDao().delete(this.user.value!!) }
+                .subscribeOn(Schedulers.io())
+                .subscribe({
                     user.postValue(null)
+                }, {
                     Timber.e(it)
                 }).addTo(disposable)
     }
