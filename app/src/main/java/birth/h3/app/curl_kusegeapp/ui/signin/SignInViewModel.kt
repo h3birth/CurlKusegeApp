@@ -3,10 +3,12 @@ package birth.h3.app.curl_kusegeapp.ui.signin
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import birth.h3.app.curl_kusegeapp.model.db.AppDatabase
+import birth.h3.app.curl_kusegeapp.model.entity.User
 import birth.h3.app.curl_kusegeapp.model.enums.SignInStatus
 import birth.h3.app.curl_kusegeapp.model.net.UserApiService
 import birth.h3.app.curl_kusegeapp.model.response.SignInResponse
 import com.google.android.gms.signin.SignIn
+import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
@@ -19,15 +21,19 @@ class SignInViewModel @Inject constructor(private val userApiService: UserApiSer
 
     private val disposable = CompositeDisposable()
 
+    val user: MutableLiveData<User?> = MutableLiveData<User?>().apply { value = null }
     val email: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
     val password: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
     val status: MutableLiveData<SignInStatus> = MutableLiveData<SignInStatus>().apply { value = SignInStatus.NONE }
     val errorEmailMessage: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
     val errorPasswordMessage: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
 
+    init {
+        getUser()
+    }
+
     fun signIn(){
-        status.postValue(SignInStatus.SIGNIN)
-        Timber.d("mail is ${email.value} password is ${password.value}")
+        resetLiveData()
         userApiService.signin(email.value!!, password.value!!).subscribeOn(Schedulers.io()).subscribe({
             Timber.d("signInResponse is ${it}")
             if( it.user == null ){
@@ -38,12 +44,56 @@ class SignInViewModel @Inject constructor(private val userApiService: UserApiSer
                 }
                 status.postValue(SignInStatus.NONE)
             }else {
-                status.postValue(SignInStatus.SUCCESS)
+                insertUser(it.user)
             }
         },{
             status.postValue(SignInStatus.NONE)
             Timber.e(it)
         }).addTo(disposable)
+    }
+
+    private fun resetLiveData(){
+        status.postValue(SignInStatus.SIGNIN)
+        errorEmailMessage.postValue("")
+        errorPasswordMessage.postValue("")
+    }
+
+    private fun getUser() {
+        Single.fromCallable { builder.userDao().getMe() }
+                .subscribeOn(Schedulers.io())
+                .subscribe ({
+                    user.postValue(it)
+                }, {
+                    Timber.e(it)
+                }).addTo(disposable)
+    }
+
+    private fun insertUser(user: User) {
+
+        when(this.user.value) {
+             null -> {
+                 Single.fromCallable { builder.userDao().insertAll(user) }
+                         .subscribeOn(Schedulers.io())
+                         .subscribe ({
+                             status.postValue(SignInStatus.SUCCESS)
+                         }, {
+                             Timber.e(it)
+                         }).addTo(disposable)
+             }
+            else -> {
+                Single.fromCallable { builder.userDao().delete(this.user.value!!) }
+                        .map {
+                            builder.userDao().insertAll(user)
+                        }
+                        .subscribeOn(Schedulers.io())
+                        .subscribe ({
+                            status.postValue(SignInStatus.SUCCESS)
+                        }, {
+                            Timber.e(it)
+                        }).addTo(disposable)
+            }
+        }
+
     }
 
     override fun onCleared() {

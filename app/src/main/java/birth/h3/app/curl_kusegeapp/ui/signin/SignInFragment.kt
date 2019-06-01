@@ -13,6 +13,7 @@ import birth.h3.app.curl_kusegeapp.CurlApp
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.databinding.FragmentSignInBinding
 import birth.h3.app.curl_kusegeapp.databinding.FragmentSignUpBinding
+import birth.h3.app.curl_kusegeapp.model.enums.SignInStatus
 import birth.h3.app.curl_kusegeapp.ui.signup.SignUpActivity
 import birth.h3.app.curl_kusegeapp.ui.signup.SignUpViewModel
 import kotlinx.android.synthetic.main.fragment_sign_in.*
@@ -84,6 +85,12 @@ class SignInFragment : Fragment() {
             when{
                 it.isNullOrBlank() || it == "" -> password_layout.error = null
                 else -> password_layout.error = it
+            }
+        }
+        viewModel.status.observeForever {
+            when(it){
+                SignInStatus.SUCCESS -> this.activity?.finish()
+                else -> {}
             }
         }
     }
