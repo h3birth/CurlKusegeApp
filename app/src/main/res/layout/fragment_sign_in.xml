@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
+        <import type="android.view.View" />
+        <import type="birth.h3.app.curl_kusegeapp.model.enums.SignInStatus" />
         <variable
             name="viewModel"
             type="birth.h3.app.curl_kusegeapp.ui.signin.SignInViewModel" />
@@ -35,6 +37,7 @@
             app:hintAnimationEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/email"
@@ -87,9 +90,22 @@
             android:layout_height="wrap_content"
             android:text="@string/login"
             android:layout_margin="@dimen/margin_2l"
+            android:visibility="@{viewModel.status == SignInStatus.NONE ? View.VISIBLE : View.GONE}"
             app:layout_constraintTop_toBottomOf="@+id/forget_password"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="visible"/>
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_2l"
+            android:visibility="@{viewModel.status == SignInStatus.SIGNIN ? View.VISIBLE : View.GONE}"
+            app:layout_constraintTop_toBottomOf="@+id/forget_password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="gone"/>
 
         <TextView
             android:id="@+id/signup_goto"

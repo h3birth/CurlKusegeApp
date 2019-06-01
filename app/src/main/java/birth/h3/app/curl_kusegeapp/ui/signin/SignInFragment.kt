@@ -16,6 +16,7 @@ import birth.h3.app.curl_kusegeapp.databinding.FragmentSignUpBinding
 import birth.h3.app.curl_kusegeapp.ui.signup.SignUpActivity
 import birth.h3.app.curl_kusegeapp.ui.signup.SignUpViewModel
 import kotlinx.android.synthetic.main.fragment_sign_in.*
+import timber.log.Timber
 import javax.inject.Inject
 
 
@@ -61,6 +62,29 @@ class SignInFragment : Fragment() {
         signup_goto.setOnClickListener {
             val intent = Intent(this.context, SignUpActivity::class.java)
             startActivity(intent)
+        }
+
+        btn_login.setOnClickListener {
+            viewModel.signIn()
+        }
+
+        setObserve()
+    }
+
+    private fun setObserve() {
+        viewModel.errorEmailMessage.observeForever {
+            Timber.d("errorEmailMessage is ${it}")
+            when{
+                it.isNullOrBlank() || it == "" -> email_layout.error = null
+                else -> email_layout.error = it
+            }
+        }
+        viewModel.errorPasswordMessage.observeForever {
+            Timber.d("errorPasswordMessage is ${it}")
+            when{
+                it.isNullOrBlank() || it == "" -> password_layout.error = null
+                else -> password_layout.error = it
+            }
         }
     }
 
