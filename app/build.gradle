@@ -15,6 +15,11 @@ android {
         versionCode 100
         versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        def properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+        def CURL_URL = properties.getProperty("curl_url")
+        buildConfigField("String", "CURL_URL", "\"${CURL_URL}\"")
     }
     buildTypes {
         release {
@@ -135,4 +140,6 @@ dependencies {
 
     // viewrevealanimator
     implementation 'it.sephiroth.android.library.viewrevealanimator:view-reveal-animator:1.1.4'
+
+    implementation 'androidx.browser:browser:1.0.0'
 }
