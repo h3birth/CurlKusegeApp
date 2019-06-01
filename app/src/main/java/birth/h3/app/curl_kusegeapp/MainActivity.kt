@@ -1,6 +1,8 @@
 package birth.h3.app.curl_kusegeapp
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import birth.h3.app.curl_kusegeapp.databinding.ActivityMainBinding
@@ -9,6 +11,7 @@ import birth.h3.app.curl_kusegeapp.ui.chart.ChartFragment
 import birth.h3.app.curl_kusegeapp.ui.mydata.MyDataFragment
 import birth.h3.app.curl_kusegeapp.ui.news.NewsFragment
 import birth.h3.app.curl_kusegeapp.ui.setting.SettingFragment
+import birth.h3.app.curl_kusegeapp.ui.signup.SignUpActivity
 import birth.h3.app.curl_kusegeapp.ui.top.TopFragment
 import birth.h3.app.curl_kusegeapp.ui.util.BottomNavigationViewHelper
 import birth.h3.app.curl_kusegeapp.ui.util.UtilDateTime
@@ -36,6 +39,11 @@ class MainActivity : AppCompatActivity() {
         floatingActionButton.setOnClickListener { animator.showNext() }
 
         onSubmitClickLister()
+
+        findViewById<Button>(R.id.btn_signup).setOnClickListener {
+            val intent = Intent(this.application, SignUpActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     fun setBottomNavigtionOption() {
