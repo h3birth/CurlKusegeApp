@@ -24,7 +24,7 @@ class SettingViewModel @Inject constructor(private val userApiService: UserApiSe
         getUser()
     }
 
-    private fun getUser() {
+    fun getUser() {
         Single.fromCallable { builder.userDao().getMe() }
                 .subscribeOn(Schedulers.io())
                 .subscribe ({

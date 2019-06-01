@@ -61,4 +61,9 @@ class SettingFragment : androidx.fragment.app.Fragment() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getUser()
+    }
+
 }
