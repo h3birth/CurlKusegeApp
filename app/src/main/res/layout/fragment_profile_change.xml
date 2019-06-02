@@ -75,20 +75,24 @@
                     app:layout_constraintTop_toBottomOf="@+id/gender_label"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/margin_m"
-                    android:layout_marginStart="@dimen/margin_3l">
+                    android:layout_marginStart="@dimen/margin_3l"
+                    android:checkedButton="@={viewmodel.gender}">
 
                     <RadioButton
+                        android:id="@+id/gender_male"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/gender_male"
-                        android:checked="true"/>
+                        tools:checked="true"/>
 
                     <RadioButton
+                        android:id="@+id/gender_female"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/gender_female"/>
 
                     <RadioButton
+                        android:id="@+id/gender_none"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/gender_none"/>
@@ -113,20 +117,24 @@
                     app:layout_constraintTop_toBottomOf="@+id/hair_type_label"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/margin_m"
-                    android:layout_marginStart="@dimen/margin_3l">
+                    android:layout_marginStart="@dimen/margin_3l"
+                    android:checkedButton="@={viewmodel.hairType}">
 
                     <RadioButton
+                        android:id="@+id/my_hair_type_straight"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/hair_status_straight"
-                        android:checked="true"/>
+                        tools:checked="true"/>
 
                     <RadioButton
+                        android:id="@+id/my_hair_type_curl"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/hair_status_curl"/>
 
                     <RadioButton
+                        android:id="@+id/my_hair_type_very_curl"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/hair_status_very_curl"/>

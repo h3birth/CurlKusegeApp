@@ -6,6 +6,8 @@ import birth.h3.app.curl_kusegeapp.model.db.AppDatabase
 import birth.h3.app.curl_kusegeapp.model.entity.User
 import birth.h3.app.curl_kusegeapp.model.enums.APIResponseStatus
 import birth.h3.app.curl_kusegeapp.model.enums.APIStatus
+import birth.h3.app.curl_kusegeapp.model.enums.Gender
+import birth.h3.app.curl_kusegeapp.model.enums.HairStatus
 import birth.h3.app.curl_kusegeapp.model.net.UserApiService
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
@@ -21,8 +23,8 @@ class ProfileChangeViewModel @Inject constructor(private val userApiService: Use
     val user: MutableLiveData<User?> = MutableLiveData<User?>().apply { value = null }
     val nickname: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
     val errorNicknameMessage: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
-    val gender: MutableLiveData<Int> = MutableLiveData<Int>().apply { value = 0 }
-    val hairType: MutableLiveData<Int> = MutableLiveData<Int>().apply { value = 1 }
+    val gender: MutableLiveData<Int> = MutableLiveData<Int>()
+    val hairType: MutableLiveData<Int> = MutableLiveData<Int>()
     val status: MutableLiveData<APIStatus> = MutableLiveData<APIStatus>().apply { value = APIStatus.NONE }
 
     init {
@@ -33,8 +35,13 @@ class ProfileChangeViewModel @Inject constructor(private val userApiService: Use
         Single.fromCallable { builder.userDao().getMe() }
                 .subscribeOn(Schedulers.io())
                 .subscribe({
+                    Timber.d("c is ${it}")
                     user.postValue(it)
-                    nickname.postValue(it?.nickname)
+                    it?.let {
+                        nickname.postValue(it.nickname)
+                        gender.postValue(Gender.fromValue(it.gender).resId)
+                        hairType.postValue(HairStatus.fromId(it.hairTypeId).resId)
+                    }
                 }, {
                     Timber.e(it)
                 }).addTo(disposable)
@@ -42,7 +49,7 @@ class ProfileChangeViewModel @Inject constructor(private val userApiService: Use
 
     fun profileChange() {
         this.status.postValue(APIStatus.LOADING)
-        userApiService.profilechange(user.value!!.id, nickname.value!!, gender.value!!, hairType.value!!).subscribeOn(Schedulers.io()).subscribe({
+        userApiService.profilechange(user.value!!.id, nickname.value!!, Gender.fromResId(gender.value!!).rawValue, HairStatus.fromResId(hairType.value!!).id).subscribeOn(Schedulers.io()).subscribe({
             Timber.d("ProfileChangeResponse is ${it}")
             when(it.status){
                 APIResponseStatus.SUCCEESS.rawValue -> {
