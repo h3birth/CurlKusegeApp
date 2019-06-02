@@ -41,6 +41,22 @@ fun srcCompat(imageView: ImageView, resourceId: Int) {
 }
 
 /**
+ * 画像 ローカルリソースバインディング
+ */
+@BindingAdapter("screenShot")
+fun screenShot(imageView: ImageView, resourceId: Int) {
+    val requestOptions: RequestOptions = RequestOptions()
+    requestOptions.placeholder(ColorDrawable(Color.GRAY))
+//            .override(600,600)
+            .dontAnimate()
+            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+    Glide.with(imageView.context)
+            .load(resourceId)
+            .apply(requestOptions)
+            .into(imageView)
+}
+
+/**
  * 高さバインディング
  */
 @BindingAdapter("android:minHeight")

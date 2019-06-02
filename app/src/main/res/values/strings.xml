@@ -59,6 +59,7 @@
 
     <!-- Intent/Argment -->
     <string name="arg_page">PAGE</string>
+    <string name="arg_set_type">SETTYPE</string>
 
     <!-- ステータス -->
     <string name="submited_day">%d日</string>
@@ -92,4 +93,11 @@
     <string name="etc_setting">その他</string>
     <string name="withdrawal">退会</string>
     <string name="help_feedback">ヘルプとフィードバック</string>
+
+    <!-- プッシュ設定 -->
+    <string name="push_lead_1">プッシュ設定の変更は以下の順序で行います。</string>
+    <string name="push_lead_2">端末の設定アプリから「か〜る」アプリ情報を開きます。</string>
+    <string name="push_lead_3">通知を選びます。</string>
+    <string name="push_lead_4">通知の表示をON/OFFにします。</string>
+    <string name="device_info_btn">アプリの情報を開く</string>
 </resources>

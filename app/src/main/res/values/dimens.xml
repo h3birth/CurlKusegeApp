@@ -29,6 +29,7 @@
     <dimen name="markImage">20dp</dimen>
     <dimen name="dataImage">50dp</dimen>
     <dimen name="messageIcon">45dp</dimen>
+    <dimen name="pushDescriptionImage">300dp</dimen>
 
     <!-- elevation(影) -->
     <dimen name="elevation">5dp</dimen>

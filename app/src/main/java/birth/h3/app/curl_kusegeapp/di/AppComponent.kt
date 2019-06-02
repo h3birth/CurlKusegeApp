@@ -11,6 +11,7 @@ import birth.h3.app.curl_kusegeapp.ui.registercity.SearchAddressFragment
 import birth.h3.app.curl_kusegeapp.ui.setting.SettingFragment
 import birth.h3.app.curl_kusegeapp.ui.setting.SettingViewModel
 import birth.h3.app.curl_kusegeapp.ui.setting.account.*
+import birth.h3.app.curl_kusegeapp.ui.setting.app.PushFragment
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInFragment
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInViewModel
 import birth.h3.app.curl_kusegeapp.ui.signup.SignUpFragment
@@ -47,6 +48,7 @@ interface AppComponent {
     fun inject(fragment: EmailChangeFragment)
     fun inject(fragment: PasswordChangeFragment)
     fun inject(fragment: ProfileChangeFragment)
+    fun inject(fragment: PushFragment)
     fun inject(viewModel: MainViewModel)
     fun inject(viewModel: RegisterCityViewModel)
     fun inject(viewModel: WeatherViewModel)

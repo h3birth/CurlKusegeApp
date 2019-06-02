@@ -19,7 +19,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="HardcodedDebugMode">
-        <activity android:name=".ui.setting.account.AccountActivity"></activity>
+        <activity android:name=".ui.setting.app.AppSettingActivity"></activity>
+        <activity android:name=".ui.setting.account.AccountActivity" />
         <activity android:name=".ui.signin.SignInActivity" />
         <activity android:name=".ui.signup.SignUpActivity" />
         <activity android:name=".MainActivity">

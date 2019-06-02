@@ -12,6 +12,7 @@ import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.databinding.FragmentSettingBinding
 import birth.h3.app.curl_kusegeapp.databinding.FragmentSignInBinding
 import birth.h3.app.curl_kusegeapp.ui.setting.account.AccountActivity
+import birth.h3.app.curl_kusegeapp.ui.setting.app.AppSettingActivity
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInActivity
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInViewModel
 import birth.h3.app.curl_kusegeapp.ui.signup.SignUpActivity
@@ -58,6 +59,12 @@ class SettingFragment : androidx.fragment.app.Fragment() {
 
         account_setting_icon.setOnClickListener {
             val intent = Intent(this.activity?.application, AccountActivity::class.java)
+            startActivity(intent)
+        }
+
+        tv_setting_push.setOnClickListener {
+            val intent = Intent(this.activity?.application, AppSettingActivity::class.java)
+            intent.putExtra(getString(R.string.arg_set_type), "push")
             startActivity(intent)
         }
 
