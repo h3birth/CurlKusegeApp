@@ -88,4 +88,8 @@
     <string name="gender_male">男性</string>
     <string name="gender_female">女性</string>
     <string name="gender_none">指定しない</string>
+
+    <string name="etc_setting">その他</string>
+    <string name="withdrawal">退会</string>
+    <string name="help_feedback">ヘルプとフィードバック</string>
 </resources>
