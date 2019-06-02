@@ -65,23 +65,6 @@
                     android:text="@string/user_password_change"
                     app:layout_constraintTop_toBottomOf="@+id/mail_change"/>
 
-                <TextView
-                    android:id="@+id/etc_setting"
-                    style="@style/AppSettingHeader"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_m"
-                    android:text="@string/etc_setting"
-                    app:layout_constraintTop_toBottomOf="@+id/password_change"/>
-
-                <TextView
-                    android:id="@+id/help_feedback"
-                    style="@style/AppSettingSelectableText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/help_feedback"
-                    app:layout_constraintTop_toBottomOf="@+id/etc_setting"/>
-
                 <Button
                     android:id="@+id/logout"
                     style="@style/Widget.AppCompat.Button.Borderless"
@@ -91,7 +74,7 @@
                     android:text="@string/logout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/help_feedback" />
+                    app:layout_constraintTop_toBottomOf="@+id/password_change" />
 
                 <Button
                     android:id="@+id/withdrawal"
