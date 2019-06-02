@@ -32,7 +32,7 @@
 
     <!-- 設定ページ -->
     <string name="user_account_setting">アカウント設定</string>
-    <string name="user_account_change">アカウント変更</string>
+    <string name="user_profile_change">プロフィール変更</string>
     <string name="user_mail_change">メールアドレス変更</string>
     <string name="user_password_change">パスワード変更</string>
 
@@ -81,4 +81,11 @@
     <string name="old_password">現在のパスワード</string>
     <string name="new_password">新しいパスワード</string>
     <string name="new_password_confirm">もう１度入力してください</string>
+    <string name="nickname">ニックネーム</string>
+    <string name="gender">性別</string>
+    <string name="hair_type">あなたの髪質</string>
+
+    <string name="gender_male">男性</string>
+    <string name="gender_female">女性</string>
+    <string name="gender_none">指定しない</string>
 </resources>

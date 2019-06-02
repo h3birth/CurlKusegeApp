@@ -58,6 +58,11 @@ class AccountFragment : Fragment() {
             val fragment = PasswordChangeFragment()
             fragmentCommit(fragment, fragment.TAG)
         }
+
+        profile_change.setOnClickListener {
+            val fragment = ProfileChangeFragment()
+            fragmentCommit(fragment, fragment.TAG)
+        }
     }
 
     private fun fragmentCommit(fragment: Fragment, tag: String) {

@@ -46,6 +46,7 @@ interface AppComponent {
     fun inject(fragment: AccountFragment)
     fun inject(fragment: EmailChangeFragment)
     fun inject(fragment: PasswordChangeFragment)
+    fun inject(fragment: ProfileChangeFragment)
     fun inject(viewModel: MainViewModel)
     fun inject(viewModel: RegisterCityViewModel)
     fun inject(viewModel: WeatherViewModel)
@@ -57,4 +58,5 @@ interface AppComponent {
     fun inject(viewModel: AccountViewModel)
     fun inject(viewModel: EmailChangeViewModel)
     fun inject(viewModel: PasswordChangeViewModel)
+    fun inject(viewModel: ProfileChangeViewModel)
 }

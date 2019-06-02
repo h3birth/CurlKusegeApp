@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View" />
+        <import type="birth.h3.app.curl_kusegeapp.model.enums.APIStatus" />
+        <variable
+            name="viewmodel"
+            type="birth.h3.app.curl_kusegeapp.ui.setting.account.ProfileChangeViewModel" />
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.setting.account.ProfileChangeFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/profile_change_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/user_profile_change"
+            app:titleTextColor="@color/colorPrimary"
+            android:background="@color/colorWhite"
+            android:minHeight="?attr/actionBarSize"
+            app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/profile_change_toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/nickname_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_margin="@dimen/margin_2l"
+                    app:errorEnabled="true"
+                    app:hintEnabled="true"
+                    app:hintAnimationEnabled="true"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/nickname_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/nickname"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:text="@={viewmodel.nickname}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/gender_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/nickname_layout"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textSize="@dimen/text_s"
+                    android:text="@string/gender"
+                    android:layout_marginStart="@dimen/margin_2l"
+                    android:layout_marginTop="@dimen/margin_l"/>
+
+                <RadioGroup
+                    android:id="@+id/gender_radio_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/gender_label"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="@dimen/margin_m"
+                    android:layout_marginStart="@dimen/margin_3l">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gender_male"
+                        android:checked="true"/>
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gender_female"/>
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gender_none"/>
+
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/hair_type_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/gender_radio_group"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textSize="@dimen/text_s"
+                    android:text="@string/hair_type"
+                    android:layout_marginTop="@dimen/margin_2l"
+                    android:layout_marginStart="@dimen/margin_2l"/>
+
+                <RadioGroup
+                    android:id="@+id/hair_type_radio_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/hair_type_label"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="@dimen/margin_m"
+                    android:layout_marginStart="@dimen/margin_3l">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hair_status_straight"
+                        android:checked="true"/>
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hair_status_curl"/>
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hair_status_very_curl"/>
+
+                </RadioGroup>
+
+                <Button
+                    android:id="@+id/btn_profile_change"
+                    style="@style/Widget.AppCompat.Button"
+                    android:background="@color/colorPrimary"
+                    android:textColor="@color/colorWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_change"
+                    android:layout_margin="@dimen/margin_2l"
+                    android:visibility="@{viewmodel.status == APIStatus.NONE ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintTop_toBottomOf="@+id/hair_type_radio_group"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:visibility="visible"/>
+
+                <ProgressBar
+                    android:id="@+id/loading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_2l"
+                    android:visibility="@{viewmodel.status == APIStatus.LOADING ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintTop_toBottomOf="@+id/hair_type_radio_group"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:visibility="gone"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
