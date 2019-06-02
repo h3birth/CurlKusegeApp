@@ -54,4 +54,9 @@ class MyDataFragment : Fragment() {
         }
     }
 
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if(!hidden) viewModel.getMyData()
+    }
+
 }
