@@ -156,13 +156,6 @@
                         android:layout_height="wrap_content"
                         android:text="@string/tv_setting_theme" />
 
-                    <TextView
-                        android:id="@+id/tv_setting_data_clear"
-                        style="@style/AppSettingSelectableText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/tv_setting_clear" />
-
                 </LinearLayout>
 
                 <LinearLayout
