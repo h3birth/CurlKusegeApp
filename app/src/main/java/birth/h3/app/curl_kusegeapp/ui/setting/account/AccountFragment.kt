@@ -51,12 +51,21 @@ class AccountFragment : Fragment() {
 
         mail_change.setOnClickListener {
             val fragment = EmailChangeFragment()
-            this.fragmentManager?.beginTransaction()
-                    ?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                    ?.replace(R.id.account_container, fragment, fragment.TAG)
-                    ?.addToBackStack(null)
-                    ?.commit()
+            fragmentCommit(fragment, fragment.TAG)
         }
+
+        password_change.setOnClickListener {
+            val fragment = PasswordChangeFragment()
+            fragmentCommit(fragment, fragment.TAG)
+        }
+    }
+
+    private fun fragmentCommit(fragment: Fragment, tag: String) {
+        this.fragmentManager?.beginTransaction()
+                ?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                ?.replace(R.id.account_container, fragment, tag)
+                ?.addToBackStack(null)
+                ?.commit()
     }
 
 }

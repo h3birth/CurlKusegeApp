@@ -77,4 +77,8 @@
 
     <string name="logout">ログアウト</string>
     <string name="new_email">新しいメールアドレス</string>
+    <string name="btn_change">変更する</string>
+    <string name="old_password">現在のパスワード</string>
+    <string name="new_password">新しいパスワード</string>
+    <string name="new_password_confirm">もう１度入力してください</string>
 </resources>

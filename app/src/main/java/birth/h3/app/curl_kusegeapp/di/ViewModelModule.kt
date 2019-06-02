@@ -13,6 +13,7 @@ import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityViewModel
 import birth.h3.app.curl_kusegeapp.ui.setting.SettingViewModel
 import birth.h3.app.curl_kusegeapp.ui.setting.account.AccountViewModel
 import birth.h3.app.curl_kusegeapp.ui.setting.account.EmailChangeViewModel
+import birth.h3.app.curl_kusegeapp.ui.setting.account.PasswordChangeViewModel
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInViewModel
 import birth.h3.app.curl_kusegeapp.ui.signup.SignUpViewModel
 import birth.h3.app.curl_kusegeapp.ui.top.TopViewModel
@@ -82,5 +83,10 @@ class ViewModelModule {
     @Provides
     fun provideEmailChangeViewModel(userApiService: UserApiService, builder:AppDatabase) : EmailChangeViewModel {
         return EmailChangeViewModel(userApiService, builder)
+    }
+
+    @Provides
+    fun providePasswordChangeViewModel(userApiService: UserApiService, builder:AppDatabase) : PasswordChangeViewModel {
+        return PasswordChangeViewModel(userApiService, builder)
     }
 }
