@@ -76,4 +76,5 @@
     <string name="signup_goto">新規会員登録はこちら</string>
 
     <string name="logout">ログアウト</string>
+    <string name="new_email">新しいメールアドレス</string>
 </resources>

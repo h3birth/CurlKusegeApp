@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <import type="android.view.View" />
+        <import type="birth.h3.app.curl_kusegeapp.model.enums.APIStatus" />
+        <variable
+            name="viewmodel"
+            type="birth.h3.app.curl_kusegeapp.ui.setting.account.EmailChangeViewModel" />
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.setting.account.EmailChangeFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/email_change_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/user_mail_change"
+            app:titleTextColor="@color/colorPrimary"
+            android:background="@color/colorWhite"
+            android:minHeight="?attr/actionBarSize"
+            app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
+            tools:ignore="MissingConstraints" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_margin="@dimen/margin_2l"
+            app:layout_constraintTop_toBottomOf="@+id/email_change_toolbar"
+            app:errorEnabled="true"
+            app:hintEnabled="true"
+            app:hintAnimationEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/new_email"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text="@={viewmodel.newEMail}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginStart="@dimen/margin_2l"
+            android:layout_marginEnd="@dimen/margin_2l"
+            app:layout_constraintTop_toBottomOf="@+id/email_layout"
+            app:errorEnabled="true"
+            app:hintEnabled="true"
+            app:hintAnimationEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:text="@={viewmodel.password}"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_email_change"
+            style="@style/Widget.AppCompat.Button"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorWhite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            android:layout_margin="@dimen/margin_2l"
+            android:visibility="@{viewmodel.status == APIStatus.NONE ? View.VISIBLE : View.GONE}"
+            app:layout_constraintTop_toBottomOf="@+id/password_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="visible"/>
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_2l"
+            android:visibility="@{viewmodel.status == APIStatus.LOADING ? View.VISIBLE : View.GONE}"
+            app:layout_constraintTop_toBottomOf="@+id/password_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="gone"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
