@@ -20,7 +20,10 @@ import javax.inject.Inject
  *
  */
 class PushFragment : Fragment() {
-    val TAG = "push"
+    companion object {
+        val TAG = "push"
+    }
+
     @Inject
     lateinit var viewModel: PushViewModel
 

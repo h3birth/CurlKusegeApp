@@ -68,6 +68,12 @@ class SettingFragment : androidx.fragment.app.Fragment() {
             startActivity(intent)
         }
 
+        tv_setting_icon.setOnClickListener {
+            val intent = Intent(this.activity?.application, AppSettingActivity::class.java)
+            intent.putExtra(getString(R.string.arg_set_type), "icon")
+            startActivity(intent)
+        }
+
         setObserve()
     }
 

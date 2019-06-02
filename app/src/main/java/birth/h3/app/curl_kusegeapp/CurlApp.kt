@@ -1,6 +1,8 @@
 package birth.h3.app.curl_kusegeapp
 
 import android.app.Application
+import android.content.Context
+import android.content.SharedPreferences
 import android.net.Uri
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
@@ -29,5 +31,15 @@ class CurlApp : Application() {
 
     fun curlPageURI(uri: String){
         this.openWeb(BuildConfig.CURL_URL + uri)
+    }
+
+    fun getPref(key: String): Int {
+        val pref: SharedPreferences = getSharedPreferences(getString(R.string.shared_preferense), Context.MODE_PRIVATE)
+        return pref.getInt(key, 0)
+    }
+
+    fun putPrefInt(key: String, value: Int) {
+        val pref: SharedPreferences = getSharedPreferences(getString(R.string.shared_preferense), Context.MODE_PRIVATE)
+        pref.edit().putInt(key, value).apply()
     }
 }

@@ -15,14 +15,19 @@ class AppSettingActivity : AppCompatActivity() {
         val arg_set_type = intent.extras.getString(getString(R.string.arg_set_type))
         Timber.d("arg_set_type is ${arg_set_type}")
 
-
         val fragment = when(arg_set_type) {
             "push" -> PushFragment()
+            "icon" -> IconFragment()
             else -> PushFragment()
+        }
+        val tag = when(arg_set_type){
+            "push" -> PushFragment.TAG
+            "icon" -> IconFragment.TAG
+            else -> PushFragment.TAG
         }
 
         supportFragmentManager.beginTransaction()
-            .add(R.id.app_setting_container, fragment, fragment.TAG)
+            .add(R.id.app_setting_container, fragment, tag)
             .commit()
     }
 }

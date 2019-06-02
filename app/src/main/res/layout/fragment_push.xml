@@ -79,7 +79,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-            <ImageView
+            a<ImageView
                 android:id="@+id/push_description_1"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/pushDescriptionImage"

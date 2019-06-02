@@ -61,6 +61,11 @@
     <string name="arg_page">PAGE</string>
     <string name="arg_set_type">SETTYPE</string>
 
+    <!-- Prefrense -->
+    <string name="shared_preferense">CURL_PREF</string>
+    <string name="pref_icon">PREF_ICON</string>
+    <string name="pref_theme">PREF_THEME</string>
+
     <!-- ステータス -->
     <string name="submited_day">%d日</string>
     <string name="hair_status_straight">さらさら</string>
@@ -100,4 +105,7 @@
     <string name="push_lead_3">通知を選びます。</string>
     <string name="push_lead_4">通知の表示をON/OFFにします。</string>
     <string name="device_info_btn">アプリの情報を開く</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
