@@ -18,11 +18,13 @@ class AppSettingActivity : AppCompatActivity() {
         val fragment = when(arg_set_type) {
             "push" -> PushFragment()
             "icon" -> IconFragment()
+            "theme" -> ThemeFragment()
             else -> PushFragment()
         }
         val tag = when(arg_set_type){
             "push" -> PushFragment.TAG
             "icon" -> IconFragment.TAG
+            "theme" -> ThemeFragment.TAG
             else -> PushFragment.TAG
         }
 

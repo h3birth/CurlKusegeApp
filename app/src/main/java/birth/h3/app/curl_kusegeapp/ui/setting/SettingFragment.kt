@@ -74,6 +74,12 @@ class SettingFragment : androidx.fragment.app.Fragment() {
             startActivity(intent)
         }
 
+        tv_setting_theme.setOnClickListener {
+            val intent = Intent(this.activity?.application, AppSettingActivity::class.java)
+            intent.putExtra(getString(R.string.arg_set_type), "theme")
+            startActivity(intent)
+        }
+
         setObserve()
     }
 
