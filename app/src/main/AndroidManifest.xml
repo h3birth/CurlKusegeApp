@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/PinkTheme"
+        android:theme="@style/BlueTheme"
         tools:ignore="HardcodedDebugMode">
         <activity android:name=".ui.setting.app.AppSettingActivity"></activity>
         <activity android:name=".ui.setting.account.AccountActivity" />

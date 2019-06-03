@@ -25,9 +25,16 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var viewModel: MainViewModel
 
+    private val curlApp by lazy { (applicationContext as CurlApp) }
+
+    private var lastTheme: Int? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (applicationContext as CurlApp).component.inject(this)
+        curlApp.component.inject(this)
+
+        lastTheme = curlApp.getPrefTheme()
+        setTheme(curlApp.getPrefTheme())
 
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.setLifecycleOwner(this)
@@ -125,5 +132,9 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         viewModel.getUser()
+        if(lastTheme != curlApp.getPrefTheme()){
+            finish()
+            startActivity(Intent(this, MainActivity::class.java))
+        }
     }
 }
