@@ -24,6 +24,22 @@
         <item name="titleTextColor">@color/colorPrimaryPink</item>
     </style>
 
+    <style name="GreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryGreen</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkGreen</item>
+        <item name="colorAccent">@color/colorAccentGreen</item>
+        <item name="titleTextColor">@color/colorPrimaryGreen</item>
+    </style>
+
+    <style name="BeeTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryBee</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkBee</item>
+        <item name="colorAccent">@color/colorAccentBee</item>
+        <item name="titleTextColor">@color/colorPrimaryDarkBee</item>
+    </style>
+
     <!-- Button -->
     <style name="AppTheme.RaisedButton" parent="Theme.AppCompat.Light">
         <item name="android:background">@android:color/white</item>

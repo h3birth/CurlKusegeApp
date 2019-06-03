@@ -31,6 +31,41 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <TextView
+                    android:id="@+id/blue_theme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BLUETHEME"
+                    android:layout_margin="@dimen/margin_3l"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                    android:id="@+id/pink_theme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PINKTHEME"
+                    android:layout_margin="@dimen/margin_3l"
+                    app:layout_constraintTop_toBottomOf="@+id/blue_theme"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                    android:id="@+id/green_theme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GREENTHEME"
+                    android:layout_margin="@dimen/margin_3l"
+                    app:layout_constraintTop_toBottomOf="@+id/pink_theme"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                    android:id="@+id/bee_theme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BeeTHEME"
+                    android:layout_margin="@dimen/margin_3l"
+                    app:layout_constraintTop_toBottomOf="@+id/green_theme"
+                    app:layout_constraintStart_toStartOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>

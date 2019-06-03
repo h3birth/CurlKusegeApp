@@ -47,4 +47,9 @@ class CurlApp : Application() {
         val pref: SharedPreferences = getSharedPreferences(getString(R.string.shared_preferense), Context.MODE_PRIVATE)
         pref.edit().putInt(key, value).apply()
     }
+
+    fun putPrefTheme(value: Int) {
+        val pref: SharedPreferences = getSharedPreferences(getString(R.string.shared_preferense), Context.MODE_PRIVATE)
+        pref.edit().putInt(getString(R.string.pref_theme), value).commit()
+    }
 }

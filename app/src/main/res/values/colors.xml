@@ -14,6 +14,14 @@
     <color name="colorPrimaryDarkPink">#E91E63</color>
     <color name="colorAccentPink">#F06292</color>
 
+    <color name="colorPrimaryGreen">#81C784</color>
+    <color name="colorPrimaryDarkGreen">#4CAF50</color>
+    <color name="colorAccentGreen">#81C784</color>
+
+    <color name="colorPrimaryBee">#FDD835</color>
+    <color name="colorPrimaryDarkBee">#585858</color>
+    <color name="colorAccentBee">#A5A5A5</color>
+
     <color name="light_grey">#eeeeee</color>
     <color name="light_dark_grey">#e6e6e6</color>
     <color name="colorPrimaryOpacity">#332196f3</color>
