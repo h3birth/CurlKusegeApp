@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.activity_register_city.*
 import android.widget.Toast
 import android.app.Activity
 import android.content.Context
+import birth.h3.app.curl_kusegeapp.CurlApp
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -18,6 +19,8 @@ class RegisterCityActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Timber.d("onCreate")
+        setTheme((applicationContext as CurlApp).getPrefTheme())
+
         setContentView(R.layout.activity_register_city)
 
         val page = intent.extras.getInt(getString(R.string.arg_page))
