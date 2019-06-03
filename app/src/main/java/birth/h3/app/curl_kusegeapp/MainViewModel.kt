@@ -49,6 +49,7 @@ class MainViewModel @Inject constructor(private val weatherApiService: WeatherAp
                 .subscribeOn(Schedulers.io())
                 .subscribe ({
                     user.postValue(it)
+                    fabImage.postValue(utilIcon.getGenderIcon(it?.hairTypeId ?: 1))
                 }, {
                     Timber.e(it)
                 }).addTo(disposable)

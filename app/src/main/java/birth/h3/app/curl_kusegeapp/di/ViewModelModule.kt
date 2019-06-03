@@ -75,8 +75,8 @@ class ViewModelModule {
     }
 
     @Provides
-    fun provideSettingViewModel(userApiService: UserApiService, builder:AppDatabase) : SettingViewModel {
-        return SettingViewModel(userApiService, builder)
+    fun provideSettingViewModel(userApiService: UserApiService, builder:AppDatabase, utilIcon: UtilIcon) : SettingViewModel {
+        return SettingViewModel(userApiService, builder, utilIcon)
     }
 
     @Provides
