@@ -178,7 +178,7 @@
         android:focusable="true"
         app:layout_anchor="@+id/bottom_app_bar"
         app:backgroundTint="@color/colorWhite"
-        android:src="@drawable/men_curl"
+        app:fabicon="@{viewModel.fabImage}"
         app:layout_anchorGravity="center" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

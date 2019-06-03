@@ -20,6 +20,7 @@ import birth.h3.app.curl_kusegeapp.ui.signup.SignUpViewModel
 import birth.h3.app.curl_kusegeapp.ui.top.TopFragment
 import birth.h3.app.curl_kusegeapp.ui.top.TopPagerAdapter
 import birth.h3.app.curl_kusegeapp.ui.top.TopViewModel
+import birth.h3.app.curl_kusegeapp.ui.util.UtilIcon
 import birth.h3.app.curl_kusegeapp.ui.weather.GeolocationWeatherFragment
 import birth.h3.app.curl_kusegeapp.ui.weather.WeatherFragment
 import birth.h3.app.curl_kusegeapp.ui.weather.WeatherViewModel
@@ -63,4 +64,5 @@ interface AppComponent {
     fun inject(viewModel: EmailChangeViewModel)
     fun inject(viewModel: PasswordChangeViewModel)
     fun inject(viewModel: ProfileChangeViewModel)
+    fun inject(util: UtilIcon)
 }

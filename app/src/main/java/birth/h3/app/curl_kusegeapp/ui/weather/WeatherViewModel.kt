@@ -14,6 +14,7 @@ import birth.h3.app.curl_kusegeapp.model.entity.Weather
 import birth.h3.app.curl_kusegeapp.model.entity.Icon
 import birth.h3.app.curl_kusegeapp.model.entity.TimeWeather
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
+import birth.h3.app.curl_kusegeapp.ui.util.UtilIcon
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -24,9 +25,9 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class WeatherViewModel @Inject constructor(private val weatherApiService: WeatherApiService,
-                                           private val builder: AppDatabase) : ViewModel() {
+                                           private val builder: AppDatabase,
+                                           private val utilIcon: UtilIcon) : ViewModel() {
     private val disposable = CompositeDisposable()
-
     var page: MutableLiveData<Int> = MutableLiveData<Int>().apply { value = 0 }
     val weather: MutableLiveData<Weather> = MutableLiveData()
     val timeWeather: MutableLiveData<List<TimeWeather>> = MutableLiveData<List<TimeWeather>>().apply { value = mutableListOf() }
@@ -43,23 +44,10 @@ class WeatherViewModel @Inject constructor(private val weatherApiService: Weathe
     init {
         weather.value = Weather.placeholder()
         icon.value = Icon(3)
-        submitImages.value = listOf(R.drawable.men_streat,
-                                    R.drawable.men_curl,
-                                    R.drawable.men_very_curl)
-        statusImage.value = R.drawable.men_curl
+        submitImages.value = utilIcon.getGenderSubmitIcon()
+        statusImage.value = utilIcon.getGenderIcon(1)
         address.value = ""
         day.value = "11/21"
-    }
-
-    fun setWeather(weather: Weather){
-        this.weather.value = weather
-        this.icon.value = Icon(weather.weather)
-        this.statusImage.value = when(weather.kusege){
-            1 -> R.drawable.men_streat
-            2 -> R.drawable.men_curl
-            3 -> R.drawable.men_very_curl
-            else -> R.drawable.men_curl
-        }
     }
 
     fun setColorHex(context:Context, colorID: Int){
@@ -92,6 +80,7 @@ class WeatherViewModel @Inject constructor(private val weatherApiService: Weathe
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy{
                     weather.postValue(it)
+                    statusImage.postValue(utilIcon.getGenderIcon(it.kusege))
                 },
             weatherApiService
                 .getTimeWeather(lat, lon)

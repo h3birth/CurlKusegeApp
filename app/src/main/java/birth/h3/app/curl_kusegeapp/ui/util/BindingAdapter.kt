@@ -4,10 +4,13 @@ import androidx.databinding.BindingAdapter
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.widget.ImageView
+import birth.h3.app.curl_kusegeapp.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.daasuu.bl.BubbleLayout
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * 画像 URLバインディング
@@ -72,3 +75,12 @@ fun setHeight(imageView: ImageView, height: Float) {
 fun setBlBubbleColor(bubbleLayout: BubbleLayout, color: Int){
     bubbleLayout.bubbleColor = color
 }
+
+/**
+ * Fabアイコン
+ */
+@BindingAdapter("fabicon")
+fun setFabIcon(floatingActionButton: FloatingActionButton, resourceId: Int){
+    floatingActionButton.setImageResource(resourceId)
+}
+

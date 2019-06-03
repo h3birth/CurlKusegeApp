@@ -26,7 +26,7 @@ class MyDataFragment : Fragment() {
     @Inject
     lateinit var viewModel: MyDataViewModel
 
-    private val contoller by lazy { MyDataContoller() }
+    private val contoller by lazy { MyDataContoller(viewModel) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

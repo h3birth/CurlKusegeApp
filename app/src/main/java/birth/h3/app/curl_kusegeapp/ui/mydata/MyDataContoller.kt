@@ -6,10 +6,11 @@ import birth.h3.app.curl_kusegeapp.model.entity.SearchAddressResponse
 import birth.h3.app.curl_kusegeapp.ui.registercity.ItemCityController
 import com.airbnb.epoxy.TypedEpoxyController
 
-class MyDataContoller: TypedEpoxyController<List<MyData>>() {
+class MyDataContoller(val viewModel: MyDataViewModel): TypedEpoxyController<List<MyData>>() {
     override fun buildModels(data: List<MyData>) {
         data.forEach {
             ItemMyDataBindingModel_()
+                    .viewModel(viewModel)
                 .myData(it)
                 .id(modelCountBuiltSoFar)
                 .addTo(this)

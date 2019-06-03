@@ -8,6 +8,7 @@ import birth.h3.app.curl_kusegeapp.model.entity.MyData
 import birth.h3.app.curl_kusegeapp.model.entity.User
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
 import birth.h3.app.curl_kusegeapp.ui.util.UtilDateTime
+import birth.h3.app.curl_kusegeapp.ui.util.UtilIcon
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
@@ -17,15 +18,15 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(private val weatherApiService: WeatherApiService,
-                                        private val builder: AppDatabase) : ViewModel() {
+                                        private val builder: AppDatabase,
+                                        private val utilIcon: UtilIcon) : ViewModel() {
     private val disposable = CompositeDisposable()
 
     val submitImages : MutableLiveData<List<Int>> = MutableLiveData<List<Int>>().apply {
-        value = listOf(R.drawable.men_streat,
-            R.drawable.men_curl,
-            R.drawable.men_very_curl)
+        value = utilIcon.getGenderSubmitIcon()
     }
     val user: MutableLiveData<User?> = MutableLiveData<User?>().apply { value = null }
+    val fabImage: MutableLiveData<Int> = MutableLiveData<Int>().apply { value = utilIcon.getGenderIcon(1) }
 
     init {
         getUser()
@@ -40,7 +41,7 @@ class MainViewModel @Inject constructor(private val weatherApiService: WeatherAp
             Timber.d("myDataDao OK")
         },{
             Timber.e(it)
-        })
+        }).addTo(disposable)
     }
 
     fun getUser() {

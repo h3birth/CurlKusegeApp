@@ -20,6 +20,7 @@ import birth.h3.app.curl_kusegeapp.ui.setting.app.PushViewModel
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInViewModel
 import birth.h3.app.curl_kusegeapp.ui.signup.SignUpViewModel
 import birth.h3.app.curl_kusegeapp.ui.top.TopViewModel
+import birth.h3.app.curl_kusegeapp.ui.util.UtilIcon
 import birth.h3.app.curl_kusegeapp.ui.weather.WeatherViewModel
 import dagger.Module
 import dagger.Provides
@@ -39,8 +40,8 @@ class ViewModelModule {
     }
 
     @Provides
-    fun provideMainViewModel(weatherApiService: WeatherApiService, builder:AppDatabase): MainViewModel {
-        return MainViewModel(weatherApiService, builder)
+    fun provideMainViewModel(weatherApiService: WeatherApiService, builder:AppDatabase, utilIcon: UtilIcon): MainViewModel {
+        return MainViewModel(weatherApiService, builder, utilIcon)
     }
 
     @Provides
@@ -49,8 +50,8 @@ class ViewModelModule {
     }
 
     @Provides
-    fun provideWeatherViewModel(weatherApiService: WeatherApiService, builder:AppDatabase) : WeatherViewModel {
-        return WeatherViewModel(weatherApiService, builder)
+    fun provideWeatherViewModel(weatherApiService: WeatherApiService, builder:AppDatabase, utilIcon: UtilIcon) : WeatherViewModel {
+        return WeatherViewModel(weatherApiService, builder, utilIcon)
     }
 
     @Provides
@@ -59,8 +60,8 @@ class ViewModelModule {
     }
 
     @Provides
-    fun provideMyDataViewModel(weatherApiService: WeatherApiService, builder:AppDatabase) : MyDataViewModel {
-        return MyDataViewModel(weatherApiService, builder)
+    fun provideMyDataViewModel(weatherApiService: WeatherApiService, builder:AppDatabase, utilIcon: UtilIcon) : MyDataViewModel {
+        return MyDataViewModel(weatherApiService, builder, utilIcon)
     }
 
     @Provides

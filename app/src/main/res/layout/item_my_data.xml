@@ -8,6 +8,10 @@
             name="myData"
             type="birth.h3.app.curl_kusegeapp.model.entity.MyData" />
 
+        <variable
+            name="viewModel"
+            type="birth.h3.app.curl_kusegeapp.ui.mydata.MyDataViewModel" />
+
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -38,7 +42,7 @@
             android:layout_marginStart="@dimen/margin_3l"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            app:srcCompat="@{myData.getIcon()}"
+            app:srcCompat="@{viewModel.getIcon(myData)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/submit_date"
             app:layout_constraintTop_toTopOf="parent"
