@@ -17,8 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_scrollFlags="enterAlways|scroll"
-        app:title="@string/mydata"
-        app:titleTextColor="@color/colorPrimary" />
+        app:title="@string/mydata" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_data"

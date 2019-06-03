@@ -19,7 +19,8 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="?attr/actionBarSize" />
+        android:layout_marginBottom="?attr/actionBarSize"
+        android:backgroundTint="@color/colorWhite"/>
 
     <it.sephiroth.android.library.viewrevealanimator.ViewRevealAnimator
         android:layout_gravity="bottom"
@@ -155,7 +156,6 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_gravity="bottom"
-        android:backgroundTint="@color/colorPrimaryDark"
         app:fabAlignmentMode="center">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -163,8 +163,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            app:itemIconTint="@drawable/bottom_navigation_item_state"
-            app:itemTextColor="@drawable/bottom_navigation_item_state"
             app:labelVisibilityMode="labeled"
             app:menu="@menu/bottom_navigation_item" />
 
@@ -179,7 +177,8 @@
         app:layout_anchor="@+id/bottom_app_bar"
         app:backgroundTint="@color/colorWhite"
         app:fabicon="@{viewModel.fabImage}"
-        app:layout_anchorGravity="center" />
+        app:layout_anchorGravity="center"
+        android:backgroundTint="@color/colorWhite"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -19,7 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:title="@string/login"
-            app:titleTextColor="@color/colorPrimary"
             android:background="@color/colorWhite"
             android:minHeight="?attr/actionBarSize"
             app:navigationIcon="@drawable/ic_arrow_back_black_24dp"

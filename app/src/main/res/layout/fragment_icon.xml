@@ -17,7 +17,6 @@ xmlns:tools="http://schemas.android.com/tools">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:title="@string/tv_setting_icon"
-            app:titleTextColor="@color/colorPrimary"
             android:background="@color/colorWhite"
             android:minHeight="?attr/actionBarSize"
             app:navigationIcon="@drawable/ic_arrow_back_black_24dp"

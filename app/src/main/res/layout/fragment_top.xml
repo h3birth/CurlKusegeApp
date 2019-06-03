@@ -23,8 +23,7 @@
                     android:minHeight="?attr/actionBarSize"
                     android:theme="?attr/actionBarTheme"
                     app:layout_scrollFlags="enterAlways|scroll"
-                    app:title="@string/app_name"
-                    app:titleTextColor="@color/colorPrimary" />
+                    app:title="@string/app_name" />
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tl_area"

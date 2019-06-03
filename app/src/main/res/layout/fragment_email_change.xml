@@ -20,7 +20,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:title="@string/user_mail_change"
-            app:titleTextColor="@color/colorPrimary"
             android:background="@color/colorWhite"
             android:minHeight="?attr/actionBarSize"
             app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
@@ -72,9 +71,7 @@
 
         <Button
             android:id="@+id/btn_email_change"
-            style="@style/Widget.AppCompat.Button"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/colorWhite"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_change"

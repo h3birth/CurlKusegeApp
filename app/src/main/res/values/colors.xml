@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorWhite">#FFFFFF</color>
-    <color name="colorPrimary">#2196f3</color>
-    <color name="colorPrimaryDark">#0D47A1</color>
-    <color name="colorAccent">#2196f3</color>
+
+    <color name="colorPrimary">@color/colorPrimaryBlue</color>
+    <color name="colorPrimaryDark">@color/colorPrimaryDarkBlue</color>
+    <color name="colorAccent">@color/colorAccentBlue</color>
+
+    <color name="colorPrimaryBlue">#2196f3</color>
+    <color name="colorPrimaryDarkBlue">#0D47A1</color>
+    <color name="colorAccentBlue">#2196f3</color>
+
+    <color name="colorPrimaryPink">#F06292</color>
+    <color name="colorPrimaryDarkPink">#E91E63</color>
+    <color name="colorAccentPink">#F06292</color>
+
     <color name="light_grey">#eeeeee</color>
     <color name="light_dark_grey">#e6e6e6</color>
     <color name="colorPrimaryOpacity">#332196f3</color>
