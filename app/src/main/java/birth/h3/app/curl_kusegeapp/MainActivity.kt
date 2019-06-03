@@ -121,4 +121,9 @@ class MainActivity : AppCompatActivity() {
             floatingActionButton.setImageResource(R.drawable.men_very_curl)
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getUser()
+    }
 }

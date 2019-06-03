@@ -92,6 +92,8 @@ class WeatherViewModel @Inject constructor(private val weatherApiService: Weathe
         )
     }
 
+    fun updateWeatherStatusImage() = statusImage.postValue(utilIcon.getGenderIcon(weather.value?.kusege ?: 1))
+
     override fun onCleared() {
         super.onCleared()
         disposable.clear()

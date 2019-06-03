@@ -153,4 +153,9 @@ class GeolocationWeatherFragment : androidx.fragment.app.Fragment() {
         binding.viewmodel!!.setAddress(address)
     }
 
+    override fun onResume() {
+        super.onResume()
+        weatherViewModel.updateWeatherStatusImage()
+    }
+
 }

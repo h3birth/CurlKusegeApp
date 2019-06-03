@@ -80,6 +80,7 @@ class WeatherFragment : androidx.fragment.app.Fragment() {
         super.onResume()
         Timber.d("onResume")
         weatherViewModel.getCity()
+        weatherViewModel.updateWeatherStatusImage()
     }
 
     private fun setObserve() {
