@@ -47,7 +47,7 @@ class ProfileChangeFragment : Fragment() {
         binding.setLifecycleOwner(this)
         binding.viewmodel = viewModel
 
-        profile_change_toolbar.setOnClickListener {
+        profile_change_toolbar.setNavigationOnClickListener {
             this.fragmentManager?.popBackStack()
         }
 

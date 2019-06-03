@@ -47,7 +47,7 @@ class PasswordChangeFragment : Fragment() {
         binding.setLifecycleOwner(this)
         binding.viewmodel = viewModel
 
-        password_change_toolbar.setOnClickListener {
+        password_change_toolbar.setNavigationOnClickListener {
             this.fragmentManager?.popBackStack()
         }
 

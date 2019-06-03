@@ -13,6 +13,7 @@ import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.databinding.FragmentAccountBinding
 import birth.h3.app.curl_kusegeapp.databinding.FragmentPushBinding
 import birth.h3.app.curl_kusegeapp.ui.setting.account.AccountViewModel
+import kotlinx.android.synthetic.main.fragment_push.*
 import javax.inject.Inject
 
 /**
@@ -41,5 +42,9 @@ class PushFragment : Fragment() {
         (context?.applicationContext as CurlApp).component.inject(this)
         binding.setLifecycleOwner(this)
         binding.viewModel = viewModel
+
+        app_push_toolbar.setNavigationOnClickListener {
+            this.activity?.finish()
+        }
     }
 }

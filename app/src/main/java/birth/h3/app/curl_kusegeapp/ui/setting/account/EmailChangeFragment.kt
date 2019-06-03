@@ -49,7 +49,7 @@ class EmailChangeFragment : Fragment() {
         binding.setLifecycleOwner(this)
         binding.viewmodel = viewModel
 
-        email_change_toolbar.setOnClickListener {
+        email_change_toolbar.setNavigationOnClickListener {
             this.fragmentManager?.popBackStack()
         }
 

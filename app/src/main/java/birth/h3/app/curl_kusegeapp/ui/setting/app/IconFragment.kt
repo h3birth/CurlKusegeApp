@@ -43,6 +43,10 @@ class IconFragment : Fragment() {
         binding.setLifecycleOwner(this)
         binding.viewModel = viewModel
 
+        app_icon_toolbar.setNavigationOnClickListener {
+            this.activity?.finish()
+        }
+
         setObserve()
         val iconResId = when(curlApp.getPref(getString(R.string.pref_icon))){
             2 -> R.id.icon_female
