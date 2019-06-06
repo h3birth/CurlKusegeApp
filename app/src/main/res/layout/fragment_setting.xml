@@ -224,7 +224,7 @@
                             android:layout_weight="1"
                             android:gravity="right"
                             android:paddingRight="@dimen/padding_l"
-                            android:text="0.11.2"
+                            android:text="@{viewModel.versionName}"
                             android:textColor="@color/colorNoActionText" />
 
                     </LinearLayout>

@@ -2,6 +2,7 @@ package birth.h3.app.curl_kusegeapp.ui.setting
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import birth.h3.app.curl_kusegeapp.BuildConfig
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.model.db.AppDatabase
 import birth.h3.app.curl_kusegeapp.model.entity.User
@@ -21,6 +22,7 @@ class SettingViewModel @Inject constructor(private val userApiService: UserApiSe
 
     val user: MutableLiveData<User?> = MutableLiveData<User?>().apply { value = null }
     val avatar: MutableLiveData<Int> = MutableLiveData<Int>().apply { value = utilIcon.getGenderIcon(1) }
+    val versionName: MutableLiveData<String> = MutableLiveData<String>().apply { value = BuildConfig.VERSION_NAME }
 
     init {
         getUser()
