@@ -106,6 +106,6 @@
     <string name="push_lead_4">通知の表示をON/OFFにします。</string>
     <string name="device_info_btn">アプリの情報を開く</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- テーマ -->
+    <string name="theme_enter">決定する</string>
 </resources>
