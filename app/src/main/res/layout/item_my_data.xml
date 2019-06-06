@@ -29,7 +29,7 @@
             android:layout_marginBottom="8dp"
             android:text="@{String.format(@string/submited_day, myData.submitDay)}"
             android:textStyle="bold"
-            android:textSize="@dimen/text_2l"
+            android:textSize="@dimen/text_m"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

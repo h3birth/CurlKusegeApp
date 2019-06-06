@@ -10,7 +10,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import birth.h3.app.curl_kusegeapp.CurlApp
+import birth.h3.app.curl_kusegeapp.ItemMyDataHeaderBindingModel_
 import birth.h3.app.curl_kusegeapp.R
+import birth.h3.app.curl_kusegeapp.databinding.ItemMyDataHeaderBinding
+import com.kodmap.library.kmrecyclerviewstickyheader.KmHeaderItemDecoration
+import com.kodmap.library.kmrecyclerviewstickyheader.KmStickyListener
 import kotlinx.android.synthetic.main.fragment_my_data.*
 import timber.log.Timber
 import javax.inject.Inject
@@ -42,6 +46,37 @@ class MyDataFragment : Fragment() {
             it.adapter = contoller.adapter
             it.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         }
+        rv_data.addItemDecoration(object : KmHeaderItemDecoration(object : KmStickyListener {
+            override fun isHeader(position: Int?): Boolean {
+                val model = contoller.adapter.getModelAtPosition(position!!)
+                return model is ItemMyDataHeaderBindingModel_
+            }
+
+            override fun getHeaderLayout(position: Int?): Int {
+                return R.layout.item_my_data_header
+            }
+
+            override fun getHeaderPositionForItem(position: Int?): Int {
+                var counter = position!!
+
+                while (!isHeader(counter)) {
+                    counter--
+                }
+
+                return counter
+            }
+
+            override fun bindHeaderData(view: View?, position: Int?) {
+                view ?: return
+                position ?: return
+
+                val model = contoller.adapter.getModelAtPosition(position) as ItemMyDataHeaderBindingModel_
+                val binding = ItemMyDataHeaderBinding.bind(view)
+                binding.myData = model.myData()
+                binding.viewModel = model.viewModel()
+                binding.executePendingBindings()
+            }
+        }) {})
 
         setObserve()
 

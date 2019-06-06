@@ -142,4 +142,6 @@ dependencies {
     implementation 'it.sephiroth.android.library.viewrevealanimator:view-reveal-animator:1.1.4'
 
     implementation 'androidx.browser:browser:1.0.0'
+
+    implementation 'com.github.smhdk:KM-Recyclerview-Sticky-Header:v1.0.0'
 }
