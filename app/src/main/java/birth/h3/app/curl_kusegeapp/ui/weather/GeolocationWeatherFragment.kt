@@ -54,7 +54,7 @@ class GeolocationWeatherFragment : androidx.fragment.app.Fragment() {
         super.onActivityCreated(savedInstanceState)
         (context?.applicationContext as CurlApp).component.inject(this)
 
-        val page = arguments!!.getInt(context!!.getString(R.string.arg_page))
+        val page = 0 //arguments!!.getInt(context!!.getString(R.string.arg_page))
         weatherViewModel.page.postValue(page)
 
 

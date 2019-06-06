@@ -69,6 +69,11 @@ class WeatherFragment : androidx.fragment.app.Fragment() {
         setObserve()
         weatherViewModel.getCity()
 
+        tv_change_city.setOnClickListener {
+            val intent = Intent(this.activity?.application, RegisterCityActivity::class.java)
+            intent.putExtra(context!!.getString(R.string.arg_page), page)
+            startActivity(intent)
+        }
         button_register_city.setOnClickListener {
             val intent = Intent(this.activity?.application, RegisterCityActivity::class.java)
             intent.putExtra(context!!.getString(R.string.arg_page), page)

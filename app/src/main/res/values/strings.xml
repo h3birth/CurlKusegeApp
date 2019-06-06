@@ -23,6 +23,7 @@
     <string name="tv_format_number">%d</string>
     <string name="tv_header_wind">風速</string>
     <string name="tv_header_rainy">降水確率</string>
+    <string name="tv_change_city">変更</string>
 
     <!-- ログインフォーム -->
     <string name="tv_login_read">ログインするとあなたのかみのけのくせ度をきろく・ぶんせきします。</string>
