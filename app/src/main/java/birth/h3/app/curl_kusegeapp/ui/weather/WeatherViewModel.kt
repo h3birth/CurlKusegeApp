@@ -13,6 +13,7 @@ import birth.h3.app.curl_kusegeapp.model.entity.City
 import birth.h3.app.curl_kusegeapp.model.entity.Weather
 import birth.h3.app.curl_kusegeapp.model.entity.Icon
 import birth.h3.app.curl_kusegeapp.model.entity.TimeWeather
+import birth.h3.app.curl_kusegeapp.model.enums.APIResponseStatus
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
 import birth.h3.app.curl_kusegeapp.ui.util.UtilIcon
 import io.reactivex.Single
@@ -74,6 +75,14 @@ class WeatherViewModel @Inject constructor(private val weatherApiService: Weathe
     }
 
     fun deleteCity() {
+        weatherApiService.deleteCity(this.city.value!!.id).subscribeOn(Schedulers.io()).subscribe({
+            if(it.status == APIResponseStatus.SUCCEESS.rawValue) deleteDaoCity()
+        },{
+            Timber.d(it)
+        }).addTo(disposable)
+    }
+
+    fun deleteDaoCity(){
         Single.fromCallable { builder.cityDao().delete(this.city.value!!) }
                 .subscribeOn(Schedulers.io())
                 .subscribe ({

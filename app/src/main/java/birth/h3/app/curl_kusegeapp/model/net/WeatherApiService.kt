@@ -48,8 +48,8 @@ interface WeatherApiService{
             @Query("longitude") longitude: Double
     ): Single<CityResponse>
 
-    @DELETE("publid/api/city/{id}")
+    @DELETE("public/api/data/city/{id}")
     fun deleteCity(
             @Path("id") userId: Int
-    ): Completable
+    ): Single<CityResponse>
 }
