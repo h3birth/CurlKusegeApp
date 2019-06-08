@@ -37,4 +37,6 @@
     <dimen name="elevation">5dp</dimen>
 
     <dimen name="time_weather_width">16dp</dimen>
+
+    <dimen name="bottom_sheet_height">60dp</dimen>
 </resources>

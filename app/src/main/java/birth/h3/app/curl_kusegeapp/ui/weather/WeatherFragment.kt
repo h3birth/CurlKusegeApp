@@ -18,6 +18,7 @@ import birth.h3.app.curl_kusegeapp.databinding.ItemTimeWeatherHeaderBinding
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
 import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityActivity
 import birth.h3.app.curl_kusegeapp.ui.util.UtilDateTime
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.kodmap.library.kmrecyclerviewstickyheader.KmHeaderItemDecoration
 import com.kodmap.library.kmrecyclerviewstickyheader.KmStickyListener
 import io.reactivex.disposables.CompositeDisposable
@@ -101,10 +102,14 @@ class WeatherFragment : androidx.fragment.app.Fragment() {
         setObserve()
         weatherViewModel.getCity()
 
+        val bottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet)
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+
         tv_change_city.setOnClickListener {
-            val intent = Intent(this.activity?.application, RegisterCityActivity::class.java)
-            intent.putExtra(context!!.getString(R.string.arg_page), page)
-            startActivity(intent)
+            when(bottomSheetBehavior.state){
+                BottomSheetBehavior.STATE_EXPANDED -> bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+                else -> bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+            }
         }
         button_register_city.setOnClickListener {
             val intent = Intent(this.activity?.application, RegisterCityActivity::class.java)

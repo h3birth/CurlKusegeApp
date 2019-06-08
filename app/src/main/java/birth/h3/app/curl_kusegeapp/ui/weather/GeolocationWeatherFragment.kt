@@ -21,6 +21,7 @@ import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
 import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityActivity
 import birth.h3.app.curl_kusegeapp.ui.util.UtilDateTime
 import birth.h3.app.curl_kusegeapp.ui.util.UtilGeolocation
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.kodmap.library.kmrecyclerviewstickyheader.KmHeaderItemDecoration
 import com.kodmap.library.kmrecyclerviewstickyheader.KmStickyListener
 import kotlinx.android.synthetic.main.fragment_weather.*
@@ -92,7 +93,7 @@ class GeolocationWeatherFragment : androidx.fragment.app.Fragment() {
 
                 val model = controller.adapter.getModelAtPosition(position) as ItemTimeWeatherHeaderBindingModel_
                 val binding = ItemTimeWeatherHeaderBinding.bind(view)
-//                binding.day = model.day()
+                binding.day = model.day()
                 binding.executePendingBindings()
             }
         }) {})
@@ -114,6 +115,10 @@ class GeolocationWeatherFragment : androidx.fragment.app.Fragment() {
             intent.putExtra(context!!.getString(R.string.arg_page), page)
             startActivity(intent)
         }
+
+
+        val bottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet)
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
     }
 
     private fun setObserve() {

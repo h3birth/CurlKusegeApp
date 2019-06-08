@@ -36,4 +36,6 @@
     <color name="colorMaskBlack">#80000000</color>
     <color name="colorDefaultBarItem">#8DA8BE</color>
     <color name="colorBlack">#333333</color>
+
+    <color name="colorTimeHeaderBack">#80FFFFFF</color>
 </resources>

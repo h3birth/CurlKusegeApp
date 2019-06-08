@@ -13,10 +13,11 @@
         android:foregroundGravity="center_horizontal"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:paddingLeft="@dimen/padding_xs"
-        android:paddingTop="@dimen/padding_m"
-        android:paddingRight="@dimen/padding_xs"
-        android:paddingBottom="@dimen/padding_m">
+        android:background="@color/colorTimeHeaderBack"
+        android:paddingTop="@dimen/padding_l"
+        android:paddingBottom="@dimen/padding_l"
+        android:paddingStart="@dimen/padding_xs"
+        android:paddingEnd="@dimen/padding_xs">
 
         <TextView
             android:layout_width="@dimen/time_weather_width"
