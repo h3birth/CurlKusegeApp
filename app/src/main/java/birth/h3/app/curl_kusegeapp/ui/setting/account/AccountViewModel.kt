@@ -6,6 +6,7 @@ import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.model.db.AppDatabase
 import birth.h3.app.curl_kusegeapp.model.entity.User
 import birth.h3.app.curl_kusegeapp.model.net.UserApiService
+import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -39,6 +40,17 @@ class AccountViewModel @Inject constructor(private val userApiService: UserApiSe
                 .subscribeOn(Schedulers.io())
                 .subscribe({
                     user.postValue(null)
+                    deleteCityAll()
+                }, {
+                    Timber.e(it)
+                }).addTo(disposable)
+    }
+
+    fun deleteCityAll() {
+        Completable.fromAction { builder.cityDao().deleteAll() }
+                .subscribeOn(Schedulers.io())
+                .subscribe({
+                    Timber.d("delete city all")
                 }, {
                     Timber.e(it)
                 }).addTo(disposable)

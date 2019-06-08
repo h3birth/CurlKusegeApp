@@ -5,6 +5,7 @@ import birth.h3.app.curl_kusegeapp.model.entity.SearchAddressResponse
 import birth.h3.app.curl_kusegeapp.model.entity.TimeWeather
 import birth.h3.app.curl_kusegeapp.model.entity.Weather
 import birth.h3.app.curl_kusegeapp.model.response.CityResponse
+import birth.h3.app.curl_kusegeapp.model.response.GetCityResponse
 import io.reactivex.Completable
 import io.reactivex.Single
 import retrofit2.http.DELETE
@@ -29,7 +30,7 @@ interface WeatherApiService{
     @GET("public/api/data/city/{id}")
     fun getCities(
             @Path("id") userId: Int
-    ): Single<List<City>?>
+    ): Single<GetCityResponse>
 
     @POST("public/api/data/city")
     fun postCity(

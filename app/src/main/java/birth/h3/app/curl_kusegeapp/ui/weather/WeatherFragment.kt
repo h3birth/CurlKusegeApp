@@ -142,7 +142,7 @@ class WeatherFragment : androidx.fragment.app.Fragment() {
                 weatherViewModel.isContentVisibility.postValue(View.GONE)
             } else {
                 weatherViewModel.isContentVisibility.postValue(View.VISIBLE)
-                weatherViewModel.address.postValue(it.cityName)
+                weatherViewModel.address.postValue(it.city_name)
                 weatherViewModel.loadData(it.latitude!!, it.longitude!!)
             }
         }
