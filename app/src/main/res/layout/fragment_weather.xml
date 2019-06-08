@@ -416,6 +416,7 @@
             app:behavior_hideable="true">
 
             <LinearLayout
+                android:id="@+id/city_change_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -435,6 +436,7 @@
                     android:textSize="@dimen/text_2l"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/city_delete_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"

@@ -111,6 +111,16 @@ class WeatherFragment : androidx.fragment.app.Fragment() {
                 else -> bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
             }
         }
+        city_change_button.setOnClickListener {
+            val intent = Intent(this.activity?.application, RegisterCityActivity::class.java)
+            intent.putExtra(context!!.getString(R.string.arg_page), page)
+            startActivity(intent)
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        }
+        city_delete_button.setOnClickListener {
+            weatherViewModel.deleteCity()
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        }
         button_register_city.setOnClickListener {
             val intent = Intent(this.activity?.application, RegisterCityActivity::class.java)
             intent.putExtra(context!!.getString(R.string.arg_page), page)
@@ -156,4 +166,5 @@ class WeatherFragment : androidx.fragment.app.Fragment() {
         Log.d("WeatherFragment", todayText)
         binding.viewmodel!!.setDay(todayText)
     }
+
 }

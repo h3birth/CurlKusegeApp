@@ -70,8 +70,8 @@ class ViewModelModule {
     }
 
     @Provides
-    fun provideSignInViewModel(userApiService: UserApiService, builder:AppDatabase) : SignInViewModel {
-        return SignInViewModel(userApiService, builder)
+    fun provideSignInViewModel(weatherApiService: WeatherApiService,userApiService: UserApiService, builder:AppDatabase) : SignInViewModel {
+        return SignInViewModel(weatherApiService, userApiService, builder)
     }
 
     @Provides

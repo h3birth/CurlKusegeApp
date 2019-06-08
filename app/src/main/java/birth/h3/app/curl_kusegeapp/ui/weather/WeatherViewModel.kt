@@ -19,6 +19,7 @@ import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.processors.BehaviorProcessor
+import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
@@ -69,7 +70,17 @@ class WeatherViewModel @Inject constructor(private val weatherApiService: Weathe
                 this.city.postValue(it)
             }, {
                 Timber.e(it)
-            })
+            }).addTo(disposable)
+    }
+
+    fun deleteCity() {
+        Single.fromCallable { builder.cityDao().delete(this.city.value!!) }
+                .subscribeOn(Schedulers.io())
+                .subscribe ({
+                    this.city.postValue(null)
+                }, {
+                    Timber.e(it)
+                }).addTo(disposable)
     }
 
     fun loadData(lat: Double, lon: Double) {

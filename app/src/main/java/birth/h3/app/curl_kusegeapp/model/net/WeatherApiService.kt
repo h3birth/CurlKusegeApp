@@ -1,5 +1,6 @@
 package birth.h3.app.curl_kusegeapp.model.net
 
+import birth.h3.app.curl_kusegeapp.model.entity.City
 import birth.h3.app.curl_kusegeapp.model.entity.SearchAddressResponse
 import birth.h3.app.curl_kusegeapp.model.entity.TimeWeather
 import birth.h3.app.curl_kusegeapp.model.entity.Weather
@@ -19,4 +20,9 @@ interface WeatherApiService{
     fun getAddress(
         @Path("address") address: String
     ): Single<SearchAddressResponse>
+
+    @GET("public/api/data/city/{id}")
+    fun getCities(
+            @Path("id") userId: Int
+    ): Single<List<City>?>
 }

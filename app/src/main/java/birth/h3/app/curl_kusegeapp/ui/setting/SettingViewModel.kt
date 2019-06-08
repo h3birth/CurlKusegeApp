@@ -5,8 +5,10 @@ import androidx.lifecycle.ViewModel
 import birth.h3.app.curl_kusegeapp.BuildConfig
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.model.db.AppDatabase
+import birth.h3.app.curl_kusegeapp.model.entity.City
 import birth.h3.app.curl_kusegeapp.model.entity.User
 import birth.h3.app.curl_kusegeapp.model.net.UserApiService
+import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
 import birth.h3.app.curl_kusegeapp.ui.util.UtilIcon
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable

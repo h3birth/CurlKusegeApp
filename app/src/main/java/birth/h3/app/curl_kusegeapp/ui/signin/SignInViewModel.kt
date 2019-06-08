@@ -3,9 +3,11 @@ package birth.h3.app.curl_kusegeapp.ui.signin
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import birth.h3.app.curl_kusegeapp.model.db.AppDatabase
+import birth.h3.app.curl_kusegeapp.model.entity.City
 import birth.h3.app.curl_kusegeapp.model.entity.User
 import birth.h3.app.curl_kusegeapp.model.enums.SignInStatus
 import birth.h3.app.curl_kusegeapp.model.net.UserApiService
+import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
 import birth.h3.app.curl_kusegeapp.model.response.SignInResponse
 import com.google.android.gms.signin.SignIn
 import io.reactivex.Single
@@ -16,7 +18,8 @@ import org.jetbrains.annotations.Async
 import timber.log.Timber
 import javax.inject.Inject
 
-class SignInViewModel @Inject constructor(private val userApiService: UserApiService,
+class SignInViewModel @Inject constructor(private val weatherApiService: WeatherApiService,
+                                          private val userApiService: UserApiService,
                                           private val builder: AppDatabase) : ViewModel() {
 
     private val disposable = CompositeDisposable()
@@ -75,7 +78,7 @@ class SignInViewModel @Inject constructor(private val userApiService: UserApiSer
                  Single.fromCallable { builder.userDao().insertAll(user) }
                          .subscribeOn(Schedulers.io())
                          .subscribe ({
-                             status.postValue(SignInStatus.SUCCESS)
+                             getNetCity(user)
                          }, {
                              Timber.e(it)
                          }).addTo(disposable)
@@ -87,13 +90,35 @@ class SignInViewModel @Inject constructor(private val userApiService: UserApiSer
                         }
                         .subscribeOn(Schedulers.io())
                         .subscribe ({
-                            status.postValue(SignInStatus.SUCCESS)
+                            getNetCity(user)
                         }, {
                             Timber.e(it)
                         }).addTo(disposable)
             }
         }
 
+    }
+
+    fun getNetCity(user: User) {
+        weatherApiService.getCities(user.id).observeOn(Schedulers.io()).subscribe({list ->
+            list?.forEach { city ->
+                insertDaoCity(city)
+            }
+            status.postValue(SignInStatus.SUCCESS)
+        },{e ->
+            status.postValue(SignInStatus.SUCCESS)
+            Timber.e(e)
+        }).addTo(disposable)
+    }
+
+    fun insertDaoCity(city: City) {
+        Single.fromCallable { builder.cityDao().insertAll(city) }
+                .subscribeOn(Schedulers.io())
+                .subscribe ({
+                    Timber.d("success is ${city.uid}")
+                }, {
+                    Timber.e(it)
+                }).addTo(disposable)
     }
 
     override fun onCleared() {
