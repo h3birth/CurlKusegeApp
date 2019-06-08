@@ -16,6 +16,7 @@ import birth.h3.app.curl_kusegeapp.CurlApp
 import birth.h3.app.curl_kusegeapp.MainActivity
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.model.entity.Address
+import birth.h3.app.curl_kusegeapp.model.enums.APIStatus
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
@@ -46,6 +47,8 @@ class SearchAddressFragment : Fragment(), ItemCityController.listener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         (context?.applicationContext as CurlApp).component.inject(this)
+
+        viewModel.getCity(arguments!!.getInt(activity!!.getString(R.string.arg_page)))
 
         register_city_toolbar?.let{
             it.inflateMenu(R.menu.menu_search)
@@ -83,11 +86,13 @@ class SearchAddressFragment : Fragment(), ItemCityController.listener {
         viewModel.address.observeForever {
             controller.setData(it)
         }
+        viewModel.status.observeForever {
+            if(it == APIStatus.SUCCESS) this.activity!!.finish()
+        }
     }
 
     override fun addressClickListener(address: Address) {
         viewModel.insertAddress(arguments!!.getInt(activity!!.getString(R.string.arg_page)), address)
-        this.activity?.finish()
     }
 
 }

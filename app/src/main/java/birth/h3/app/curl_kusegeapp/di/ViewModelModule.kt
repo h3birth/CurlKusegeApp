@@ -45,8 +45,8 @@ class ViewModelModule {
     }
 
     @Provides
-    fun provideRegisterCityViewModel(weatherApiService: WeatherApiService, builder:AppDatabase): RegisterCityViewModel {
-        return RegisterCityViewModel(weatherApiService, builder)
+    fun provideRegisterCityViewModel(weatherApiService: WeatherApiService, userApiService: UserApiService, builder:AppDatabase): RegisterCityViewModel {
+        return RegisterCityViewModel(weatherApiService, userApiService, builder)
     }
 
     @Provides

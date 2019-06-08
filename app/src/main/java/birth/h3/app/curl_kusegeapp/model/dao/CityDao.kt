@@ -8,8 +8,8 @@ interface CityDao{
     @Query("SELECT * FROM city")
     fun getAll(): List<City>
 
-    @Query("SELECT * FROM city WHERE uid = :uid")
-    fun getCityByUid(uid: Int): City?
+    @Query("SELECT * FROM city WHERE sort_order = :id")
+    fun getCityByUid(id: Int): City?
 
     @Insert
     fun insertAll(vararg  cities: City)

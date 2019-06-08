@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class City(
-        @PrimaryKey var uid: Int,
+        @PrimaryKey var id: Int,
         @ColumnInfo(name = "city_name") var cityName: String?,
         @ColumnInfo(name = "latitude") var latitude: Double?,
         @ColumnInfo(name = "longitude") var longitude: Double?,

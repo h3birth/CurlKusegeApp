@@ -115,7 +115,7 @@ class SignInViewModel @Inject constructor(private val weatherApiService: Weather
         Single.fromCallable { builder.cityDao().insertAll(city) }
                 .subscribeOn(Schedulers.io())
                 .subscribe ({
-                    Timber.d("success is ${city.uid}")
+                    Timber.d("success is ${city.id}")
                 }, {
                     Timber.e(it)
                 }).addTo(disposable)
