@@ -17,8 +17,7 @@
         android:orientation="vertical"
         android:paddingLeft="@dimen/padding_xs"
         android:paddingTop="@dimen/padding_m"
-        android:paddingRight="@dimen/padding_xs"
-        android:paddingBottom="@dimen/padding_m">
+        android:paddingRight="@dimen/padding_xs">
 
         <TextView
             android:id="@+id/listItemText"
@@ -45,7 +44,8 @@
             android:id="@+id/listItemHum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{String.format(@string/tv_format_number, timeWeather.humidity)}" />
+            android:text="@{String.format(@string/tv_format_number, timeWeather.humidity)}"
+            />
 
     </LinearLayout>
 </layout>

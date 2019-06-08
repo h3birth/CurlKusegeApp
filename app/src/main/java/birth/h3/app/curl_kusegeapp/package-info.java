@@ -1,4 +1,6 @@
 @EpoxyDataBindingLayouts({
+        R.layout.item_time_weather,
+        R.layout.item_time_weather_header,
         R.layout.item_city,
         R.layout.item_my_data,
         R.layout.item_my_data_header,

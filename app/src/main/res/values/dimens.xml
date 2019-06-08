@@ -35,4 +35,6 @@
 
     <!-- elevation(影) -->
     <dimen name="elevation">5dp</dimen>
+
+    <dimen name="time_weather_width">16dp</dimen>
 </resources>
