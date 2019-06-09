@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentTransaction
 import birth.h3.app.curl_kusegeapp.CurlApp
 
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.databinding.FragmentSignUpNickNameBinding
+import kotlinx.android.synthetic.main.fragment_sign_up_account.*
 import kotlinx.android.synthetic.main.fragment_sign_up_nick_name.*
 import timber.log.Timber
 import javax.inject.Inject
@@ -46,9 +48,19 @@ class SignUpNickNameFragment : Fragment() {
         Timber.d("userSelectHairStatusId is ${viewModel.userSelectHairStatusId.value}")
         Timber.d("userSelectGenderId is ${viewModel.userSelectGenderId.value}")
 
+        signup_nickname_toolbar.setNavigationOnClickListener {
+            this.activity?.finish()
+        }
+
         btn_next.setOnClickListener {
             if(validation()){
                 Timber.d("OK")
+                val fragment = SignUpAccountFragment()
+
+                this.fragmentManager!!.beginTransaction()
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                        .replace(R.id.signup_container, fragment, fragment.TAG)
+                        .commit()
             }
         }
 

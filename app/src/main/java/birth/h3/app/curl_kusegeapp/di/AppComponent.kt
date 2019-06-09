@@ -17,6 +17,7 @@ import birth.h3.app.curl_kusegeapp.ui.setting.app.PushFragment
 import birth.h3.app.curl_kusegeapp.ui.setting.app.ThemeFragment
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInFragment
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInViewModel
+import birth.h3.app.curl_kusegeapp.ui.signup.SignUpAccountFragment
 import birth.h3.app.curl_kusegeapp.ui.signup.SignUpActivity
 import birth.h3.app.curl_kusegeapp.ui.signup.SignUpFragment
 import birth.h3.app.curl_kusegeapp.ui.signup.SignUpNickNameFragment
@@ -48,6 +49,7 @@ interface AppComponent {
     fun inject(fragment: MyDataFragment)
     fun inject(fragment: SignUpFragment)
     fun inject(fragment: SignUpNickNameFragment)
+    fun inject(fragment: SignUpAccountFragment)
     fun inject(fragment: SignInFragment)
     fun inject(fragment: SettingFragment)
     fun inject(fragment: AccountFragment)

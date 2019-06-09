@@ -106,6 +106,7 @@
 
     <string name="sign_up_nickname">あなたをなんて呼べばいいかな？名前を教えて！</string>
     <string name="next_text">次へ</string>
+    <string name="sign_up_account">メールアドレスとパスワードを設定してね。これはログインするときに使うよ。</string>
 
     <!-- プッシュ設定 -->
     <string name="push_lead_1">プッシュ設定の変更は以下の順序で行います。</string>
