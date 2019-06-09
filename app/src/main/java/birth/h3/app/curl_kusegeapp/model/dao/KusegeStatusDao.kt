@@ -24,4 +24,7 @@ interface KusegeStatusDao {
 
     @Delete
     fun delete(kusegeStatus: KusegeStatus)
+
+    @Query("DELETE FROM kusegestatus")
+    fun deleteAll()
 }

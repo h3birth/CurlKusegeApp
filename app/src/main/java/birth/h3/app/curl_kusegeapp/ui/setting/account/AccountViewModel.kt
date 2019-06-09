@@ -41,6 +41,7 @@ class AccountViewModel @Inject constructor(private val userApiService: UserApiSe
                 .subscribe({
                     user.postValue(null)
                     deleteCityAll()
+                    deleterKusegeStatus()
                 }, {
                     Timber.e(it)
                 }).addTo(disposable)
@@ -51,6 +52,16 @@ class AccountViewModel @Inject constructor(private val userApiService: UserApiSe
                 .subscribeOn(Schedulers.io())
                 .subscribe({
                     Timber.d("delete city all")
+                }, {
+                    Timber.e(it)
+                }).addTo(disposable)
+    }
+
+    fun deleterKusegeStatus() {
+        Completable.fromAction { builder.kusegeStatusDao().deleteAll() }
+                .subscribeOn(Schedulers.io())
+                .subscribe({
+                    Timber.d("delete kusege all")
                 }, {
                     Timber.e(it)
                 }).addTo(disposable)
