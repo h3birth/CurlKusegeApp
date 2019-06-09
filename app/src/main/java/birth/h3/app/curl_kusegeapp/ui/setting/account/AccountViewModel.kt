@@ -20,6 +20,7 @@ class AccountViewModel @Inject constructor(private val userApiService: UserApiSe
 
     val user: MutableLiveData<User?> = MutableLiveData<User?>().apply { value = null }
     val avatar: MutableLiveData<Int> = MutableLiveData<Int>().apply { value = R.drawable.men_curl }
+    val isLogout: MutableLiveData<Boolean> = MutableLiveData<Boolean>().apply { value = false }
 
     init {
         getUser()
@@ -42,6 +43,7 @@ class AccountViewModel @Inject constructor(private val userApiService: UserApiSe
                     user.postValue(null)
                     deleteCityAll()
                     deleterKusegeStatus()
+                    isLogout.postValue(true)
                 }, {
                     Timber.e(it)
                 }).addTo(disposable)

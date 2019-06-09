@@ -6,6 +6,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -63,6 +64,8 @@ class AccountFragment : Fragment() {
             val fragment = ProfileChangeFragment()
             fragmentCommit(fragment, fragment.TAG)
         }
+
+        setObserve()
     }
 
     private fun fragmentCommit(fragment: Fragment, tag: String) {
@@ -71,6 +74,15 @@ class AccountFragment : Fragment() {
                 ?.replace(R.id.account_container, fragment, tag)
                 ?.addToBackStack(null)
                 ?.commit()
+    }
+
+    private fun setObserve() {
+        viewModel.isLogout.observeForever {
+            if(it) {
+                Toast.makeText(this.context, "ログアウトしました", Toast.LENGTH_SHORT).show()
+                this.activity?.finish()
+            }
+        }
     }
 
 }
