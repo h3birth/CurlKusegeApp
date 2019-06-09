@@ -6,6 +6,7 @@ import birth.h3.app.curl_kusegeapp.model.response.PasswordChangeResponse
 import birth.h3.app.curl_kusegeapp.model.response.ProfileChangeResponse
 import birth.h3.app.curl_kusegeapp.model.response.SignInResponse
 import birth.h3.app.curl_kusegeapp.model.response.SignUpResponse
+import birth.h3.app.curl_kusegeapp.model.response.WithdrawalResponse
 import io.reactivex.Completable
 import io.reactivex.Single
 import retrofit2.http.POST
@@ -33,4 +34,10 @@ interface UserApiService {
 
     @POST("public/api/auth/profilechange")
     fun profilechange(@Query("id") id: Int, @Query("nickname") nickname: String, @Query("gender") gender: Int, @Query("hair_type_id") hair_type_id: Int): Single<ProfileChangeResponse>
+
+    @POST("public/api/auth/withdrawal")
+    fun withdrable(
+            @Query("user_id") userId: Int,
+            @Query("message") message: String
+    ): Single<WithdrawalResponse>
 }

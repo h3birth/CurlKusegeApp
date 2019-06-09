@@ -12,6 +12,7 @@ import birth.h3.app.curl_kusegeapp.CurlApp
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.databinding.FragmentProfileChangeBinding
 import birth.h3.app.curl_kusegeapp.databinding.FragmentWithdrawalBinding
+import kotlinx.android.synthetic.main.fragment_withdrawal.*
 import javax.inject.Inject
 
 /**
@@ -38,6 +39,21 @@ class WithdrawalFragment : Fragment() {
         (context?.applicationContext as CurlApp).component.inject(this)
         binding.setLifecycleOwner(this)
         binding.viewModel = viewModel
+
+        btn_withdrawal.setOnClickListener {
+            viewModel.withdrawal()
+        }
+
+        viewModel.isWithdrawal.observeForever {
+            if(it) this.activity!!.finish()
+        }
+
+        viewModel.errorMessage.observeForever {
+            when(it){
+                null -> withdrawal_message_layout.error = null
+                else -> withdrawal_message_layout.error = it
+            }
+        }
     }
 
 }
