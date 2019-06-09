@@ -96,6 +96,7 @@ class MainViewModel @Inject constructor(private val weatherApiService: WeatherAp
                     user.postValue(it)
                     fabImage.postValue(utilIcon.getGenderIcon(it?.hairTypeId ?: 1))
                 }, {
+                    user.postValue(null)
                     Timber.e(it)
                 }).addTo(disposable)
     }

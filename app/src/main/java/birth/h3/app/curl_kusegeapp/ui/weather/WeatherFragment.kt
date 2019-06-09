@@ -12,11 +12,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import birth.h3.app.curl_kusegeapp.CurlApp
 import birth.h3.app.curl_kusegeapp.ItemTimeWeatherHeaderBindingModel_
+import birth.h3.app.curl_kusegeapp.MainViewModel
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.databinding.FragmentWeatherBinding
 import birth.h3.app.curl_kusegeapp.databinding.ItemTimeWeatherHeaderBinding
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
 import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityActivity
+import birth.h3.app.curl_kusegeapp.ui.signin.SignInActivity
 import birth.h3.app.curl_kusegeapp.ui.util.UtilDateTime
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.kodmap.library.kmrecyclerviewstickyheader.KmHeaderItemDecoration
@@ -30,8 +32,7 @@ import javax.inject.Inject
  * A simple [Fragment] subclass.
  *
  */
-class WeatherFragment : androidx.fragment.app.Fragment() {
-
+class WeatherFragment : androidx.fragment.app.Fragment(), ToSigninDialog.Listener {
     val TAG = "weather"
 
     @Inject
@@ -39,6 +40,9 @@ class WeatherFragment : androidx.fragment.app.Fragment() {
 
     @Inject
     lateinit var weatherViewModel: WeatherViewModel
+
+    @Inject
+    lateinit var mainViewModel: MainViewModel
 
     lateinit var binding: FragmentWeatherBinding
 
@@ -122,9 +126,18 @@ class WeatherFragment : androidx.fragment.app.Fragment() {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
         }
         button_register_city.setOnClickListener {
-            val intent = Intent(this.activity?.application, RegisterCityActivity::class.java)
-            intent.putExtra(context!!.getString(R.string.arg_page), page)
-            startActivity(intent)
+
+            when(mainViewModel.user.value){
+                null -> {
+                    val fragment = ToSigninDialog(this)
+                    fragment.show(fragmentManager!!, ToSigninDialog.TAG)
+                }
+                else -> {
+                    val intent = Intent(this.activity?.application, RegisterCityActivity::class.java)
+                    intent.putExtra(context!!.getString(R.string.arg_page), page)
+                    startActivity(intent)
+                }
+            }
         }
     }
 
@@ -133,6 +146,7 @@ class WeatherFragment : androidx.fragment.app.Fragment() {
         Timber.d("onResume")
         weatherViewModel.getCity()
         weatherViewModel.updateWeatherStatusImage()
+        mainViewModel.getUser()
     }
 
     private fun setObserve() {
@@ -165,6 +179,11 @@ class WeatherFragment : androidx.fragment.app.Fragment() {
         val todayText = UtilDateTime().todayDateJa()
         Log.d("WeatherFragment", todayText)
         binding.viewmodel!!.setDay(todayText)
+    }
+
+    override fun onPositiveClickListener() {
+        val intent = Intent(this.activity?.application, SignInActivity::class.java)
+        startActivity(intent)
     }
 
 }
