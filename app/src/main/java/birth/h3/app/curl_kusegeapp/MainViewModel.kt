@@ -32,10 +32,10 @@ class MainViewModel @Inject constructor(private val weatherApiService: WeatherAp
         getUser()
     }
 
-    fun insertStatus(status: String) {
+    fun insertStatus(id: Int) {
         val dtUtil = UtilDateTime()
         Completable.fromAction {
-            builder.myDataDao().insertAll(MyData.create(dtUtil.year,dtUtil.month,dtUtil.date, status))
+//            builder.myDataDao().insertAll(MyData.create(dtUtil.year,dtUtil.month,dtUtil.date, id))
         }.subscribeOn(Schedulers.io())
         .subscribe({
             Timber.d("myDataDao OK")
