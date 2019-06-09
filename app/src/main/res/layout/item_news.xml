@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="news"
@@ -19,20 +20,40 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_m"
             android:layout_marginTop="@dimen/margin_m"
-            android:text="@{news.updated_at}"
+            android:text="@{news.dateText()}"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="2019年6月10日"/>
 
         <TextView
             android:id="@+id/tv_news_message"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_m"
             android:layout_marginTop="@dimen/margin_m"
+            android:layout_marginBottom="@dimen/margin_s"
+            android:text="@{news.title}"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_news_updated_at"
+            tools:text="くせ毛予報アプリ「か〜る」をリリースしました！"/>
+
+        <TextView
+            android:id="@+id/tv_news_body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_m"
+            android:layout_marginRight="@dimen/margin_m"
+            android:layout_marginTop="@dimen/margin_m"
             android:layout_marginBottom="@dimen/margin_l"
-            android:text="@{news.message}"
+            android:text="@{news.body}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_news_updated_at" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_news_message"
+            tools:text="気象情報から髪の毛のくせが出てくるか予報するアプリ「か〜る」をリリースしました。
+髪の毛がまとまりにくい、ハネやすいなど、天気に左右されやすい髪の毛のくせを、気象情報から予防支援します。
+機能のアップデートを予定しますので、今後とも「か〜る」をよろしくお願いします"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

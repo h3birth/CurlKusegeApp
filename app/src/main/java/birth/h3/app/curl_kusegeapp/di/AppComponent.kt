@@ -5,6 +5,7 @@ import birth.h3.app.curl_kusegeapp.MainViewModel
 import birth.h3.app.curl_kusegeapp.ui.mydata.MyDataFragment
 import birth.h3.app.curl_kusegeapp.ui.mydata.MyDataViewModel
 import birth.h3.app.curl_kusegeapp.ui.news.NewsFragment
+import birth.h3.app.curl_kusegeapp.ui.news.NewsViewModel
 import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityActivity
 import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityViewModel
 import birth.h3.app.curl_kusegeapp.ui.registercity.SearchAddressFragment
@@ -32,7 +33,6 @@ import javax.inject.Singleton
 @Component(modules = [
     AppModule::class,
     WeatherModule::class,
-    NewsModule::class,
     ViewModelModule::class,
     FragmentModule::class
 ])
@@ -66,5 +66,6 @@ interface AppComponent {
     fun inject(viewModel: EmailChangeViewModel)
     fun inject(viewModel: PasswordChangeViewModel)
     fun inject(viewModel: ProfileChangeViewModel)
+    fun inject(viewModel: NewsViewModel)
     fun inject(util: UtilIcon)
 }

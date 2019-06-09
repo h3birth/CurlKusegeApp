@@ -1,5 +1,6 @@
 package birth.h3.app.curl_kusegeapp.di
 
+import birth.h3.app.curl_kusegeapp.model.net.NewsService
 import birth.h3.app.curl_kusegeapp.model.net.UserApiService
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
 import com.google.gson.Gson
@@ -51,5 +52,11 @@ class WeatherModule() {
     @Provides
     fun provideUserApiService(retrofit: Retrofit): UserApiService {
         return retrofit.create(UserApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideNewsService(retrofit: Retrofit): NewsService {
+        return retrofit.create(NewsService::class.java)
     }
 }

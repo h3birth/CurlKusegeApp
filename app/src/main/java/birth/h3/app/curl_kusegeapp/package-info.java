@@ -6,7 +6,8 @@
         R.layout.item_my_data_header,
         R.layout.item_signup_message,
         R.layout.item_signup_message_user,
-        R.layout.item_theme
+        R.layout.item_theme,
+        R.layout.item_news
 })
 package birth.h3.app.curl_kusegeapp;
 

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.recyclerview.widget.RecyclerView
 import birth.h3.app.curl_kusegeapp.CurlApp
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.model.net.NewsService
@@ -28,13 +29,9 @@ class NewsFragment : androidx.fragment.app.Fragment() {
     val TAG = "news"
 
     @Inject
-    lateinit var newsService: NewsService
+    lateinit var viewModel: NewsViewModel
 
-    private val disposable = CompositeDisposable()
-
-    private val adapter by lazy {
-        NewsAdapter()
-    }
+    private val controller by lazy { NewsController() }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -46,17 +43,14 @@ class NewsFragment : androidx.fragment.app.Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (context?.applicationContext as CurlApp).component.inject(this)
 
-        rv_news.adapter = adapter
-        rv_news.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity, androidx.recyclerview.widget.LinearLayoutManager.VERTICAL, false)
-//        rv_news.addItemDecoration(DividerItemDecoration(activity, LinearLayoutManager.VERTICAL))
+        rv_news.apply {
+            adapter = controller.adapter
+            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+            addItemDecoration(DividerItemDecoration(activity, LinearLayoutManager.VERTICAL))
+        }
 
-        disposable.addAll(
-                newsService
-                        .getNews()
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeBy {
-                            adapter.setItems(it)
-                        }
-        )
+        viewModel.news.observeForever {
+            controller.setData(it)
+        }
     }
 }
