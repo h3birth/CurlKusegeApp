@@ -19,18 +19,25 @@
         android:supportsRtl="true"
         android:theme="@style/BlueTheme"
         tools:ignore="HardcodedDebugMode">
-        <activity android:name=".ui.setting.app.AppSettingActivity"></activity>
-        <activity android:name=".ui.setting.account.AccountActivity" />
-        <activity android:name=".ui.signin.SignInActivity" />
-        <activity android:name=".ui.signup.SignUpActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.setting.app.AppSettingActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".ui.setting.account.AccountActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.signin.SignInActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.signup.SignUpActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.registercity.RegisterCityActivity" />
+        <activity android:name=".ui.registercity.RegisterCityActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
