@@ -127,4 +127,10 @@
     <!-- ヘルプとフィードバック -->
     <string name="contact_message">内容を入力してください</string>
     <string name="btn_help_feedback">フィードバックを送る</string>
+
+
+    <!-- format -->
+    <string name="msg_token_fmt">%s</string>
+    <string name="default_notification_channel_id">channel_id</string>
+    <string name="fcm_message">fcm_message</string>
 </resources>

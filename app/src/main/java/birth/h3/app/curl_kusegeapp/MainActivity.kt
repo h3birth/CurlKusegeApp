@@ -3,6 +3,7 @@ package birth.h3.app.curl_kusegeapp
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import birth.h3.app.curl_kusegeapp.databinding.ActivityMainBinding
@@ -16,6 +17,8 @@ import birth.h3.app.curl_kusegeapp.ui.signup.SignUpActivity
 import birth.h3.app.curl_kusegeapp.ui.top.TopFragment
 import birth.h3.app.curl_kusegeapp.ui.util.BottomNavigationViewHelper
 import birth.h3.app.curl_kusegeapp.ui.util.UtilDateTime
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
 import javax.inject.Inject
@@ -58,6 +61,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             animator.showNext()
         }
+
+        firebaseInstance()
     }
 
     fun setBottomNavigtionOption() {
@@ -136,5 +141,22 @@ class MainActivity : AppCompatActivity() {
             finish()
             startActivity(Intent(this, MainActivity::class.java))
         }
+    }
+
+    private fun firebaseInstance() {
+        FirebaseInstanceId.getInstance().instanceId
+                .addOnCompleteListener(OnCompleteListener { task ->
+                    if (!task.isSuccessful) {
+                        Timber.e("getInstanceId failed" + task.exception)
+                        return@OnCompleteListener
+                    }
+
+                    // Get new Instance ID token
+                    val token = task.result?.token
+
+                    // Log and toast
+                    val msg = getString(R.string.msg_token_fmt, token)
+                    Timber.d(msg)
+                })
     }
 }
