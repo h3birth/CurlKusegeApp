@@ -80,7 +80,7 @@ class MyDataFragment : Fragment() {
 
         setObserve()
 
-        viewModel.getMyData()
+        viewModel.getKusegeStatusDao()
     }
 
     private fun setObserve(){
@@ -91,7 +91,7 @@ class MyDataFragment : Fragment() {
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
-        if(!hidden) viewModel.getMyData()
+        if(!hidden) viewModel.getKusegeStatusDao()
     }
 
 }

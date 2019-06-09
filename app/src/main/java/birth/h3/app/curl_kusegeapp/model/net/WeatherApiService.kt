@@ -1,6 +1,7 @@
 package birth.h3.app.curl_kusegeapp.model.net
 
 import birth.h3.app.curl_kusegeapp.model.entity.City
+import birth.h3.app.curl_kusegeapp.model.entity.KusegeStatus
 import birth.h3.app.curl_kusegeapp.model.entity.SearchAddressResponse
 import birth.h3.app.curl_kusegeapp.model.entity.TimeWeather
 import birth.h3.app.curl_kusegeapp.model.entity.Weather
@@ -70,4 +71,9 @@ interface WeatherApiService{
             @Query("submit_month") submitMonth: Int,
             @Query("submit_day") submitDay: Int
     ): Single<KusegeStatusResponse>
+
+    @GET("public/api/data/status")
+    fun getKusegeStatus(
+            @Query("user_id") userId: Int
+    ): Single<List<KusegeStatus>?>
 }

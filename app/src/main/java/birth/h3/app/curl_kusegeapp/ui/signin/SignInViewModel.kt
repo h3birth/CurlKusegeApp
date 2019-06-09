@@ -4,12 +4,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import birth.h3.app.curl_kusegeapp.model.db.AppDatabase
 import birth.h3.app.curl_kusegeapp.model.entity.City
+import birth.h3.app.curl_kusegeapp.model.entity.KusegeStatus
 import birth.h3.app.curl_kusegeapp.model.entity.User
 import birth.h3.app.curl_kusegeapp.model.enums.SignInStatus
 import birth.h3.app.curl_kusegeapp.model.net.UserApiService
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
 import birth.h3.app.curl_kusegeapp.model.response.SignInResponse
 import com.google.android.gms.signin.SignIn
+import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -30,6 +32,7 @@ class SignInViewModel @Inject constructor(private val weatherApiService: Weather
     val status: MutableLiveData<SignInStatus> = MutableLiveData<SignInStatus>().apply { value = SignInStatus.NONE }
     val errorEmailMessage: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
     val errorPasswordMessage: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
+    val kusegeStatus: MutableLiveData<List<KusegeStatus>> = MutableLiveData()
 
     init {
         getUser()
@@ -103,27 +106,56 @@ class SignInViewModel @Inject constructor(private val weatherApiService: Weather
         weatherApiService.getCities(user.id).subscribeOn(Schedulers.io()).subscribe({res ->
             Timber.d("success is ${res}")
             if(res.cities.isNullOrEmpty()){
-                status.postValue(SignInStatus.SUCCESS)
+                getKusegeStatus(user)
             }else{
-                res.cities?.forEach { city ->
-                    insertDaoCity(city)
+                res.cities.forEach { city ->
+                    insertDaoCity(city, user)
                 }
             }
         },{e ->
-            status.postValue(SignInStatus.NONE)
+            getKusegeStatus(user)
             Timber.e(e)
         }).addTo(disposable)
     }
 
-    fun insertDaoCity(city: City) {
+    fun insertDaoCity(city: City, user: User) {
         Single.fromCallable { builder.cityDao().insertAll(City(city.id,city.city_name,city.latitude,city.longitude,city.sort_order)) }
                 .subscribeOn(Schedulers.io())
                 .subscribe ({
-                    status.postValue(SignInStatus.SUCCESS)
+                    getKusegeStatus(user)
                     Timber.d("success is ${city}")
                 }, {
-                    status.postValue(SignInStatus.NONE)
+                    getKusegeStatus(user)
                     Timber.e(it)
+                }).addTo(disposable)
+    }
+
+    fun getKusegeStatus(user: User) {
+        user?.let {
+            weatherApiService.getKusegeStatus(it.id)
+                    .subscribeOn(Schedulers.io())
+                    .subscribe({
+                        if(it != null){
+                            insertKusegeData(it)
+                        }else{
+                            status.postValue(SignInStatus.SUCCESS)
+                        }
+                    },{
+                        status.postValue(SignInStatus.NONE)
+                        Timber.e(it)
+                    }).addTo(disposable)
+        } ?: status.postValue(SignInStatus.SUCCESS)
+    }
+
+    fun insertKusegeData(kusegeStatuses: List<KusegeStatus>) {
+        Completable.fromAction { builder.kusegeStatusDao().insertAll(kusegeStatuses) }
+                .subscribeOn(Schedulers.io())
+                .subscribe({
+                    Timber.d("kusegeStatusDao insert all ok")
+                    status.postValue(SignInStatus.SUCCESS)
+                },{
+                    Timber.e(it)
+                    status.postValue(SignInStatus.NONE)
                 }).addTo(disposable)
     }
 

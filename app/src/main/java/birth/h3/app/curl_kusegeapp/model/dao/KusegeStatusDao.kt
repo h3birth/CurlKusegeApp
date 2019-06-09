@@ -19,6 +19,9 @@ interface KusegeStatusDao {
     @Insert
     fun insertAll(vararg  kusegeStatus: KusegeStatus)
 
+    @Insert
+    fun insertAll(kusegeStatuses: List<KusegeStatus>)
+
     @Update
     fun update(vararg kusegeStatus: KusegeStatus)
 
