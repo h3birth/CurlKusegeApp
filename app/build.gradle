@@ -46,6 +46,14 @@ android {
     configurations.all {
         resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
     }
+    signingConfigs {
+        debug {
+            storeFile = file('../curldebug.keystore')
+            storePassword = 'curldebug'
+            keyAlias = 'curldebugkey'
+            keyPassword = 'curldebug'
+        }
+    }
 }
 
 repositories {
@@ -103,7 +111,8 @@ dependencies {
     implementation 'androidx.annotation:annotation:1.0.1'
 
     // firebase
-    implementation 'com.google.firebase:firebase-messaging:17.1.0'
+    implementation 'com.google.firebase:firebase-core:16.0.9'
+    implementation 'com.google.firebase:firebase-iid:16.2.0'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
 
@@ -147,3 +156,5 @@ dependencies {
 
     implementation 'com.github.smhdk:KM-Recyclerview-Sticky-Header:v1.0.0'
 }
+
+apply plugin: 'com.google.gms.google-services'
