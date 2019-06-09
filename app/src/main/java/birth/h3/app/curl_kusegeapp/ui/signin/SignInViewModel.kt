@@ -9,14 +9,11 @@ import birth.h3.app.curl_kusegeapp.model.entity.User
 import birth.h3.app.curl_kusegeapp.model.enums.SignInStatus
 import birth.h3.app.curl_kusegeapp.model.net.UserApiService
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
-import birth.h3.app.curl_kusegeapp.model.response.SignInResponse
-import com.google.android.gms.signin.SignIn
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import org.jetbrains.annotations.Async
 import timber.log.Timber
 import javax.inject.Inject
 

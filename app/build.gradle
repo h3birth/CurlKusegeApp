@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'com.google.android.gms.oss-licenses-plugin'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -94,7 +96,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-ads:15.0.0'
 
     // oss licenses
-    implementation 'com.google.android.gms:play-services-oss-licenses:16.0.0'
+    implementation 'com.google.android.gms:play-services-oss-licenses:16.0.2'
 
     // gson
     implementation 'com.google.code.gson:gson:2.4.0'

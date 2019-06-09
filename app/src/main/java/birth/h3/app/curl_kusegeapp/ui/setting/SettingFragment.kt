@@ -16,6 +16,7 @@ import birth.h3.app.curl_kusegeapp.ui.setting.app.AppSettingActivity
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInActivity
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInViewModel
 import birth.h3.app.curl_kusegeapp.ui.signup.SignUpActivity
+import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import kotlinx.android.synthetic.main.fragment_setting.*
 import timber.log.Timber
 import javax.inject.Inject
@@ -83,6 +84,12 @@ class SettingFragment : androidx.fragment.app.Fragment() {
         help_feedback.setOnClickListener {
             val intent = Intent(this.activity?.application, AppSettingActivity::class.java)
             intent.putExtra(getString(R.string.arg_set_type), "help")
+            startActivity(intent)
+        }
+
+        tv_setting_oss.setOnClickListener {
+            val intent = Intent(this.activity?.application, OssLicensesMenuActivity::class.java)
+            intent.putExtra("title", "オープンソースライセンス")
             startActivity(intent)
         }
 

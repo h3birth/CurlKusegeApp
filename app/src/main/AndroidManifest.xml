@@ -38,6 +38,12 @@
         </activity>
         <activity android:name=".ui.registercity.RegisterCityActivity"
             android:screenOrientation="portrait"/>
+        <activity
+           android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+           android:name="com.google.android.gms.oss.licenses.OssLicensesActivity" />
+         <activity
+           android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+           android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity" />
     </application>
 
 </manifest>
