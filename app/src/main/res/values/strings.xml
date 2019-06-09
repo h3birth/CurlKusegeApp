@@ -123,4 +123,7 @@
     <string name="withdrawal_lead">退会するとアカウントに関するデータの全てが削除されます。復元されませんのでご了承ください。</string>
     <string name="withdrawal_message">退会する理由をご入力ください。</string>
     <string name="withdrawal_btn">退会する</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

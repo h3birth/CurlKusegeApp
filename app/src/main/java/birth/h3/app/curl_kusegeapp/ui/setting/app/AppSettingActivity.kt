@@ -5,6 +5,7 @@ import android.os.Bundle
 import birth.h3.app.curl_kusegeapp.CurlApp
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.ui.registercity.SearchAddressFragment
+import birth.h3.app.curl_kusegeapp.ui.setting.etc.HelpFeedbackFragment
 import timber.log.Timber
 
 class AppSettingActivity : AppCompatActivity() {
@@ -22,12 +23,14 @@ class AppSettingActivity : AppCompatActivity() {
             "push" -> PushFragment()
             "icon" -> IconFragment()
             "theme" -> ThemeFragment()
+            "help" -> HelpFeedbackFragment()
             else -> PushFragment()
         }
         val tag = when(arg_set_type){
             "push" -> PushFragment.TAG
             "icon" -> IconFragment.TAG
             "theme" -> ThemeFragment.TAG
+            "help" -> HelpFeedbackFragment.TAG
             else -> PushFragment.TAG
         }
 

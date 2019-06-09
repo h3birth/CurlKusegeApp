@@ -21,6 +21,7 @@ import birth.h3.app.curl_kusegeapp.ui.setting.account.ProfileChangeViewModel
 import birth.h3.app.curl_kusegeapp.ui.setting.account.WithdrawalViewModel
 import birth.h3.app.curl_kusegeapp.ui.setting.app.IconViewModel
 import birth.h3.app.curl_kusegeapp.ui.setting.app.PushViewModel
+import birth.h3.app.curl_kusegeapp.ui.setting.etc.HelpFeedbackViewModel
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInViewModel
 import birth.h3.app.curl_kusegeapp.ui.signup.SignUpActivity
 import birth.h3.app.curl_kusegeapp.ui.signup.SignUpViewModel
@@ -113,6 +114,11 @@ class ViewModelModule {
     @Provides
     fun provideWithdrawalViewModel(userApiService: UserApiService, builder:AppDatabase) : WithdrawalViewModel {
         return WithdrawalViewModel(userApiService, builder)
+    }
+
+    @Provides
+    fun provideHelpFeedbackViewModel(userApiService: UserApiService, builder:AppDatabase) : HelpFeedbackViewModel {
+        return HelpFeedbackViewModel(userApiService, builder)
     }
 
     @Provides

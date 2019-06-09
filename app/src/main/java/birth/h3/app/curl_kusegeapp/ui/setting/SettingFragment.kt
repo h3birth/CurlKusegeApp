@@ -80,6 +80,12 @@ class SettingFragment : androidx.fragment.app.Fragment() {
             startActivity(intent)
         }
 
+        help_feedback.setOnClickListener {
+            val intent = Intent(this.activity?.application, AppSettingActivity::class.java)
+            intent.putExtra(getString(R.string.arg_set_type), "help")
+            startActivity(intent)
+        }
+
         setObserve()
     }
 

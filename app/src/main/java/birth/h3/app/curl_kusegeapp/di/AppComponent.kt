@@ -15,6 +15,8 @@ import birth.h3.app.curl_kusegeapp.ui.setting.account.*
 import birth.h3.app.curl_kusegeapp.ui.setting.app.IconFragment
 import birth.h3.app.curl_kusegeapp.ui.setting.app.PushFragment
 import birth.h3.app.curl_kusegeapp.ui.setting.app.ThemeFragment
+import birth.h3.app.curl_kusegeapp.ui.setting.etc.HelpFeedbackFragment
+import birth.h3.app.curl_kusegeapp.ui.setting.etc.HelpFeedbackViewModel
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInFragment
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInViewModel
 import birth.h3.app.curl_kusegeapp.ui.signup.SignUpAccountFragment
@@ -60,6 +62,7 @@ interface AppComponent {
     fun inject(fragment: IconFragment)
     fun inject(fragment: ThemeFragment)
     fun inject(fragment: WithdrawalFragment)
+    fun inject(fragment: HelpFeedbackFragment)
     fun inject(viewModel: MainViewModel)
     fun inject(viewModel: RegisterCityViewModel)
     fun inject(viewModel: WeatherViewModel)
@@ -74,5 +77,6 @@ interface AppComponent {
     fun inject(viewModel: ProfileChangeViewModel)
     fun inject(viewModel: NewsViewModel)
     fun inject(viewModel: WithdrawalViewModel)
+    fun inject(viewModel: HelpFeedbackViewModel)
     fun inject(util: UtilIcon)
 }

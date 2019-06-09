@@ -1,6 +1,7 @@
 package birth.h3.app.curl_kusegeapp.model.net
 
 import birth.h3.app.curl_kusegeapp.model.entity.User
+import birth.h3.app.curl_kusegeapp.model.response.ContactRespose
 import birth.h3.app.curl_kusegeapp.model.response.EMailChangeResponse
 import birth.h3.app.curl_kusegeapp.model.response.PasswordChangeResponse
 import birth.h3.app.curl_kusegeapp.model.response.ProfileChangeResponse
@@ -40,4 +41,12 @@ interface UserApiService {
             @Query("user_id") userId: Int,
             @Query("message") message: String
     ): Single<WithdrawalResponse>
+
+    @POST("public/api/info/contact")
+    fun contact(
+            @Query("nickname") nickname: String,
+            @Query("email") email: String,
+            @Query("message") message: String,
+            @Query("user_id") user_id: Int?
+    ): Single<ContactRespose>
 }
