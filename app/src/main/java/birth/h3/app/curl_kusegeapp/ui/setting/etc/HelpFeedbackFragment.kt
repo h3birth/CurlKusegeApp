@@ -11,7 +11,9 @@ import birth.h3.app.curl_kusegeapp.CurlApp
 
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.databinding.FragmentHelpFeedbackBinding
+import birth.h3.app.curl_kusegeapp.model.enums.APIStatus
 import birth.h3.app.curl_kusegeapp.ui.setting.account.WithdrawalViewModel
+import kotlinx.android.synthetic.main.fragment_help_feedback.*
 import javax.inject.Inject
 
 
@@ -42,6 +44,22 @@ class HelpFeedbackFragment : Fragment() {
         binding.setLifecycleOwner(this)
         binding.viewModel = viewModel
 
+        btn_feedback.setOnClickListener {
+            viewModel.contact()
+        }
+
+        viewModel.errorNickName.observeForever {
+            contact_nickname_layout.error = it
+        }
+        viewModel.errorEMail.observeForever {
+            contact_email_layout.error = it
+        }
+        viewModel.errorMessage.observeForever {
+            contact_message_layout.error = it
+        }
+        viewModel.status.observeForever {
+            if(it == APIStatus.SUCCESS) this.activity?.finish()
+        }
     }
 
 }

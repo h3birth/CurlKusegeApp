@@ -81,9 +81,8 @@
                         android:layout_height="200dp"
                         android:gravity="left"
                         android:hint="@string/withdrawal_message"
-                        android:inputType="text"
+                        android:inputType="textMultiLine"
                         android:lines="10"
-                        android:maxLines="10"
                         android:text="@={viewModel.message}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
