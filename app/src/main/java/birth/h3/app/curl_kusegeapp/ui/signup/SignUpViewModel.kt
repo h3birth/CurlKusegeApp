@@ -22,6 +22,10 @@ class SignUpViewModel @Inject constructor(private val userApiService: UserApiSer
     val signupMessages = SignupMessage.signUpMessages().toMutableList()
     var postIndex: Int = 0
 
+    val userSelectHairStatusId: MutableLiveData<Int> = MutableLiveData<Int>().apply { value = 1 }
+    val userSelectGenderId: MutableLiveData<Int> = MutableLiveData<Int>().apply { value = 0 }
+    val userSelectNickName: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
+
     fun postMessage(): List<SignupMessage>? {
         Timber.d("postIndex is ${this.postIndex} size is ${signupMessages.size + 1}")
         if(this.postIndex >= signupMessages.size - 1) return null

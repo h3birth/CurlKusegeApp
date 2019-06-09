@@ -99,10 +99,34 @@ class SignUpFragment : Fragment(), SignUpController.Listener {
     }
 
     private fun postUserAction(userText: String) {
+        Timber.d("")
+        when(viewModel.postIndex) {
+            2 -> {
+                viewModel.userSelectHairStatusId.value = saveUserSelectHairStatusId(userText)
+            }
+            5 -> {
+                viewModel.userSelectGenderId.value = saveUserSelectGenderId(userText)
+            }
+        }
+
         viewModel.lastAnswerText.postValue(userText)
         viewModel.insertUserMessage(SignupMessage(0, MessageOwner.USER, userText,false, false, null))
         handler.post(runnable)
         viewModel.buttonVisibility.postValue(View.INVISIBLE)
+    }
+
+    private fun saveUserSelectHairStatusId(userText: String) = when(userText) {
+        "さらさら" -> 1
+        "ちょいくせ" -> 2
+        "ちょうくせ" -> 3
+        else -> 1
+    }
+
+    private fun saveUserSelectGenderId(userText: String) = when(userText) {
+        "男性" -> 1
+        "女性" -> 2
+        "答えない" -> 0
+        else -> 1
     }
 
     private fun setButtonText(signupMessage: SignupMessage) = viewModel.setButtonText(signupMessage.userMessage!!)

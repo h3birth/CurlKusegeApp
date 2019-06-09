@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
+        <import type="android.view.View" />
         <variable
             name="viewModel"
             type="birth.h3.app.curl_kusegeapp.ui.signup.SignUpViewModel" />
@@ -50,7 +51,8 @@
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:textStyle="bold"
                 tools:text="さらさら"
-                android:layout_margin="@dimen/margin_m"/>
+                android:layout_margin="@dimen/margin_m"
+                android:visibility="@{viewModel.firstButtonText.isEmpty() ? View.GONE : View.VISIBLE}"/>
 
             <Button
                 android:id="@+id/second_submit_button"
@@ -62,7 +64,8 @@
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:textStyle="bold"
                 tools:text="ちょいくせ"
-                android:layout_margin="@dimen/margin_m"/>
+                android:layout_margin="@dimen/margin_m"
+                android:visibility="@{viewModel.secondButtonText.isEmpty() ? View.GONE : View.VISIBLE}"/>
 
             <Button
                 android:id="@+id/third_submit_button"
@@ -74,7 +77,8 @@
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:textStyle="bold"
                 tools:text="ちょうくせ"
-                android:layout_margin="@dimen/margin_m"/>
+                android:layout_margin="@dimen/margin_m"
+                android:visibility="@{viewModel.thirdButtonText.isEmpty() ? View.GONE : View.VISIBLE}"/>
 
         </LinearLayout>
 
