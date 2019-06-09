@@ -36,9 +36,12 @@ class MainViewModel @Inject constructor(private val weatherApiService: WeatherAp
     val fabImage: MutableLiveData<Int> = MutableLiveData<Int>().apply { value = utilIcon.getGenderIcon(1) }
     val geolocation: MutableLiveData<Geolocation?> = MutableLiveData<Geolocation?>().apply { value = null }
     val weather: MutableLiveData<LocalWeather?> = MutableLiveData<LocalWeather?>().apply { value = null }
+    val submitCount: MutableLiveData<Int> = MutableLiveData<Int>().apply { value = 0 }
+    val ableCount: MutableLiveData<Int> = MutableLiveData<Int>().apply { value = 3 }
 
     init {
         getUser()
+        getSubmitedCount()
     }
 
     fun insertStatus(status: HairStatus) {
@@ -77,8 +80,11 @@ class MainViewModel @Inject constructor(private val weatherApiService: WeatherAp
             builder.kusegeStatusDao().insertAll(kusege_status)
         }.subscribeOn(Schedulers.io())
         .subscribe({
+            submitCount.postValue(submitCount.value!! + 1)
+            ableCount.postValue(ableCount.value!! - 1)
             Timber.d("kusegeStatusDao OK")
         },{
+            Timber.d("kusegeStatusDao Error")
             Timber.e(it)
         }).addTo(disposable)
     }
@@ -118,6 +124,20 @@ class MainViewModel @Inject constructor(private val weatherApiService: WeatherAp
                     getLocalWeather(status)
                 }, {
                     Timber.e("geolocation is error")
+                    Timber.e(it)
+                }).addTo(disposable)
+    }
+
+    fun getSubmitedCount() {
+        Single.fromCallable {
+            val dt = UtilDateTime()
+            builder.kusegeStatusDao().countSubmittedToday(dt.year, dt.month, dt.date)
+        }.subscribeOn(Schedulers.io())
+                .subscribe({
+                    Timber.d("count is ${it}")
+                    submitCount.postValue(it.toInt())
+                    ableCount.postValue(3 - it.toInt())
+                },{
                     Timber.e(it)
                 }).addTo(disposable)
     }

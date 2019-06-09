@@ -13,6 +13,7 @@
     <string name="tv_wind">%dm/s</string>
     <string name="tv_rainy">%d%%</string>
     <string name="tv_submit_read">あなたの髪は今どんな感じ？</string>
+    <string name="tv_submit_able_count">きょうはあと%d回送れるよ</string>
     <string name="btn_city_register">エリアを登録</string>
     <string name="change_city">地域を変更する</string>
     <string name="change_delete">地域を削除する</string>

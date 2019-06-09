@@ -22,7 +22,7 @@ data class KusegeStatus (
     @ColumnInfo(name = "submit_year") var submit_year: Int,
     @ColumnInfo(name = "submit_month") var submit_month: Int,
     @ColumnInfo(name = "submit_day") var submit_day: Int,
-    @ColumnInfo(name = "created_at") var createdAt: String
+    @ColumnInfo(name = "created_at") var created_at: String
 ) {
 
     fun getIcon(): Int {

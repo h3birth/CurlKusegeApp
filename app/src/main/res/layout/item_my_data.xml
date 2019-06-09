@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="myData"
-            type="birth.h3.app.curl_kusegeapp.model.entity.MyData" />
+            name="kusegeStatus"
+            type="birth.h3.app.curl_kusegeapp.model.entity.KusegeStatus" />
 
         <variable
             name="viewModel"
@@ -27,7 +27,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:text="@{String.format(@string/submited_day, myData.submitDay)}"
+            android:text="@{String.format(@string/submited_day, kusegeStatus.submit_day)}"
             android:textStyle="bold"
             android:textSize="@dimen/text_m"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -42,7 +42,7 @@
             android:layout_marginStart="@dimen/margin_3l"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            app:srcCompat="@{viewModel.getIcon(myData)}"
+            app:srcCompat="@{viewModel.getIcon(kusegeStatus)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/submit_date"
             app:layout_constraintTop_toTopOf="parent"
@@ -56,7 +56,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:text="@{myData.getText()}"
+            android:text="@{kusegeStatus.getText()}"
             android:textSize="@dimen/text_l"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/hair_image"

@@ -72,7 +72,7 @@ class MyDataFragment : Fragment() {
 
                 val model = contoller.adapter.getModelAtPosition(position) as ItemMyDataHeaderBindingModel_
                 val binding = ItemMyDataHeaderBinding.bind(view)
-                binding.myData = model.myData()
+                binding.kusegeStatus = model.kusegeStatus()
                 binding.viewModel = model.viewModel()
                 binding.executePendingBindings()
             }
@@ -84,7 +84,7 @@ class MyDataFragment : Fragment() {
     }
 
     private fun setObserve(){
-        viewModel.myData.observeForever {
+        viewModel.kusegeStatus.observeForever {
             contoller.setData(it)
         }
     }
