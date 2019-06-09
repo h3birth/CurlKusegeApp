@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import birth.h3.app.curl_kusegeapp.CurlApp
@@ -99,20 +100,31 @@ class SignUpFragment : Fragment(), SignUpController.Listener {
     }
 
     private fun postUserAction(userText: String) {
-        Timber.d("")
-        when(viewModel.postIndex) {
-            2 -> {
-                viewModel.userSelectHairStatusId.value = saveUserSelectHairStatusId(userText)
-            }
-            5 -> {
-                viewModel.userSelectGenderId.value = saveUserSelectGenderId(userText)
-            }
-        }
+        if(userText == "次へ"){
+            val fragment = SignUpNickNameFragment()
 
-        viewModel.lastAnswerText.postValue(userText)
-        viewModel.insertUserMessage(SignupMessage(0, MessageOwner.USER, userText,false, false, null))
-        handler.post(runnable)
-        viewModel.buttonVisibility.postValue(View.INVISIBLE)
+            this.fragmentManager!!.beginTransaction()
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                    .replace(R.id.signup_container, fragment, fragment.TAG)
+                    .commit()
+        }else {
+            Timber.d("postIndex is ${viewModel.postIndex}")
+            when (viewModel.postIndex) {
+                3 -> {
+                    viewModel.userSelectHairStatusId.value = saveUserSelectHairStatusId(userText)
+                    Timber.d("userSelectHairStatusId is ${viewModel.userSelectHairStatusId.value}")
+                }
+                6 -> {
+                    viewModel.userSelectGenderId.value = saveUserSelectGenderId(userText)
+                    Timber.d("userSelectGenderId is ${viewModel.userSelectHairStatusId.value}")
+                }
+            }
+
+            viewModel.lastAnswerText.postValue(userText)
+            viewModel.insertUserMessage(SignupMessage(0, MessageOwner.USER, userText, false, false, null))
+            handler.post(runnable)
+            viewModel.buttonVisibility.postValue(View.INVISIBLE)
+        }
     }
 
     private fun saveUserSelectHairStatusId(userText: String) = when(userText) {

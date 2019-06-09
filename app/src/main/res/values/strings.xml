@@ -104,6 +104,9 @@
     <string name="withdrawal">退会</string>
     <string name="help_feedback">ヘルプとフィードバック</string>
 
+    <string name="sign_up_nickname">あなたをなんて呼べばいいかな？名前を教えて！</string>
+    <string name="next_text">次へ</string>
+
     <!-- プッシュ設定 -->
     <string name="push_lead_1">プッシュ設定の変更は以下の順序で行います。</string>
     <string name="push_lead_2">端末の設定アプリから「か〜る」アプリ情報を開きます。</string>
@@ -113,4 +116,7 @@
 
     <!-- テーマ -->
     <string name="theme_enter">決定する</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

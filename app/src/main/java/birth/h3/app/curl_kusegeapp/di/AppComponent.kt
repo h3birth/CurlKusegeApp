@@ -17,7 +17,9 @@ import birth.h3.app.curl_kusegeapp.ui.setting.app.PushFragment
 import birth.h3.app.curl_kusegeapp.ui.setting.app.ThemeFragment
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInFragment
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInViewModel
+import birth.h3.app.curl_kusegeapp.ui.signup.SignUpActivity
 import birth.h3.app.curl_kusegeapp.ui.signup.SignUpFragment
+import birth.h3.app.curl_kusegeapp.ui.signup.SignUpNickNameFragment
 import birth.h3.app.curl_kusegeapp.ui.signup.SignUpViewModel
 import birth.h3.app.curl_kusegeapp.ui.top.TopFragment
 import birth.h3.app.curl_kusegeapp.ui.top.TopPagerAdapter
@@ -45,6 +47,7 @@ interface AppComponent {
     fun inject(fragment: SearchAddressFragment)
     fun inject(fragment: MyDataFragment)
     fun inject(fragment: SignUpFragment)
+    fun inject(fragment: SignUpNickNameFragment)
     fun inject(fragment: SignInFragment)
     fun inject(fragment: SettingFragment)
     fun inject(fragment: AccountFragment)

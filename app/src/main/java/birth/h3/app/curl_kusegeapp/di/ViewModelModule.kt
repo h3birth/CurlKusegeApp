@@ -1,6 +1,7 @@
 package birth.h3.app.curl_kusegeapp.di
 
 import android.content.Context
+import androidx.lifecycle.ViewModelProviders
 import androidx.room.Room
 import birth.h3.app.curl_kusegeapp.MainViewModel
 import birth.h3.app.curl_kusegeapp.R
@@ -20,6 +21,7 @@ import birth.h3.app.curl_kusegeapp.ui.setting.account.ProfileChangeViewModel
 import birth.h3.app.curl_kusegeapp.ui.setting.app.IconViewModel
 import birth.h3.app.curl_kusegeapp.ui.setting.app.PushViewModel
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInViewModel
+import birth.h3.app.curl_kusegeapp.ui.signup.SignUpActivity
 import birth.h3.app.curl_kusegeapp.ui.signup.SignUpViewModel
 import birth.h3.app.curl_kusegeapp.ui.top.TopViewModel
 import birth.h3.app.curl_kusegeapp.ui.util.UtilIcon
@@ -71,6 +73,7 @@ class ViewModelModule {
         return MyDataViewModel(weatherApiService, builder, utilIcon)
     }
 
+    @Singleton
     @Provides
     fun provideSignUpViewModel(userApiService: UserApiService, builder:AppDatabase) : SignUpViewModel {
         return SignUpViewModel(userApiService, builder)
