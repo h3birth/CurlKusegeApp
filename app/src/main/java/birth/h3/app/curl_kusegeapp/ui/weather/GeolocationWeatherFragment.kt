@@ -5,6 +5,7 @@ import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
+import android.text.format.DateUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,8 @@ import birth.h3.app.curl_kusegeapp.ItemTimeWeatherHeaderBindingModel_
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.databinding.FragmentWeatherBinding
 import birth.h3.app.curl_kusegeapp.databinding.ItemTimeWeatherHeaderBinding
+import birth.h3.app.curl_kusegeapp.model.entity.Geolocation
+import birth.h3.app.curl_kusegeapp.model.entity.LocalWeather
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
 import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityActivity
 import birth.h3.app.curl_kusegeapp.ui.util.UtilDateTime
@@ -59,6 +62,8 @@ class GeolocationWeatherFragment : androidx.fragment.app.Fragment() {
 
         val page = 0 //arguments!!.getInt(context!!.getString(R.string.arg_page))
         weatherViewModel.page.postValue(page)
+
+        weatherViewModel.getGeolocation()
 
 
         binding.setLifecycleOwner(this)
@@ -138,6 +143,21 @@ class GeolocationWeatherFragment : androidx.fragment.app.Fragment() {
                 else -> R.color.colorHairCurl
             }
             binding.viewmodel!!.setColorHex(context!!, kusegeColor)
+
+            weatherViewModel.insertLocalWeather(LocalWeather(
+                    0,
+                    it.weather,
+                    it.weather_text,
+                    it.temp,
+                    it.max_temp,
+                    it.min_temp,
+                    it.humidity,
+                    it.wind,
+                    it.rainy,
+                    it.kusege,
+                    it.date_text,
+                    0,
+                    UtilDateTime().date_at()))
         }
         weatherViewModel.timeWeather.observeForever {
             controller.setData(it)
@@ -152,6 +172,9 @@ class GeolocationWeatherFragment : androidx.fragment.app.Fragment() {
                 Log.d("WeatherFragment", "lat = " + location.latitude.toString() + " lon =" + location.longitude.toString())
 
                 geolocationAddress(location.latitude, location.longitude)?.let {
+
+                    weatherViewModel.insertGeolocation(Geolocation(1, it.adminArea, it.locality, it.subLocality ?: "", it.postalCode, it.countryName, it.latitude, it.longitude, UtilDateTime().date_at()))
+
                     val newCity = getCity(it)
                     Timber.d("newCity is ${newCity}")
 

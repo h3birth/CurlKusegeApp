@@ -113,17 +113,17 @@ class MainActivity : AppCompatActivity() {
     private fun onSubmitClickLister() {
         // サラサラ
         iv_submit_straight.setOnClickListener {
-            viewModel.insertStatus(HairStatus.STRAIGHT.id)
+            viewModel.getGeolocation(HairStatus.STRAIGHT)
             animator.showNext()
             floatingActionButton.setImageResource(R.drawable.men_streat)
         }
         iv_submit_curl.setOnClickListener {
-            viewModel.insertStatus(HairStatus.CURL.id)
+            viewModel.getGeolocation(HairStatus.CURL)
             animator.showNext()
             floatingActionButton.setImageResource(R.drawable.men_curl)
         }
         iv_submit_very_curl.setOnClickListener {
-            viewModel.insertStatus(HairStatus.VERY_CURL.id)
+            viewModel.getGeolocation(HairStatus.VERY_CURL)
             animator.showNext()
             floatingActionButton.setImageResource(R.drawable.men_very_curl)
         }

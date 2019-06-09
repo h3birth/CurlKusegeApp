@@ -112,11 +112,31 @@
                             android:orientation="horizontal"
                             android:padding="@dimen/padding_m">
 
-                            <ImageView
-                                android:id="@+id/iv_weather"
-                                android:layout_width="@dimen/weatherImage"
-                                android:layout_height="@dimen/weatherImage"
-                                app:srcCompat="@{viewmodel.icon.getIcon()}" />
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:id="@+id/iv_weather"
+                                    android:layout_width="@dimen/weatherImage"
+                                    android:layout_height="@dimen/weatherImage"
+                                    app:srcCompat="@{viewmodel.icon.getIcon()}" />
+
+                                <TextView
+                                    android:id="@+id/tv_temp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="@{String.format(@string/tv_temp, viewmodel.weather.temp)}"
+                                    android:textColor="@color/colorBlack"
+                                    android:textStyle="bold"
+                                    android:textSize="@dimen/text_l"
+                                    tools:text="18"/>
+
+                            </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -137,7 +157,8 @@
                                         android:layout_weight="1"
                                         android:gravity="center"
                                         android:text="@{viewmodel.weather.weather_text}"
-                                        android:textSize="@dimen/text_2l" />
+                                        android:textSize="@dimen/text_2l"
+                                        tools:text="くもり"/>
 
                                     <TextView
                                         android:id="@+id/tv_max_temp"

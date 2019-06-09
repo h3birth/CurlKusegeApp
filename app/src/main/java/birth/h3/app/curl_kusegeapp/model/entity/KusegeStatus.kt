@@ -14,14 +14,15 @@ data class KusegeStatus (
     @PrimaryKey var id: Int,
     @ColumnInfo(name = "kusege_category_id") var kusege_category_id: Int,
     @ColumnInfo(name = "weather_text") var weather_text: String,
-    @ColumnInfo(name = "temp") var temp: Double,
+    @ColumnInfo(name = "temp") var temp: Int,
     @ColumnInfo(name = "humidity") var humidity: Int,
     @ColumnInfo(name = "prefecture") var prefecture: String,
     @ColumnInfo(name = "city") var city: String,
     @ColumnInfo(name = "address") var address: String,
     @ColumnInfo(name = "submit_year") var submit_year: Int,
     @ColumnInfo(name = "submit_month") var submit_month: Int,
-    @ColumnInfo(name = "submit_day") var submit_day: Int
+    @ColumnInfo(name = "submit_day") var submit_day: Int,
+    @ColumnInfo(name = "created_at") var createdAt: String
 ) {
 
     fun getIcon(): Int {

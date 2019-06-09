@@ -10,8 +10,10 @@ import androidx.core.content.ContextCompat
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.model.db.AppDatabase
 import birth.h3.app.curl_kusegeapp.model.entity.City
+import birth.h3.app.curl_kusegeapp.model.entity.Geolocation
 import birth.h3.app.curl_kusegeapp.model.entity.Weather
 import birth.h3.app.curl_kusegeapp.model.entity.Icon
+import birth.h3.app.curl_kusegeapp.model.entity.LocalWeather
 import birth.h3.app.curl_kusegeapp.model.entity.TimeWeather
 import birth.h3.app.curl_kusegeapp.model.enums.APIResponseStatus
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
@@ -42,6 +44,8 @@ class WeatherViewModel @Inject constructor(private val weatherApiService: Weathe
 
     val city: MutableLiveData<City?> = MutableLiveData<City?>().apply { value = null }
     val isContentVisibility: MutableLiveData<Int> =  MutableLiveData<Int>().apply { value = View.VISIBLE }
+    val geolocation: MutableLiveData<Geolocation?> = MutableLiveData<Geolocation?>().apply { value = null }
+    val localWeather: MutableLiveData<LocalWeather?> = MutableLiveData<LocalWeather?>().apply { value = null }
 
     init {
         weather.value = Weather.placeholder()
@@ -50,6 +54,7 @@ class WeatherViewModel @Inject constructor(private val weatherApiService: Weathe
         statusImage.value = utilIcon.getGenderIcon(1)
         address.value = ""
         day.value = "11/21"
+        getLocalWeather()
     }
 
     fun setColorHex(context:Context, colorID: Int){
@@ -113,6 +118,75 @@ class WeatherViewModel @Inject constructor(private val weatherApiService: Weathe
     }
 
     fun updateWeatherStatusImage() = statusImage.postValue(utilIcon.getGenderIcon(weather.value?.kusege ?: 1))
+
+    fun getGeolocation() {
+        Single.fromCallable { builder.geolocationDao().get() }
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe ({
+                    Timber.d("get Geolocation is ${it}")
+                    this.geolocation.value = it
+                }, {
+                    Timber.e(it)
+                }).addTo(disposable)
+    }
+
+    fun insertGeolocation(geolocation: Geolocation) {
+        when(this.geolocation.value){
+            null -> {
+                Single.fromCallable { builder.geolocationDao().insertAll(geolocation) }
+                        .subscribeOn(Schedulers.io())
+                        .subscribe ({
+                            Timber.d("geolocation insert success")
+                        }, {
+                            Timber.e(it)
+                        }).addTo(disposable)
+            }
+            else -> {
+                Single.fromCallable { builder.geolocationDao().update(geolocation) }
+                        .subscribeOn(Schedulers.io())
+                        .subscribe ({
+                            Timber.d("geolocation update success")
+                        }, {
+                            Timber.e(it)
+                        }).addTo(disposable)
+            }
+        }
+    }
+
+    fun getLocalWeather() {
+        Single.fromCallable { builder.localWeatherDao().get(this.page.value ?: 0) }
+                .subscribeOn(Schedulers.io())
+                .subscribe ({
+                    Timber.d("localWeatherDao get success")
+                    localWeather.postValue(it)
+                }, {
+                    Timber.e(it)
+                }).addTo(disposable)
+    }
+
+    fun insertLocalWeather(localWeather: LocalWeather){
+        when(this.localWeather.value){
+            null -> {
+                Single.fromCallable { builder.localWeatherDao().insertAll(localWeather) }
+                        .subscribeOn(Schedulers.io())
+                        .subscribe ({
+                            Timber.d("localWeatherDao insert success")
+                        }, {
+                            Timber.e(it)
+                        }).addTo(disposable)
+            }
+            else -> {
+                Single.fromCallable { builder.localWeatherDao().update(localWeather) }
+                        .subscribeOn(Schedulers.io())
+                        .subscribe ({
+                            Timber.d("localWeatherDao update success")
+                        }, {
+                            Timber.e(it)
+                        }).addTo(disposable)
+            }
+        }
+    }
 
     override fun onCleared() {
         super.onCleared()

@@ -9,8 +9,8 @@ import java.util.*
 data class Geolocation (
         @PrimaryKey var id: Int,
         @ColumnInfo(name = "pref") val pref: String,
-        @ColumnInfo(name = "city") val city: String,
-        @ColumnInfo(name = "address") val address: String,
+        @ColumnInfo(name = "city") val city: String?,
+        @ColumnInfo(name = "address") val address: String?,
         @ColumnInfo(name = "postCode") val postCode: String,
         @ColumnInfo(name = "countryName") val countryName: String,
         @ColumnInfo(name = "latitude") val latitude: Double,

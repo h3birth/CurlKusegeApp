@@ -102,9 +102,13 @@ class SignInViewModel @Inject constructor(private val weatherApiService: Weather
     fun getNetCity(user: User) {
         weatherApiService.getCities(user.id).subscribeOn(Schedulers.io()).subscribe({res ->
             Timber.d("success is ${res}")
-            res.cities?.forEach { city ->
-                insertDaoCity(city)
-            } ?: status.postValue(SignInStatus.SUCCESS)
+            if(res.cities.isNullOrEmpty()){
+                status.postValue(SignInStatus.SUCCESS)
+            }else{
+                res.cities?.forEach { city ->
+                    insertDaoCity(city)
+                }
+            }
         },{e ->
             status.postValue(SignInStatus.NONE)
             Timber.e(e)

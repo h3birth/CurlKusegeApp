@@ -10,6 +10,7 @@ data class LocalWeather(
         @PrimaryKey var id: Int,
         @ColumnInfo(name = "weather") var weather: Int,
         @ColumnInfo(name = "weather_text") var weather_text: String,
+        @ColumnInfo(name = "temp") var temp: Int,
         @ColumnInfo(name = "max_temp") var max_temp: Int,
         @ColumnInfo(name = "min_temp") var min_temp: Int,
         @ColumnInfo(name = "humidity") var humidity: Int,
@@ -17,6 +18,6 @@ data class LocalWeather(
         @ColumnInfo(name = "rainy") var rainy: Int,
         @ColumnInfo(name = "kusege") var kusege: Int,
         @ColumnInfo(name = "date_text") var date_text: String,
-        @ColumnInfo(name = "sort_order") var sort_order: String,
+        @ColumnInfo(name = "sort_order") var sort_order: Int,
         @ColumnInfo(name = "update_at") var updatedAt: String
 )

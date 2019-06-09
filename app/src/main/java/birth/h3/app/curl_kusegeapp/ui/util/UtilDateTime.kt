@@ -27,6 +27,11 @@ class UtilDateTime{
         return sdf.format(date)
     }
 
+    fun date_at(): String {
+        val today = today()
+        return SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(today)
+    }
+
     /**
      * 日付文字列を日本語表示日付で表示
      */

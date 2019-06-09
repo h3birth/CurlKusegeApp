@@ -6,6 +6,7 @@ import birth.h3.app.curl_kusegeapp.model.entity.TimeWeather
 import birth.h3.app.curl_kusegeapp.model.entity.Weather
 import birth.h3.app.curl_kusegeapp.model.response.CityResponse
 import birth.h3.app.curl_kusegeapp.model.response.GetCityResponse
+import birth.h3.app.curl_kusegeapp.model.response.KusegeStatusResponse
 import io.reactivex.Completable
 import io.reactivex.Single
 import retrofit2.http.DELETE
@@ -53,4 +54,20 @@ interface WeatherApiService{
     fun deleteCity(
             @Path("id") userId: Int
     ): Single<CityResponse>
+
+    @POST("public/api/data/status")
+    fun postKusegeStatus(
+            @Query("user_id") userId: Int,
+            @Query("kusege_category_id") kusegeCategoryId: Int,
+            @Query("gender") gender: Int,
+            @Query("weather_text") weatherText: String,
+            @Query("temp") temp: Int,
+            @Query("humidity") humidity: Int,
+            @Query("prefecture") prefecture: String,
+            @Query("city") city: String,
+            @Query("address") address: String,
+            @Query("submit_year") submitYear: Int,
+            @Query("submit_month") submitMonth: Int,
+            @Query("submit_day") submitDay: Int
+    ): Single<KusegeStatusResponse>
 }
