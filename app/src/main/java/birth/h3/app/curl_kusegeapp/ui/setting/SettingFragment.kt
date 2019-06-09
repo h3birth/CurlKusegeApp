@@ -93,6 +93,10 @@ class SettingFragment : androidx.fragment.app.Fragment() {
             startActivity(intent)
         }
 
+        tv_setting_privacy_policy.setOnClickListener {
+            curlApp.curlPageURI("privacypolicy")
+        }
+
         setObserve()
     }
 

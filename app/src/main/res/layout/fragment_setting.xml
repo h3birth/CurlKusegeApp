@@ -175,13 +175,6 @@
                         android:text="@string/tv_setting_header_etc" />
 
                     <TextView
-                        android:id="@+id/tv_setting_rule"
-                        style="@style/AppSettingSelectableText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/tv_setting_rule" />
-
-                    <TextView
                         android:id="@+id/tv_setting_privacy_policy"
                         style="@style/AppSettingSelectableText"
                         android:layout_width="match_parent"
