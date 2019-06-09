@@ -50,6 +50,11 @@ class AccountFragment : Fragment() {
             viewModel.logout()
         }
 
+        withdrawal.setOnClickListener {
+            val fragment = WithdrawalFragment()
+            fragmentCommit(fragment, fragment.TAG)
+        }
+
         mail_change.setOnClickListener {
             val fragment = EmailChangeFragment()
             fragmentCommit(fragment, fragment.TAG)

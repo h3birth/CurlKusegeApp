@@ -18,6 +18,7 @@ import birth.h3.app.curl_kusegeapp.ui.setting.account.AccountViewModel
 import birth.h3.app.curl_kusegeapp.ui.setting.account.EmailChangeViewModel
 import birth.h3.app.curl_kusegeapp.ui.setting.account.PasswordChangeViewModel
 import birth.h3.app.curl_kusegeapp.ui.setting.account.ProfileChangeViewModel
+import birth.h3.app.curl_kusegeapp.ui.setting.account.WithdrawalViewModel
 import birth.h3.app.curl_kusegeapp.ui.setting.app.IconViewModel
 import birth.h3.app.curl_kusegeapp.ui.setting.app.PushViewModel
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInViewModel
@@ -107,6 +108,11 @@ class ViewModelModule {
     @Provides
     fun provideProfileChangeViewModel(userApiService: UserApiService, builder:AppDatabase) : ProfileChangeViewModel {
         return ProfileChangeViewModel(userApiService, builder)
+    }
+
+    @Provides
+    fun provideWithdrawalViewModel(userApiService: UserApiService, builder:AppDatabase) : WithdrawalViewModel {
+        return WithdrawalViewModel(userApiService, builder)
     }
 
     @Provides

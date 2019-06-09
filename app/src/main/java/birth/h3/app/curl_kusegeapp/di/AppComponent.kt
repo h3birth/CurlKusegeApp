@@ -59,6 +59,7 @@ interface AppComponent {
     fun inject(fragment: PushFragment)
     fun inject(fragment: IconFragment)
     fun inject(fragment: ThemeFragment)
+    fun inject(fragment: WithdrawalFragment)
     fun inject(viewModel: MainViewModel)
     fun inject(viewModel: RegisterCityViewModel)
     fun inject(viewModel: WeatherViewModel)
@@ -72,5 +73,6 @@ interface AppComponent {
     fun inject(viewModel: PasswordChangeViewModel)
     fun inject(viewModel: ProfileChangeViewModel)
     fun inject(viewModel: NewsViewModel)
+    fun inject(viewModel: WithdrawalViewModel)
     fun inject(util: UtilIcon)
 }
