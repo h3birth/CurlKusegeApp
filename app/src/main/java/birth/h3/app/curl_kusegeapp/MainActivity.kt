@@ -68,7 +68,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         firebaseInstance()
-//        admob()
     }
 
     fun setBottomNavigtionOption() {
@@ -164,18 +163,5 @@ class MainActivity : AppCompatActivity() {
                     val msg = getString(R.string.msg_token_fmt, token)
                     Timber.d(msg)
                 })
-    }
-
-    private fun admob(){
-        MobileAds.initialize(this,BuildConfig.ADMOB_APP_ID)
-
-        mInterstitialAd = InterstitialAd(this)
-
-        mInterstitialAd.adUnitId = when( BuildConfig.DEBUG ){
-            true -> "ca-app-pub-3940256099942544/1033173712"
-            false -> BuildConfig.ADMOB_BENNER_ID
-        }
-
-        mInterstitialAd.loadAd(AdRequest.Builder().build())
     }
 }

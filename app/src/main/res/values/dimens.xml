@@ -39,4 +39,6 @@
     <dimen name="time_weather_width">16dp</dimen>
 
     <dimen name="bottom_sheet_height">60dp</dimen>
+
+    <dimen name="splash_size">100dp</dimen>
 </resources>
