@@ -35,8 +35,6 @@ class MainActivity : AppCompatActivity() {
 
     private var lastTheme: Int? = null
 
-    private lateinit var mInterstitialAd: InterstitialAd
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         curlApp.component.inject(this)
@@ -68,6 +66,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         firebaseInstance()
+
+        MobileAds.initialize(this,BuildConfig.ADMOB_APP_ID)
     }
 
     fun setBottomNavigtionOption() {
