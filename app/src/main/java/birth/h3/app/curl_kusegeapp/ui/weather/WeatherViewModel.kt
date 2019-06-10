@@ -128,6 +128,7 @@ class WeatherViewModel @Inject constructor(private val weatherApiService: Weathe
                 .subscribe ({
                     Timber.d("get Geolocation is ${it}")
                     this.geolocation.value = it
+                    this.address.value = (it.city ?: "") + (it.address ?: "")
                 }, {
                     Timber.e(it)
                 }).addTo(disposable)
