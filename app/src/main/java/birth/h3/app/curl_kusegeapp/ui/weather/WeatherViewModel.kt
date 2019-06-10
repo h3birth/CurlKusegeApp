@@ -162,6 +162,7 @@ class WeatherViewModel @Inject constructor(private val weatherApiService: Weathe
                 .subscribe ({
                     Timber.d("localWeatherDao get success")
                     localWeather.postValue(it)
+                    weather.postValue(it.toWeather())
                 }, {
                     Timber.e(it)
                 }).addTo(disposable)

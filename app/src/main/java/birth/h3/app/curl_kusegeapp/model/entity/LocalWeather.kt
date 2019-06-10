@@ -20,4 +20,17 @@ data class LocalWeather(
         @ColumnInfo(name = "date_text") var date_text: String,
         @ColumnInfo(name = "sort_order") var sort_order: Int,
         @ColumnInfo(name = "update_at") var updatedAt: String
-)
+) {
+    fun toWeather() = Weather(
+            weather,
+            weather_text,
+            temp,
+            max_temp,
+            min_temp,
+            humidity,
+            wind,
+            rainy,
+            kusege,
+            date_text
+    )
+}
