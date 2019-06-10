@@ -53,9 +53,9 @@ class MyData {
     fun getText(): String {
         val status = birth.h3.app.curl_kusegeapp.model.enums.HairStatus.fromValue(HairStatus!!)
         return when(status) {
-            birth.h3.app.curl_kusegeapp.model.enums.HairStatus.STRAIGHT -> "さらさら"
-            birth.h3.app.curl_kusegeapp.model.enums.HairStatus.CURL -> "ちょいくせ"
-            birth.h3.app.curl_kusegeapp.model.enums.HairStatus.VERY_CURL -> "ちょうくせ"
+            birth.h3.app.curl_kusegeapp.model.enums.HairStatus.STRAIGHT -> "ノンくせ"
+            birth.h3.app.curl_kusegeapp.model.enums.HairStatus.CURL -> "チョイくせ"
+            birth.h3.app.curl_kusegeapp.model.enums.HairStatus.VERY_CURL -> "オニくせ"
         }
     }
 }

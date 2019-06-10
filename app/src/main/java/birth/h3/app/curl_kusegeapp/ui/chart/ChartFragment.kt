@@ -28,7 +28,7 @@ class ChartFragment : androidx.fragment.app.Fragment(), OnChartValueSelectedList
 
     val TAG = "chart"
 
-    val titles = listOf("さらさら","ちょいくせ毛","ちょうくせ毛")
+    val titles = listOf("ノンくせ","チョイくせ毛","オニくせ毛")
 
     override fun onValueSelected(e: Entry?, h: Highlight?) {}
 

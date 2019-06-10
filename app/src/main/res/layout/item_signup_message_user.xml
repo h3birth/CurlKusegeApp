@@ -38,7 +38,7 @@
                 android:layout_marginRight="4dp"
                 android:text="@{signupMessage.message}"
                 android:textColor="@color/colorWhite"
-                tools:text="さらさら" />
+                tools:text="ノンくせ" />
 
         </com.daasuu.bl.BubbleLayout>
 

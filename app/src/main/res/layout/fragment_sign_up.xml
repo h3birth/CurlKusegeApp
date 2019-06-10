@@ -50,7 +50,7 @@
                 android:background="@drawable/style_border_radius"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:textStyle="bold"
-                tools:text="さらさら"
+                tools:text="ノンくせ"
                 android:layout_margin="@dimen/margin_m"
                 android:visibility="@{viewModel.firstButtonText.isEmpty() ? View.GONE : View.VISIBLE}"/>
 
@@ -63,7 +63,7 @@
                 android:background="@drawable/style_border_radius"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:textStyle="bold"
-                tools:text="ちょいくせ"
+                tools:text="チョイくせ"
                 android:layout_margin="@dimen/margin_m"
                 android:visibility="@{viewModel.secondButtonText.isEmpty() ? View.GONE : View.VISIBLE}"/>
 
@@ -76,7 +76,7 @@
                 android:background="@drawable/style_border_radius"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:textStyle="bold"
-                tools:text="ちょうくせ"
+                tools:text="オニくせ"
                 android:layout_margin="@dimen/margin_m"
                 android:visibility="@{viewModel.thirdButtonText.isEmpty() ? View.GONE : View.VISIBLE}"/>
 

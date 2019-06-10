@@ -14,7 +14,7 @@ data class SignupMessage(
         fun signUpMessages() = listOf(
                 SignupMessage(1, MessageOwner.CURL, "Curlをインストールいただきありがとうございます！", false, false, null),
                 SignupMessage(2, MessageOwner.CURL, "新規登録の準備をしてます。ちょっと待っててね。", false, false, null),
-                SignupMessage(3, MessageOwner.CURL, "始めにあなたの髪質を教えてください。", true, false, SignUpAnswerMessages("さらさら","ちょいくせ", "ちょうくせ")),
+                SignupMessage(3, MessageOwner.CURL, "始めにあなたの髪質を教えてください。", true, false, SignUpAnswerMessages("ノンくせ","チョイくせ", "オニくせ")),
                 SignupMessage(4, MessageOwner.CURL, "%sですね！", false, true, null),
                 SignupMessage(5, MessageOwner.CURL, "あなたの性別を教えてください。あっ、教えたくない場合は「答えない」を選んでね。", true, false, SignUpAnswerMessages("男性","女性", "答えない")),
                 SignupMessage(6, MessageOwner.CURL, "教えてくれてありがとう！", false, false, null),

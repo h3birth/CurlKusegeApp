@@ -128,9 +128,9 @@ class SignUpFragment : Fragment(), SignUpController.Listener {
     }
 
     private fun saveUserSelectHairStatusId(userText: String) = when(userText) {
-        "さらさら" -> 1
-        "ちょいくせ" -> 2
-        "ちょうくせ" -> 3
+        "ノンくせ" -> 1
+        "チョイくせ" -> 2
+        "オニくせ" -> 3
         else -> 1
     }
 
