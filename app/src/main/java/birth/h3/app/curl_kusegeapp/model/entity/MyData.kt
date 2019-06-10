@@ -54,8 +54,8 @@ class MyData {
         val status = birth.h3.app.curl_kusegeapp.model.enums.HairStatus.fromValue(HairStatus!!)
         return when(status) {
             birth.h3.app.curl_kusegeapp.model.enums.HairStatus.STRAIGHT -> "さらさら"
-            birth.h3.app.curl_kusegeapp.model.enums.HairStatus.CURL -> "くるくる"
-            birth.h3.app.curl_kusegeapp.model.enums.HairStatus.VERY_CURL -> "ごわごわ"
+            birth.h3.app.curl_kusegeapp.model.enums.HairStatus.CURL -> "ちょいくせ"
+            birth.h3.app.curl_kusegeapp.model.enums.HairStatus.VERY_CURL -> "ちょうくせ"
         }
     }
 }

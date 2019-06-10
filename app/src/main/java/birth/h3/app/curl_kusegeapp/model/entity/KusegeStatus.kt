@@ -38,8 +38,8 @@ data class KusegeStatus (
         val status = birth.h3.app.curl_kusegeapp.model.enums.HairStatus.fromId(kusege_category_id)
         return when(status) {
             birth.h3.app.curl_kusegeapp.model.enums.HairStatus.STRAIGHT -> "さらさら"
-            birth.h3.app.curl_kusegeapp.model.enums.HairStatus.CURL -> "くるくる"
-            birth.h3.app.curl_kusegeapp.model.enums.HairStatus.VERY_CURL -> "ごわごわ"
+            birth.h3.app.curl_kusegeapp.model.enums.HairStatus.CURL -> "ちょいくせ"
+            birth.h3.app.curl_kusegeapp.model.enums.HairStatus.VERY_CURL -> "ちょうくせ"
         }
     }
 }

@@ -74,8 +74,8 @@
     <!-- ステータス -->
     <string name="submited_day">%d日</string>
     <string name="hair_status_straight">さらさら</string>
-    <string name="hair_status_curl">くるくる</string>
-    <string name="hair_status_very_curl">ごわごわ</string>
+    <string name="hair_status_curl">ちょいくせ</string>
+    <string name="hair_status_very_curl">ちょうくせ</string>
 
     <string name="submit_login_read">ログインすると今のあなたの髪の状態を記録・管理できるようになります。</string>
 
