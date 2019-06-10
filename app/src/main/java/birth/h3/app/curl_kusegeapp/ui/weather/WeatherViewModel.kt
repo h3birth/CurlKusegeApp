@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
+import birth.h3.app.curl_kusegeapp.BuildConfig
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.model.db.AppDatabase
 import birth.h3.app.curl_kusegeapp.model.entity.City
@@ -46,6 +47,7 @@ class WeatherViewModel @Inject constructor(private val weatherApiService: Weathe
     val isContentVisibility: MutableLiveData<Int> =  MutableLiveData<Int>().apply { value = View.VISIBLE }
     val geolocation: MutableLiveData<Geolocation?> = MutableLiveData<Geolocation?>().apply { value = null }
     val localWeather: MutableLiveData<LocalWeather?> = MutableLiveData<LocalWeather?>().apply { value = null }
+
 
     init {
         weather.value = Weather.placeholder()

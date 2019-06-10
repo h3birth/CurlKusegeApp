@@ -17,6 +17,9 @@ import birth.h3.app.curl_kusegeapp.ui.signup.SignUpActivity
 import birth.h3.app.curl_kusegeapp.ui.top.TopFragment
 import birth.h3.app.curl_kusegeapp.ui.util.BottomNavigationViewHelper
 import birth.h3.app.curl_kusegeapp.ui.util.UtilDateTime
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
+import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_main.*
@@ -31,6 +34,8 @@ class MainActivity : AppCompatActivity() {
     private val curlApp by lazy { (applicationContext as CurlApp) }
 
     private var lastTheme: Int? = null
+
+    private lateinit var mInterstitialAd: InterstitialAd
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +68,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         firebaseInstance()
+//        admob()
     }
 
     fun setBottomNavigtionOption() {
@@ -158,5 +164,18 @@ class MainActivity : AppCompatActivity() {
                     val msg = getString(R.string.msg_token_fmt, token)
                     Timber.d(msg)
                 })
+    }
+
+    private fun admob(){
+        MobileAds.initialize(this,BuildConfig.ADMOB_APP_ID)
+
+        mInterstitialAd = InterstitialAd(this)
+
+        mInterstitialAd.adUnitId = when( BuildConfig.DEBUG ){
+            true -> "ca-app-pub-3940256099942544/1033173712"
+            false -> BuildConfig.ADMOB_BENNER_ID
+        }
+
+        mInterstitialAd.loadAd(AdRequest.Builder().build())
     }
 }

@@ -22,6 +22,12 @@ android {
         properties.load(project.rootProject.file('local.properties').newDataInputStream())
         def CURL_URL = properties.getProperty("curl_url")
         buildConfigField("String", "CURL_URL", "\"${CURL_URL}\"")
+        def ADMOB_APP_ID = properties.getProperty("admob_app_id")
+        buildConfigField("String", "ADMOB_APP_ID", "\"${ADMOB_APP_ID}\"")
+        def ADMOB_BENNER_ID = properties.getProperty("admob_benner_id")
+        buildConfigField("String", "ADMOB_BENNER_ID", "\"${ADMOB_BENNER_ID}\"")
+
+        manifestPlaceholders = [ADMOB_APP_ID:ADMOB_APP_ID]
     }
     buildTypes {
         release {
@@ -114,6 +120,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.9'
     implementation 'com.google.firebase:firebase-iid:16.2.0'
     implementation 'com.google.firebase:firebase-messaging:17.6.0'
+    implementation 'com.google.android.gms:play-services-ads:17.2.0'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
 

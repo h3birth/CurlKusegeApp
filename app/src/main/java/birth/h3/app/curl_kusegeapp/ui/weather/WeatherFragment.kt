@@ -7,9 +7,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import birth.h3.app.curl_kusegeapp.BuildConfig
 import birth.h3.app.curl_kusegeapp.CurlApp
 import birth.h3.app.curl_kusegeapp.ItemTimeWeatherHeaderBindingModel_
 import birth.h3.app.curl_kusegeapp.MainViewModel
@@ -20,6 +22,9 @@ import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
 import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityActivity
 import birth.h3.app.curl_kusegeapp.ui.signin.SignInActivity
 import birth.h3.app.curl_kusegeapp.ui.util.UtilDateTime
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.kodmap.library.kmrecyclerviewstickyheader.KmHeaderItemDecoration
 import com.kodmap.library.kmrecyclerviewstickyheader.KmStickyListener
@@ -49,6 +54,9 @@ class WeatherFragment : androidx.fragment.app.Fragment(), ToSigninDialog.Listene
     private val disposable = CompositeDisposable()
 
     private val controller by lazy { TimeWeatherController() }
+
+    lateinit var mAdView : AdView
+    lateinit var mAdViewB : AdView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -139,6 +147,9 @@ class WeatherFragment : androidx.fragment.app.Fragment(), ToSigninDialog.Listene
                 }
             }
         }
+
+        // 広告
+        admob()
     }
 
     override fun onResume() {
@@ -184,6 +195,32 @@ class WeatherFragment : androidx.fragment.app.Fragment(), ToSigninDialog.Listene
     override fun onPositiveClickListener() {
         val intent = Intent(this.activity?.application, SignInActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun admob() {
+        mAdView = AdView(this.context)
+        mAdView.adSize = AdSize.MEDIUM_RECTANGLE
+        mAdView.adUnitId =when(BuildConfig.DEBUG){
+            true -> "ca-app-pub-3940256099942544/6300978111"
+            false -> BuildConfig.ADMOB_BENNER_ID
+        }
+
+        mAdViewB = AdView(this.context)
+        mAdViewB.adSize = AdSize.BANNER
+        mAdViewB.adUnitId =when(BuildConfig.DEBUG){
+            true -> "ca-app-pub-3940256099942544/6300978111"
+            false -> BuildConfig.ADMOB_BENNER_ID
+        }
+
+        val adArea = this.view!!.findViewById<LinearLayout>(R.id.adArea)
+        val adAreaB = this.view!!.findViewById<LinearLayout>(R.id.adAreaB)
+
+        adArea.addView(mAdView)
+        adAreaB.addView(mAdViewB)
+
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
+        mAdViewB.loadAd(adRequest)
     }
 
 }

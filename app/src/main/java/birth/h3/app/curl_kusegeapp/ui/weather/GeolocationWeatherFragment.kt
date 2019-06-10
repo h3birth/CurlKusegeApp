@@ -10,9 +10,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import birth.h3.app.curl_kusegeapp.BuildConfig
 import birth.h3.app.curl_kusegeapp.CurlApp
 import birth.h3.app.curl_kusegeapp.ItemTimeWeatherHeaderBindingModel_
 import birth.h3.app.curl_kusegeapp.R
@@ -24,6 +26,9 @@ import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
 import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityActivity
 import birth.h3.app.curl_kusegeapp.ui.util.UtilDateTime
 import birth.h3.app.curl_kusegeapp.ui.util.UtilGeolocation
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.kodmap.library.kmrecyclerviewstickyheader.KmHeaderItemDecoration
 import com.kodmap.library.kmrecyclerviewstickyheader.KmStickyListener
@@ -49,6 +54,8 @@ class GeolocationWeatherFragment : androidx.fragment.app.Fragment() {
     lateinit var binding: FragmentWeatherBinding
 
     private val controller by lazy { TimeWeatherController() }
+
+    lateinit var mAdView : AdView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -124,6 +131,10 @@ class GeolocationWeatherFragment : androidx.fragment.app.Fragment() {
 
         val bottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+
+
+        // 広告
+        admob()
     }
 
     private fun setObserve() {
@@ -211,6 +222,21 @@ class GeolocationWeatherFragment : androidx.fragment.app.Fragment() {
     }
     fun setBindAddress(address: String){
         binding.viewmodel!!.setAddress(address)
+    }
+
+    private fun admob() {
+        mAdView = AdView(this.context)
+        mAdView.adSize = AdSize.MEDIUM_RECTANGLE
+        mAdView.adUnitId =when(BuildConfig.DEBUG){
+            true -> "ca-app-pub-3940256099942544/6300978111"
+            false -> BuildConfig.ADMOB_BENNER_ID
+        }
+        val adArea = this.view!!.findViewById<LinearLayout>(R.id.adArea)
+
+        adArea.addView(mAdView)
+
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
     }
 
     override fun onResume() {
