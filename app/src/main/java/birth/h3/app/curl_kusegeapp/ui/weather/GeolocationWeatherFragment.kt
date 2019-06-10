@@ -1,9 +1,14 @@
 package birth.h3.app.curl_kusegeapp.ui.weather
 
+import android.Manifest
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
+import android.location.LocationListener
+import android.location.LocationManager
 import android.os.Bundle
 import android.text.format.DateUtils
 import android.util.Log
@@ -12,6 +17,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import birth.h3.app.curl_kusegeapp.BuildConfig
@@ -41,7 +48,7 @@ import javax.inject.Inject
  * A simple [Fragment] subclass.
  *
  */
-class GeolocationWeatherFragment : androidx.fragment.app.Fragment() {
+class GeolocationWeatherFragment : androidx.fragment.app.Fragment(), LocationListener, ToGeoDialog.Listener {
 
     val TAG = "geolocationWeather"
 
@@ -176,43 +183,79 @@ class GeolocationWeatherFragment : androidx.fragment.app.Fragment() {
     }
 
     fun getGeolocation() {
-        val geolocation = object : UtilGeolocation(activity as AppCompatActivity) {
-            var city: String? = null
-            override fun onLocationChanged(location: Location) {
-                super.onLocationChanged(location)
-                Log.d("WeatherFragment", "lat = " + location.latitude.toString() + " lon =" + location.longitude.toString())
-
-                geolocationAddress(location.latitude, location.longitude)?.let {
-
-                    weatherViewModel.insertGeolocation(Geolocation(1, it.adminArea, it.locality, it.subLocality ?: "", it.postalCode, it.countryName, it.latitude, it.longitude, UtilDateTime().date_at()))
-
-                    val newCity = getCity(it)
-                    Timber.d("newCity is ${newCity}")
-
-                    if( city != newCity || city.isNullOrBlank() ) {
-                        city = newCity
-                        setBindAddress(city!!)
-                        weatherViewModel.loadData(location.latitude, location.longitude)
-                    }
-                }
-            }
-
-            fun geolocationAddress(lat: Double, lon: Double): Address?{
-                if (!Geocoder.isPresent()) return null
-
-                context?.let {
-                    val geocode: Geocoder = Geocoder(it, Locale.JAPANESE)
-                    val address = geocode.getFromLocation(lat, lon, 1)
-                    Timber.d("address is ${address[0]}")
-
-                    return address[0]
-                } ?: return null
-            }
-
-            fun getCity(address: Address): String? {
-                return address?.locality
+        // GPS
+        val mLocationManager = activity!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        if (ContextCompat.checkSelfPermission(activity!!,
+                        Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            this.requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1000)
+        } else {
+            try {
+                // Request location updates
+                mLocationManager?.requestLocationUpdates(LocationManager.GPS_PROVIDER, 300, 1f, this)
+                mLocationManager?.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 300, 1f, this)
+            } catch(ex: SecurityException) {
             }
         }
+    }
+
+    private fun isGeoPermission() = ContextCompat.checkSelfPermission(activity!!, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if(isGeoPermission()){
+            getGeolocation()
+        }else{
+            val fragment = ToGeoDialog(this)
+            fragment.show(fragmentManager!!, ToSigninDialog.TAG)
+        }
+    }
+
+    override fun onLocationChanged(location: Location?) {
+        var city: String? = null
+
+        location?.let {
+
+            geolocationAddress(location.latitude, location.longitude)?.let {
+
+                weatherViewModel.insertGeolocation(Geolocation(1, it.adminArea, it.locality, it.subLocality
+                        ?: "", it.postalCode, it.countryName, it.latitude, it.longitude, UtilDateTime().date_at()))
+
+                val newCity = getCity(it)
+                Timber.d("newCity is ${newCity}")
+
+                if (city != newCity || city.isNullOrBlank()) {
+                    city = newCity
+                    setBindAddress(city!!)
+                    weatherViewModel.loadData(location.latitude, location.longitude)
+                }
+            }
+        }
+    }
+
+    fun geolocationAddress(lat: Double, lon: Double): Address?{
+        if (!Geocoder.isPresent()) return null
+
+        context?.let {
+            val geocode: Geocoder = Geocoder(it, Locale.JAPANESE)
+            val address = geocode.getFromLocation(lat, lon, 1)
+            Timber.d("address is ${address[0]}")
+
+            return address[0]
+        } ?: return null
+    }
+
+    fun getCity(address: Address): String? {
+        return address?.locality
+    }
+
+    override fun onProviderDisabled(provider: String?) {
+    }
+
+    override fun onProviderEnabled(provider: String?) {
+    }
+
+    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
+
     }
 
     fun setBindDay(){
@@ -244,4 +287,12 @@ class GeolocationWeatherFragment : androidx.fragment.app.Fragment() {
         weatherViewModel.updateWeatherStatusImage()
     }
 
+    override fun onPositiveClickListener() {
+        getGeolocation()
+    }
+
+    override fun onNegativeClickListener() {
+        val fragment = ToGeoDialog(this)
+        fragment.show(fragmentManager!!, ToSigninDialog.TAG)
+    }
 }
