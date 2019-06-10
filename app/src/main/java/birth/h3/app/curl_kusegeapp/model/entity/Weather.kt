@@ -8,7 +8,7 @@ data class Weather(
         var min_temp: Int,
         var humidity: Int,
         var wind: Int,
-        var rainy: Int,
+        var rainy: Float,
         var kusege: Int,
         var date_text: String
 ) {
@@ -20,7 +20,7 @@ data class Weather(
             0,
             0,
             0,
-            0,
+            0f,
             1,
             "よみこみ中...")
     }

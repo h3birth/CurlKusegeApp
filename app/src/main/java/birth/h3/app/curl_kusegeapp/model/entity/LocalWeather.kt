@@ -15,7 +15,7 @@ data class LocalWeather(
         @ColumnInfo(name = "min_temp") var min_temp: Int,
         @ColumnInfo(name = "humidity") var humidity: Int,
         @ColumnInfo(name = "wind") var wind: Int,
-        @ColumnInfo(name = "rainy") var rainy: Int,
+        @ColumnInfo(name = "rainy") var rainy: Float,
         @ColumnInfo(name = "kusege") var kusege: Int,
         @ColumnInfo(name = "date_text") var date_text: String,
         @ColumnInfo(name = "sort_order") var sort_order: Int,

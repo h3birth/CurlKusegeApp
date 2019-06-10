@@ -11,7 +11,7 @@
     <string name="tv_temp">%d℃</string>
     <string name="tv_humidity">%d%%</string>
     <string name="tv_wind">%dm/s</string>
-    <string name="tv_rainy">%d%%</string>
+    <string name="tv_rainy">%.2f㎜</string>
     <string name="tv_submit_read">あなたの髪は今どんな感じ？</string>
     <string name="tv_submit_able_count">きょうはあと%d回送れるよ</string>
     <string name="tv_wait_tomorrow">今日はもう3回送ったよ。明日まで待ってね。</string>
@@ -26,7 +26,7 @@
     <string name="tv_header_hum">湿度</string>
     <string name="tv_format_number">%d</string>
     <string name="tv_header_wind">風速</string>
-    <string name="tv_header_rainy">降水確率</string>
+    <string name="tv_header_rainy">降水量</string>
     <string name="tv_change_city">変更</string>
 
     <!-- ログインフォーム -->

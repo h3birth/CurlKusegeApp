@@ -222,7 +222,8 @@
                                             android:layout_height="match_parent"
                                             android:layout_marginLeft="@dimen/margin_s"
                                             android:gravity="left|center"
-                                            android:text="@{String.format(@string/tv_humidity, viewmodel.weather.humidity)}" />
+                                            android:text="@{String.format(@string/tv_humidity, viewmodel.weather.humidity)}"
+                                            tools:text="93%"/>
 
                                     </LinearLayout>
 
@@ -260,7 +261,8 @@
                                             android:layout_height="match_parent"
                                             android:layout_marginLeft="@dimen/margin_s"
                                             android:gravity="left|center"
-                                            android:text="@{String.format(@string/tv_wind, viewmodel.weather.wind)}" />
+                                            android:text="@{String.format(@string/tv_wind, viewmodel.weather.wind)}"
+                                            tools:text="4m/s"/>
 
                                     </LinearLayout>
 
@@ -298,7 +300,9 @@
                                             android:layout_height="match_parent"
                                             android:layout_marginLeft="@dimen/margin_s"
                                             android:gravity="left|center"
-                                            android:text="@{String.format(@string/tv_rainy, viewmodel.weather.rainy)}" />
+                                            android:singleLine="true"
+                                            android:text="@{String.format(@string/tv_rainy, viewmodel.weather.rainy)}"
+                                            tools:text="11.56㎜"/>
 
                                     </LinearLayout>
 
