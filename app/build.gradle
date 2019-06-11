@@ -8,6 +8,8 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'com.google.android.gms.oss-licenses-plugin'
 
+def timestamp = new Date().format("yyyyMMddHHmmss")
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -30,7 +32,14 @@ android {
         manifestPlaceholders = [ADMOB_APP_ID:ADMOB_APP_ID]
     }
     buildTypes {
+        debug {
+            debuggable true
+            applicationIdSuffix ".debug"
+            versionNameSuffix ".${timestamp}"
+            minifyEnabled false
+        }
         release {
+            debuggable false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "143341254683",
+    "firebase_url": "https://curl-kusegeapp.firebaseio.com",
+    "project_id": "curl-kusegeapp",
+    "storage_bucket": "curl-kusegeapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:143341254683:android:957ddd5107a7b3c3",
+        "android_client_info": {
+          "package_name": "birth.h3.app.curl_kusegeapp.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "143341254683-kosv0ljeh2ljgohb30tp7fics6geboid.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "birth.h3.app.curl_kusegeapp.debug",
+            "certificate_hash": "3de452a6fb15506f15b5aa6f8549aefaa571834a"
+          }
+        },
+        {
+          "client_id": "143341254683-hf5hmomjd8u1f5i4inpd7bkagc1sd9s1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvk9EGNPsDpYXzcd7iclqzwxgN_lMy7Do"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "143341254683-hf5hmomjd8u1f5i4inpd7bkagc1sd9s1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-1979316634998705~4441377196"
+    }
+  ],
+  "configuration_version": "1"
+}
