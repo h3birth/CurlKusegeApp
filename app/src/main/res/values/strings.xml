@@ -128,6 +128,9 @@
     <string name="contact_message">内容を入力してください</string>
     <string name="btn_help_feedback">フィードバックを送る</string>
 
+    <string name="agree">プライバシーポリシーに同意する</string>
+    <string name="agree_link">プライバシーポリシーはこちら</string>
+
 
     <!-- format -->
     <string name="msg_token_fmt">%s</string>

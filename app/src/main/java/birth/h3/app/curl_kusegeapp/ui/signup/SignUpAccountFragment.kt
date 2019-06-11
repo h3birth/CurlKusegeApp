@@ -30,6 +30,8 @@ class SignUpAccountFragment : Fragment() {
 
     private lateinit var binding: FragmentSignUpAccountBinding
 
+    private val curlApp by lazy { (context?.applicationContext as CurlApp) }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -39,14 +41,17 @@ class SignUpAccountFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        (context?.applicationContext as CurlApp).component.inject(this)
+        curlApp.component.inject(this)
         binding.setLifecycleOwner(this)
         binding.viewModel = viewModel
 
         Timber.d("Hair is ${viewModel.userSelectHairStatusId.value} gender is ${viewModel.userSelectGenderId.value} nickname is ${viewModel.userSelectNickName.value}")
 
         btn_signup_post.setOnClickListener {
-            viewModel.signup()
+            when(viewModel.checked.value){
+                true -> viewModel.signup()
+                false -> curlApp.toast("プライバシーポリシーに同意するにチェックしてください")
+            }
         }
 
         signup_account_toolbar.setNavigationOnClickListener {
@@ -68,6 +73,10 @@ class SignUpAccountFragment : Fragment() {
                 null -> signup_password_layout.error = null
                 else -> signup_password_layout.error = it
             }
+        }
+
+        agree_link.setOnClickListener {
+            curlApp.curlPageURI("privacypolicy")
         }
     }
 
