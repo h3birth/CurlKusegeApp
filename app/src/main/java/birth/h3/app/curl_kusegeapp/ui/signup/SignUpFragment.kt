@@ -3,25 +3,26 @@ package birth.h3.app.curl_kusegeapp.ui.signup
 
 import android.os.Bundle
 import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import birth.h3.app.curl_kusegeapp.CurlApp
 import birth.h3.app.curl_kusegeapp.R
 import birth.h3.app.curl_kusegeapp.databinding.FragmentSignUpBinding
+import birth.h3.app.curl_kusegeapp.model.entity.SignUpAnswerMessages
 import birth.h3.app.curl_kusegeapp.model.entity.SignupMessage
 import birth.h3.app.curl_kusegeapp.model.enums.MessageOwner
-import birth.h3.app.curl_kusegeapp.ui.registercity.RegisterCityViewModel
 import com.airbnb.epoxy.DataBindingEpoxyModel
-import kotlinx.android.synthetic.main.fragment_sign_in.*
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 import timber.log.Timber
 import javax.inject.Inject
+import androidx.arch.core.util.Function
 
 
 /**
