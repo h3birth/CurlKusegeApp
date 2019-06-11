@@ -2,6 +2,7 @@ package birth.h3.app.curl_kusegeapp.di
 
 import birth.h3.app.curl_kusegeapp.MainActivity
 import birth.h3.app.curl_kusegeapp.MainViewModel
+import birth.h3.app.curl_kusegeapp.model.handler.ErrorHandlindInterceptor
 import birth.h3.app.curl_kusegeapp.ui.mydata.MyDataFragment
 import birth.h3.app.curl_kusegeapp.ui.mydata.MyDataViewModel
 import birth.h3.app.curl_kusegeapp.ui.news.NewsFragment
@@ -28,6 +29,7 @@ import birth.h3.app.curl_kusegeapp.ui.top.TopFragment
 import birth.h3.app.curl_kusegeapp.ui.top.TopPagerAdapter
 import birth.h3.app.curl_kusegeapp.ui.top.TopViewModel
 import birth.h3.app.curl_kusegeapp.ui.util.UtilIcon
+import birth.h3.app.curl_kusegeapp.ui.util.UtilNetwork
 import birth.h3.app.curl_kusegeapp.ui.weather.GeolocationWeatherFragment
 import birth.h3.app.curl_kusegeapp.ui.weather.WeatherFragment
 import birth.h3.app.curl_kusegeapp.ui.weather.WeatherViewModel
@@ -80,4 +82,6 @@ interface AppComponent {
     fun inject(viewModel: WithdrawalViewModel)
     fun inject(viewModel: HelpFeedbackViewModel)
     fun inject(util: UtilIcon)
+    fun inject(util: UtilNetwork)
+    fun inject(handler: ErrorHandlindInterceptor)
 }

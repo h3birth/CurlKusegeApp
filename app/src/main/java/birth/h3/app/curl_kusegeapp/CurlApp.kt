@@ -4,13 +4,14 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
+import android.widget.Toast
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
 import birth.h3.app.curl_kusegeapp.di.AppComponent
 import birth.h3.app.curl_kusegeapp.di.AppModule
 import birth.h3.app.curl_kusegeapp.di.DaggerAppComponent
 import timber.log.Timber
-
+import java.util.logging.Handler
 
 
 class CurlApp : Application() {
@@ -21,6 +22,9 @@ class CurlApp : Application() {
             Timber.plant(Timber.DebugTree())
         }
     }
+
+    private val handler = android.os.Handler()
+    private var runnable: Runnable? = null
 
     fun openWeb(pageUrl: String) {
         CustomTabsIntent.Builder()
@@ -51,5 +55,12 @@ class CurlApp : Application() {
     fun putPrefTheme(value: Int) {
         val pref: SharedPreferences = getSharedPreferences(getString(R.string.shared_preferense), Context.MODE_PRIVATE)
         pref.edit().putInt(getString(R.string.pref_theme), value).commit()
+    }
+
+    fun toast(message: String){
+        runnable = Runnable {
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        }
+        handler.post(runnable)
     }
 }

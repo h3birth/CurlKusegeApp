@@ -105,17 +105,21 @@ class WeatherViewModel @Inject constructor(private val weatherApiService: Weathe
                 .getWeather(lat, lon)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeBy{
+                .subscribe({
                     weather.postValue(it)
                     statusImage.postValue(utilIcon.getGenderIcon(it.kusege))
-                },
+                },{
+                    Timber.e(it)
+                }),
             weatherApiService
                 .getTimeWeather(lat, lon)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeBy {
+                .subscribe( {
                     timeWeather.postValue(it)
-                }
+                },{
+                    Timber.e(it)
+                })
         )
     }
 

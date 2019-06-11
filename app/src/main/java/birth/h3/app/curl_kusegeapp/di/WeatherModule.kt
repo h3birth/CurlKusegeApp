@@ -1,8 +1,11 @@
 package birth.h3.app.curl_kusegeapp.di
 
+import android.content.Context
+import birth.h3.app.curl_kusegeapp.model.handler.ErrorHandlindInterceptor
 import birth.h3.app.curl_kusegeapp.model.net.NewsService
 import birth.h3.app.curl_kusegeapp.model.net.UserApiService
 import birth.h3.app.curl_kusegeapp.model.net.WeatherApiService
+import birth.h3.app.curl_kusegeapp.ui.util.UtilNetwork
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -25,9 +28,9 @@ class WeatherModule() {
 
     @Singleton
     @Provides
-    fun provideOkhttpClient(): OkHttpClient {
+    fun provideOkhttpClient(errorHandlindInterceptor: ErrorHandlindInterceptor): OkHttpClient {
         val client = OkHttpClient.Builder()
-        client.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+        client.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)).addInterceptor(errorHandlindInterceptor)
         return client.build()
     }
 
@@ -58,5 +61,11 @@ class WeatherModule() {
     @Provides
     fun provideNewsService(retrofit: Retrofit): NewsService {
         return retrofit.create(NewsService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideErrorHandlindInterceptor(context: Context, utilNetwork: UtilNetwork): ErrorHandlindInterceptor {
+        return ErrorHandlindInterceptor(context, utilNetwork)
     }
 }

@@ -41,6 +41,7 @@ import com.kodmap.library.kmrecyclerviewstickyheader.KmHeaderItemDecoration
 import com.kodmap.library.kmrecyclerviewstickyheader.KmStickyListener
 import kotlinx.android.synthetic.main.fragment_weather.*
 import timber.log.Timber
+import java.lang.Exception
 import java.util.*
 import javax.inject.Inject
 
@@ -236,11 +237,16 @@ class GeolocationWeatherFragment : androidx.fragment.app.Fragment(), LocationLis
         if (!Geocoder.isPresent()) return null
 
         context?.let {
-            val geocode: Geocoder = Geocoder(it, Locale.JAPANESE)
-            val address = geocode.getFromLocation(lat, lon, 1)
-            Timber.d("address is ${address[0]}")
-
-            return address[0]
+            try {
+                val geocode = Geocoder(it, Locale.JAPANESE)
+                val address = geocode?.getFromLocation(lat, lon, 1) ?: return null
+                return when (address.isNullOrEmpty()) {
+                    true -> null
+                    else -> address[0]
+                }
+            } catch (e: Exception) {
+                return null
+            }
         } ?: return null
     }
 
